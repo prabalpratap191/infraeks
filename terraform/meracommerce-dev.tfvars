@@ -1,6 +1,7 @@
 # Environment: Development
 cluster_name        = "meracommerce-dev"
 region              = "us-east-1"
+availability_zones = ["us-east-1a", "us-east-1b", "us-east-1c"]  
 namespace           = "customer-ns"
 service_account     = "customer-sa"
 cluster_version     = "1.30"
