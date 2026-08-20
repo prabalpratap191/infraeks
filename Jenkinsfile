@@ -66,7 +66,8 @@ pipeline {
                 terraform plan \
                 -var cluster_name=${CLUSTER_NAME} \
                 -var namespace=${NAMESPACE} \
-                -var service_account=${SERVICE_ACCOUNT}
+                -var service_account=${SERVICE_ACCOUNT} \
+                -var-file="meracommerce-dev.tfvars"
                 """
             }
         }
@@ -81,7 +82,8 @@ pipeline {
                 terraform apply -auto-approve \
                 -var cluster_name=${CLUSTER_NAME} \
                 -var namespace=${NAMESPACE} \
-                -var service_account=${SERVICE_ACCOUNT}
+                -var service_account=${SERVICE_ACCOUNT} \
+                -var-file="meracommerce-dev.tfvars"
                 """
             }
         }
