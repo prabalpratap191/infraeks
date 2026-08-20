@@ -21,7 +21,15 @@ module "eks" {
   cluster_endpoint_public_access = true
 
   vpc_id     = data.aws_vpc.default.id
-  subnet_ids = data.aws_subnets.default.ids
+  #subnet_ids = data.aws_subnets.default.ids
+
+  # CHANGE: Updated subnet IDs to exclude us-east-1e subnets
+  subnet_ids = [
+    aws_subnet.private_us_east_1a.id,
+    aws_subnet.private_us_east_1b.id,
+    aws_subnet.private_us_east_1c.id,
+    # Removed: aws_subnet.private_us_east_1e.id
+  ]
 
   eks_managed_node_groups = {
     default = {
