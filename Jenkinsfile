@@ -34,11 +34,12 @@ pipeline {
             }
         }
 
-        stage('Terraform Init') {
+               stage('Terraform Init') {
 
             steps {
 
                 sh '''
+                cd terraform
                 terraform init
                 '''
             }
@@ -49,6 +50,7 @@ pipeline {
             steps {
 
                 sh '''
+                cd terraform
                 terraform validate
                 '''
             }
@@ -59,6 +61,8 @@ pipeline {
             steps {
 
                 sh """
+                cd terraform
+
                 terraform plan \
                 -var cluster_name=${CLUSTER_NAME} \
                 -var namespace=${NAMESPACE} \
@@ -72,6 +76,8 @@ pipeline {
             steps {
 
                 sh """
+                cd terraform
+
                 terraform apply -auto-approve \
                 -var cluster_name=${CLUSTER_NAME} \
                 -var namespace=${NAMESPACE} \
