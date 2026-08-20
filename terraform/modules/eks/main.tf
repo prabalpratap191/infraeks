@@ -1,21 +1,62 @@
-module "eks" {
+# Get default VPC
+data "aws_vpc" "default" {
+  default = true
+}
 
-  source = "terraform-aws-modules/eks/aws"
+# Get default subnets
+data "aws_subnets" "default" {
+  filter {
+    name   = "vpc-id"
+    values = [data.aws_vpc.default.id]
+  }
+}
+
+module "eks" {
+  source  = "terraform-aws-modules/eks/aws"
+  version = "~> 20.0"
 
   cluster_name    = var.cluster_name
-  cluster_version = "1.33"
+  cluster_version = var.cluster_version
+
+  cluster_endpoint_public_access = true
+
+  vpc_id     = data.aws_vpc.default.id
+  subnet_ids = data.aws_subnets.default.ids
+
+  # Disable KMS encryption to avoid permission issues
+  create_kms_key = false
+  cluster_encryption_config = {}
+
+  
+  # CHANGE: Updated subnet IDs to exclude us-east-1e subnets
+  subnet_ids = [
+    aws_subnet.private_us_east_1a.id,
+    aws_subnet.private_us_east_1b.id,
+    aws_subnet.private_us_east_1c.id,
+    # Removed: aws_subnet.private_us_east_1e.id
+  ]
+
+  # Disable CloudWatch logging to avoid permission issues
+  create_cloudwatch_log_group = false
+  cluster_enabled_log_types   = []
 
   eks_managed_node_groups = {
-
     default = {
-
       desired_size = var.node_desired
       min_size     = var.node_min
       max_size     = var.node_max
 
-      instance_types = [
-        var.node_instance_type
-      ]
+      instance_types = [var.node_instance_type]
+
+      tags = {
+        Environment = "dev"
+        Terraform   = "true"
+      }
     }
+  }
+
+  tags = {
+    Environment = "dev"
+    Terraform   = "true"
   }
 }
