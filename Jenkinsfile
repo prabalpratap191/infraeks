@@ -11,7 +11,7 @@ pipeline {
 
         string(
             name: 'NAMESPACE',
-            defaultValue: 'customer'
+            defaultValue: 'customer-ns'
         )
 
         string(
@@ -27,9 +27,9 @@ pipeline {
             steps {
 
                 git(
-                    branch: 'main',
+                    branch: 'master',
                     credentialsId: 'github-token',
-                    url: 'https://github.com/company/infra-eks.git'
+                    url: 'https://github.com/prabalpratap191/infraeks.git'
                 )
             }
         }
