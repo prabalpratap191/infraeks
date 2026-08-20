@@ -3,7 +3,7 @@
 # and manage KMS keys and CloudWatch Log Groups for EKS cluster
 
 resource "aws_iam_policy" "jenkins_eks_permissions" {
-  name        = "JenkinsEKSAdditionalPermissions"
+  name        = "JenkinsEKSAdditionalPermissionsUser"
   description = "Additional permissions for Jenkins user to create EKS cluster with KMS and CloudWatch Logs"
 
   policy = jsonencode({
