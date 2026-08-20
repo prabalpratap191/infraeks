@@ -40,6 +40,8 @@ pipeline {
 
                 sh '''
                 cd terraform
+                rm -rf .terraform .terraform.lock.hcl
+                Remove-Item -Recurse -Force .terraform, .terraform.lock.hcl -ErrorAction SilentlyContinue
                 terraform init
                 '''
             }
@@ -51,6 +53,7 @@ pipeline {
 
                 sh '''
                 cd terraform
+                terraform fmt -recursive
                 terraform validate
                 '''
             }
