@@ -22,3 +22,9 @@ variable "node_max" {
   description = "Maximum number of worker nodes"
   type        = number
 }
+
+variable "cluster_version" {
+  description = "Kubernetes version for the EKS cluster"
+  type        = string
+  default     = "1.30"
+}
