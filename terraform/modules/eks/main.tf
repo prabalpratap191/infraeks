@@ -1,21 +1,23 @@
+terraform {
+  required_version = ">= 1.0.0"
+}
+
+provider "aws" {
+  region = var.region
+}
+
+# EKS Cluster Module
 module "eks" {
+  source = "./modules/eks"
 
-  source = "terraform-aws-modules/eks/aws"
+  cluster_name        = var.cluster_name
+  node_instance_type  = var.node_instance_type
+  node_desired        = var.node_desired
+  node_min            = var.node_min
+  node_max            = var.node_max
+}
 
-  cluster_name    = var.cluster_name
-  cluster_version = "1.33"
-
-  eks_managed_node_groups = {
-
-    default = {
-
-      desired_size = var.node_desired
-      min_size     = var.node_min
-      max_size     = var.node_max
-
-      instance_types = [
-        var.node_instance_type
-      ]
-    }
-  }
+# Data source for EKS cluster authentication
+data "aws_eks_cluster_auth" "eks" {
+  name = module.eks.cluster_name
 }
