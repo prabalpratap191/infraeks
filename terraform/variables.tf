@@ -16,3 +16,15 @@ variable "node_min" {
 variable "node_max" {
   default = 3
 }
+
+variable "cluster_version" {
+  description = "Kubernetes version for the EKS cluster"
+  type        = string
+  default     = "1.30"
+}
+
+variable "availability_zones" {
+  description = "List of availability zones for the EKS cluster"
+  type        = list(string)
+  default     = ["us-east-1a", "us-east-1b", "us-east-1c"]
+}
