@@ -75,6 +75,8 @@ pipeline {
                     secretKeyVariable: 'AWS_SECRET_ACCESS_KEY'
                 ]]) {
                     sh '''
+                    chmod +x scripts/cleanup-aws-resources.sh
+                    ./scripts/cleanup-aws-resources.sh
                     cd terraform
                     rm -rf .terraform .terraform.lock.hcl
                     terraform init
