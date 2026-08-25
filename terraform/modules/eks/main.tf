@@ -35,7 +35,7 @@ module "eks" {
   version = "~> 20.0"
 
   cluster_name    = var.cluster_name
-  cluster_version = "1.31"  # Fixed: Use stable version (1.33 doesn't exist)
+  cluster_version = var.cluster_version  # Use variable to allow flexibility
 
   cluster_endpoint_public_access = true
   cluster_endpoint_private_access = true
@@ -112,9 +112,10 @@ module "eks" {
       enable_monitoring = true
 
       # Configure instance metadata options
+      # Note: Using "optional" for http_tokens to avoid bootstrap issues with AL2023
       metadata_options = {
         http_endpoint               = "enabled"
-        http_tokens                 = "required"  # IMDSv2 required for security
+        http_tokens                 = "optional"  # Changed from "required" to fix AL2023 bootstrap issues
         http_put_response_hop_limit = 2
         instance_metadata_tags      = "disabled"
       }
@@ -140,14 +141,9 @@ module "eks" {
         AmazonSSMManagedInstanceCore = "arn:aws:iam::aws:policy/AmazonSSMManagedInstanceCore"
       }
 
-      # User data template to ensure proper cluster joining
+      # User data template - minimal configuration to avoid bootstrap conflicts
+      # Removed pre_bootstrap_user_data to prevent interference with default AL2023 bootstrap
       enable_bootstrap_user_data = true
-      pre_bootstrap_user_data = <<-EOT
-        #!/bin/bash
-        set -ex
-        # Configure kubelet extra args if needed
-        echo "Setting up node for cluster join..."
-      EOT
 
       tags = {
         Environment = "dev"
