@@ -38,7 +38,7 @@ pipeline {
             steps {
 
                 git(
-                    branch: 'master',
+                    branch: 'mainbranch',
                     credentialsId: 'github-token',
                     url: 'https://github.com/prabalpratap191/infraeks.git'
                 )
