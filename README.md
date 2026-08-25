@@ -332,7 +332,9 @@ For comprehensive guides and detailed information, refer to:
 | **[IMPLEMENTATION_GUIDE.md](IMPLEMENTATION_GUIDE.md)** | Complete step-by-step deployment guide |
 | **[MICROSERVICES_DEPLOYMENT_ARCHITECTURE.md](MICROSERVICES_DEPLOYMENT_ARCHITECTURE.md)** | Detailed architecture and design decisions |
 | **[architecture-diagram.md](architecture-diagram.md)** | Visual architecture diagrams (Mermaid) |
+| **[COMMON_ERRORS_QUICK_FIX.md](COMMON_ERRORS_QUICK_FIX.md)** | 🔥 Quick fixes for 10+ common errors |
 | **[EKS_NODE_GROUP_TROUBLESHOOTING.md](EKS_NODE_GROUP_TROUBLESHOOTING.md)** | Node group issues and solutions |
+| **[IAM_ROLE_NAME_LENGTH_FIX.md](IAM_ROLE_NAME_LENGTH_FIX.md)** | Fix for IAM role name length errors |
 | **[DEPLOYMENT_CHECKLIST.md](DEPLOYMENT_CHECKLIST.md)** | Pre-deployment verification checklist |
 | **[CHANGES_SUMMARY.md](CHANGES_SUMMARY.md)** | Change log and migration guide |
 | **[GIT_SETUP_GUIDE.md](GIT_SETUP_GUIDE.md)** | Git repository setup instructions |
