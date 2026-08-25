@@ -327,15 +327,32 @@ curl http://<ALB-DNS>/api/customers/health
 
 For comprehensive guides and detailed information, refer to:
 
+### 🚀 Getting Started
 | Document | Description |
 |----------|-------------|
+| **[QUICK_START.md](QUICK_START.md)** | ⚡ Deploy in ~30 minutes - Fast track guide |
 | **[IMPLEMENTATION_GUIDE.md](IMPLEMENTATION_GUIDE.md)** | Complete step-by-step deployment guide |
-| **[MICROSERVICES_DEPLOYMENT_ARCHITECTURE.md](MICROSERVICES_DEPLOYMENT_ARCHITECTURE.md)** | Detailed architecture and design decisions |
+| **[DEPLOYMENT_CHECKLIST.md](DEPLOYMENT_CHECKLIST.md)** | Pre-deployment verification checklist |
+
+### 🏗️ Architecture & Design
+| Document | Description |
+|----------|-------------|
 | **[architecture-diagram.md](architecture-diagram.md)** | Visual architecture diagrams (Mermaid) |
+| **[MICROSERVICES_DEPLOYMENT_ARCHITECTURE.md](MICROSERVICES_DEPLOYMENT_ARCHITECTURE.md)** | Detailed architecture and design decisions |
+
+### 🔧 Troubleshooting & Fixes
+| Document | Description |
+|----------|-------------|
 | **[COMMON_ERRORS_QUICK_FIX.md](COMMON_ERRORS_QUICK_FIX.md)** | 🔥 Quick fixes for 10+ common errors |
+| **[RESOURCE_ALREADY_EXISTS_FIX.md](RESOURCE_ALREADY_EXISTS_FIX.md)** | Fix for KMS/CloudWatch resources already exist |
 | **[EKS_NODE_GROUP_TROUBLESHOOTING.md](EKS_NODE_GROUP_TROUBLESHOOTING.md)** | Node group issues and solutions |
 | **[IAM_ROLE_NAME_LENGTH_FIX.md](IAM_ROLE_NAME_LENGTH_FIX.md)** | Fix for IAM role name length errors |
-| **[DEPLOYMENT_CHECKLIST.md](DEPLOYMENT_CHECKLIST.md)** | Pre-deployment verification checklist |
+| **[BEFORE_AFTER_COMPARISON.md](BEFORE_AFTER_COMPARISON.md)** | Visual comparison of IAM fix changes |
+
+### 📋 Project Management
+| Document | Description |
+|----------|-------------|
+| **[DEPLOYMENT_SUCCESS_SUMMARY.md](DEPLOYMENT_SUCCESS_SUMMARY.md)** | Overview of fixes and deployment status |
 | **[CHANGES_SUMMARY.md](CHANGES_SUMMARY.md)** | Change log and migration guide |
 | **[GIT_SETUP_GUIDE.md](GIT_SETUP_GUIDE.md)** | Git repository setup instructions |
 
