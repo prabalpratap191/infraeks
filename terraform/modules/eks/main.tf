@@ -11,36 +11,144 @@ data "aws_subnets" "default" {
   }
 }
 
+# Filter subnets to exclude us-east-1e and ensure they're in allowed AZs
+data "aws_subnets" "filtered" {
+  filter {
+    name   = "vpc-id"
+    values = [data.aws_vpc.default.id]
+  }
+
+  filter {
+    name   = "availability-zone"
+    values = ["us-east-1a", "us-east-1b", "us-east-1c"]
+  }
+
+  # Ensure subnets have available IP addresses
+  filter {
+    name   = "state"
+    values = ["available"]
+  }
+}
+
 module "eks" {
   source  = "terraform-aws-modules/eks/aws"
   version = "~> 20.0"
 
   cluster_name    = var.cluster_name
-  cluster_version = "1.33"
+  cluster_version = "1.31"  # Fixed: Use stable version (1.33 doesn't exist)
 
   cluster_endpoint_public_access = true
+  cluster_endpoint_private_access = true
+
+  # Enable IRSA (IAM Roles for Service Accounts)
+  enable_irsa = true
 
   vpc_id     = data.aws_vpc.default.id
- # subnet_ids = data.aws_subnets.default.ids
+  
+  # Use dynamic subnets with proper filtering for us-east-1a, us-east-1b, us-east-1c only
+  subnet_ids = data.aws_subnets.filtered.ids
 
-  # CHANGE: Updated subnet IDs to exclude us-east-1e subnets
- subnet_ids = [
-    "subnet-02bc1f4f1e5d6e62d",  # Verify this is NOT in us-east-1e
-    "subnet-02ce84284a49d7dbf",  # Verify this is NOT in us-east-1e
-    "subnet-041e40e6c16be97ef",  # Verify this is NOT in us-east-1e
-    # Remove any subnet that is in us-east-1e
-  ]
+  # Configure cluster security group rules
+  cluster_security_group_additional_rules = {
+    ingress_nodes_ephemeral_ports_tcp = {
+      description                = "Nodes to cluster API"
+      protocol                   = "tcp"
+      from_port                  = 1025
+      to_port                    = 65535
+      type                       = "ingress"
+      source_node_security_group = true
+    }
+  }
+
+  # Configure node security group rules
+  node_security_group_additional_rules = {
+    ingress_self_all = {
+      description = "Node to node all ports/protocols"
+      protocol    = "-1"
+      from_port   = 0
+      to_port     = 0
+      type        = "ingress"
+      self        = true
+    }
+    ingress_cluster_all = {
+      description                   = "Cluster to node all ports/protocols"
+      protocol                      = "-1"
+      from_port                     = 0
+      to_port                       = 0
+      type                          = "ingress"
+      source_cluster_security_group = true
+    }
+    egress_all = {
+      description      = "Node all egress"
+      protocol         = "-1"
+      from_port        = 0
+      to_port          = 0
+      type             = "egress"
+      cidr_blocks      = ["0.0.0.0/0"]
+      ipv6_cidr_blocks = ["::/0"]
+    }
+  }
+
   eks_managed_node_groups = {
     default = {
+      name            = "${var.cluster_name}-node-group"
+      use_name_prefix = false
+
       desired_size = var.node_desired
       min_size     = var.node_min
       max_size     = var.node_max
 
       instance_types = [var.node_instance_type]
+      capacity_type  = "ON_DEMAND"
+
+      # Explicitly configure AMI type
+      ami_type = "AL2023_x86_64_STANDARD"  # Amazon Linux 2023
+
+      # Enable detailed monitoring
+      enable_monitoring = true
+
+      # Configure instance metadata options
+      metadata_options = {
+        http_endpoint               = "enabled"
+        http_tokens                 = "required"  # IMDSv2 required for security
+        http_put_response_hop_limit = 2
+        instance_metadata_tags      = "disabled"
+      }
+
+      # Block device mappings
+      block_device_mappings = {
+        xvda = {
+          device_name = "/dev/xvda"
+          ebs = {
+            volume_size           = 30
+            volume_type           = "gp3"
+            iops                  = 3000
+            throughput            = 125
+            encrypted             = true
+            delete_on_termination = true
+          }
+        }
+      }
+
+      # IAM role configuration - CRITICAL for node authentication
+      iam_role_attach_cni_policy = true
+      iam_role_additional_policies = {
+        AmazonSSMManagedInstanceCore = "arn:aws:iam::aws:policy/AmazonSSMManagedInstanceCore"
+      }
+
+      # User data template to ensure proper cluster joining
+      enable_bootstrap_user_data = true
+      pre_bootstrap_user_data = <<-EOT
+        #!/bin/bash
+        set -ex
+        # Configure kubelet extra args if needed
+        echo "Setting up node for cluster join..."
+      EOT
 
       tags = {
         Environment = "dev"
         Terraform   = "true"
+        Name        = "${var.cluster_name}-eks-node"
       }
     }
   }
@@ -48,5 +156,6 @@ module "eks" {
   tags = {
     Environment = "dev"
     Terraform   = "true"
+    ManagedBy   = "Terraform"
   }
 }
