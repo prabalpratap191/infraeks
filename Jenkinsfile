@@ -105,22 +105,13 @@ pipeline {
         stage('Terraform Plan') {
 
             steps {
-                withCredentials([[
-                    $class: 'AmazonWebServicesCredentialsBinding',
-                    credentialsId: 'aws-prod-cred',
-                    accessKeyVariable: 'AWS_ACCESS_KEY_ID',
-                    secretKeyVariable: 'AWS_SECRET_ACCESS_KEY'
-                ]]) {
-                    sh """
-                        cd terraform
 
-                        terraform plan \
-                        -var cluster_name=${CLUSTER_NAME} \
-                        -var namespace=${NAMESPACE} \
-                        -var service_account=${SERVICE_ACCOUNT} \
-                        -var-file=meracommerce-dev.tfvars
-                    """
-                }
+                sh """
+                terraform plan \
+                -var cluster_name=${CLUSTER_NAME} \
+                -var namespace=${NAMESPACE} \
+                -var service_account=${SERVICE_ACCOUNT} | grep -i "availability_zone"
+                """
             }
         }
 
@@ -129,22 +120,13 @@ pipeline {
         stage('Terraform Apply') {
 
             steps {
-                withCredentials([[
-                    $class: 'AmazonWebServicesCredentialsBinding',
-                    credentialsId: 'aws-prod-cred',
-                    accessKeyVariable: 'AWS_ACCESS_KEY_ID',
-                    secretKeyVariable: 'AWS_SECRET_ACCESS_KEY'
-                ]]) {
-                    sh """
-                        cd terraform
 
-                        terraform apply -auto-approve \
-                        -var cluster_name=${CLUSTER_NAME} \
-                        -var namespace=${NAMESPACE} \
-                        -var service_account=${SERVICE_ACCOUNT} \
-                        -var-file=meracommerce-dev.tfvars
-                    """
-                }
+                sh """
+                terraform apply -auto-approve \
+                -var cluster_name=${CLUSTER_NAME} \
+                -var namespace=${NAMESPACE} \
+                -var service_account=${SERVICE_ACCOUNT} | grep -i "availability_zone"
+                """
             }
         }
     }
