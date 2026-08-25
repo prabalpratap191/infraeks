@@ -1,0 +1,97 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: customer-service
+  namespace: customer-service-ns
+  labels:
+    app: customer-service
+    version: v1
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: customer-service
+  template:
+    metadata:
+      labels:
+        app: customer-service
+        version: v1
+    spec:
+      serviceAccountName: customer-sa
+      containers:
+      - name: customer-service
+        image: ${ECR_REGISTRY}/customer-service:${IMAGE_TAG}
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 8080
+          name: http
+          protocol: TCP
+        env:
+        - name: SPRING_PROFILES_ACTIVE
+          value: "prod"
+        - name: SERVER_PORT
+          value: "8080"
+        envFrom:
+        - configMapRef:
+            name: customer-service-config
+        - secretRef:
+            name: customer-service-secret
+        resources:
+          requests:
+            memory: "512Mi"
+            cpu: "250m"
+          limits:
+            memory: "1Gi"
+            cpu: "500m"
+        livenessProbe:
+          httpGet:
+            path: /actuator/health/liveness
+            port: 8080
+          initialDelaySeconds: 120
+          periodSeconds: 10
+          timeoutSeconds: 5
+          failureThreshold: 3
+        readinessProbe:
+          httpGet:
+            path: /actuator/health/readiness
+            port: 8080
+          initialDelaySeconds: 30
+          periodSeconds: 5
+          timeoutSeconds: 3
+          failureThreshold: 3
+      terminationGracePeriodSeconds: 30
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: customer-service
+  namespace: customer-service-ns
+  labels:
+    app: customer-service
+spec:
+  type: ClusterIP
+  ports:
+  - port: 8080
+    targetPort: 8080
+    protocol: TCP
+    name: http
+  selector:
+    app: customer-service
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: customer-service-config
+  namespace: customer-service-ns
+data:
+  APPLICATION_NAME: "customer-service"
+  LOG_LEVEL: "INFO"
+---
+aVersion: v1
+kind: Secret
+metadata:
+  name: customer-service-secret
+  namespace: customer-service-ns
+type: Opaque
+data:
+  # Base64 encoded secrets

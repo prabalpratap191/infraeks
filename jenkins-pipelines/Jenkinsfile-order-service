@@ -1,0 +1,228 @@
+// Jenkins Pipeline for Order Service
+// This pipeline builds, tests, containerizes, and deploys the Order Service to EKS
+
+pipeline {
+    agent any
+    
+    parameters {
+        string(
+            name: 'IMAGE_TAG',
+            defaultValue: 'latest',
+            description: 'Docker image tag'
+        )
+        string(
+            name: 'CLUSTER_NAME',
+            defaultValue: 'meracommerce-dev',
+            description: 'EKS cluster name'
+        )
+        string(
+            name: 'AWS_REGION',
+            defaultValue: 'us-east-1',
+            description: 'AWS region'
+        )
+        string(
+            name: 'NAMESPACE',
+            defaultValue: 'order-service-ns',
+            description: 'Kubernetes namespace'
+        )
+        string(
+            name: 'ECR_REPOSITORY',
+            defaultValue: 'order-service',
+            description: 'ECR repository name'
+        )
+    }
+    
+    environment {
+        AWS_DEFAULT_REGION = "${params.AWS_REGION}"
+        SERVICE_NAME = "order-service"
+        ECR_REGISTRY = "${AWS_ACCOUNT_ID}.dkr.ecr.${params.AWS_REGION}.amazonaws.com"
+    }
+    
+    stages {
+        stage('Checkout') {
+            steps {
+                checkout scm
+            }
+        }
+        
+        stage('Build & Test') {
+            steps {
+                script {
+                    echo "Building ${SERVICE_NAME}..."
+                    sh '''
+                        # Build Java application
+                        mvn clean package -DskipTests
+                        
+                        # Run unit tests
+                        mvn test
+                        
+                        # Run integration tests (optional)
+                        # mvn verify
+                    '''
+                }
+            }
+        }
+        
+        stage('Code Quality & Security Scan') {
+            parallel {
+                stage('SonarQube Analysis') {
+                    steps {
+                        script {
+                            echo "Running SonarQube analysis..."
+                            // Uncomment if SonarQube is configured
+                            // sh 'mvn sonar:sonar'
+                        }
+                    }
+                }
+                
+                stage('Dependency Check') {
+                    steps {
+                        script {
+                            echo "Checking for vulnerable dependencies..."
+                            // sh 'mvn dependency-check:check'
+                        }
+                    }
+                }
+            }
+        }
+        
+        stage('Build & Push Docker Image') {
+            steps {
+                withCredentials([[
+                    $class: 'AmazonWebServicesCredentialsBinding',
+                    credentialsId: 'jenkins-user',
+                    accessKeyVariable: 'AWS_ACCESS_KEY_ID',
+                    secretKeyVariable: 'AWS_SECRET_ACCESS_KEY'
+                ]]) {
+                    script {
+                        sh '''
+                            # Login to ECR
+                            aws ecr get-login-password --region ${AWS_REGION} | \
+                                docker login --username AWS --password-stdin ${ECR_REGISTRY}
+                            
+                            # Build Docker image
+                            docker build -t ${SERVICE_NAME}:${IMAGE_TAG} .
+                            
+                            # Tag image for ECR
+                            docker tag ${SERVICE_NAME}:${IMAGE_TAG} \
+                                ${ECR_REGISTRY}/${ECR_REPOSITORY}:${IMAGE_TAG}
+                            
+                            docker tag ${SERVICE_NAME}:${IMAGE_TAG} \
+                                ${ECR_REGISTRY}/${ECR_REPOSITORY}:latest
+                            
+                            # Push to ECR
+                            docker push ${ECR_REGISTRY}/${ECR_REPOSITORY}:${IMAGE_TAG}
+                            docker push ${ECR_REGISTRY}/${ECR_REPOSITORY}:latest
+                        '''
+                    }
+                }
+            }
+        }
+        
+        stage('Update Kubeconfig') {
+            steps {
+                withCredentials([[
+                    $class: 'AmazonWebServicesCredentialsBinding',
+                    credentialsId: 'jenkins-user',
+                    accessKeyVariable: 'AWS_ACCESS_KEY_ID',
+                    secretKeyVariable: 'AWS_SECRET_ACCESS_KEY'
+                ]]) {
+                    sh '''
+                        aws eks update-kubeconfig \
+                            --name ${CLUSTER_NAME} \
+                            --region ${AWS_REGION}
+                    '''
+                }
+            }
+        }
+        
+        stage('Deploy to EKS') {
+            steps {
+                withCredentials([[
+                    $class: 'AmazonWebServicesCredentialsBinding',
+                    credentialsId: 'jenkins-user',
+                    accessKeyVariable: 'AWS_ACCESS_KEY_ID',
+                    secretKeyVariable: 'AWS_SECRET_ACCESS_KEY'
+                ]]) {
+                    script {
+                        sh '''
+                            # Substitute environment variables in manifests
+                            export ECR_REGISTRY=${ECR_REGISTRY}
+                            export IMAGE_TAG=${IMAGE_TAG}
+                            
+                            # Apply Kubernetes manifests
+                            envsubst < k8s-manifests/order-service/deployment.yaml | kubectl apply -f -
+                            
+                            # Wait for rollout to complete
+                            kubectl rollout status deployment/order-service -n ${NAMESPACE} --timeout=5m
+                        '''
+                    }
+                }
+            }
+        }
+        
+        stage('Verify Deployment') {
+            steps {
+                withCredentials([[
+                    $class: 'AmazonWebServicesCredentialsBinding',
+                    credentialsId: 'jenkins-user',
+                    accessKeyVariable: 'AWS_ACCESS_KEY_ID',
+                    secretKeyVariable: 'AWS_SECRET_ACCESS_KEY'
+                ]]) {
+                    script {
+                        sh '''
+                            echo "=== Pods ==="
+                            kubectl get pods -n ${NAMESPACE} -l app=${SERVICE_NAME}
+                            
+                            echo "\n=== Services ==="
+                            kubectl get svc -n ${NAMESPACE}
+                            
+                            echo "\n=== Deployment Status ==="
+                            kubectl get deployment ${SERVICE_NAME} -n ${NAMESPACE}
+                            
+                            # Check pod health
+                            kubectl wait --for=condition=ready pod \
+                                -l app=${SERVICE_NAME} \
+                                -n ${NAMESPACE} \
+                                --timeout=300s
+                        '''
+                    }
+                }
+            }
+        }
+        
+        stage('Smoke Test') {
+            steps {
+                script {
+                    echo "Running smoke tests..."
+                    sh '''
+                        # Get service endpoint
+                        SERVICE_IP=$(kubectl get svc ${SERVICE_NAME} -n ${NAMESPACE} -o jsonpath='{.spec.clusterIP}')
+                        
+                        # Run health check
+                        kubectl run curl-test --image=curlimages/curl:latest --rm -it --restart=Never -- \
+                            curl -f http://${SERVICE_IP}:8080/actuator/health || exit 1
+                    '''
+                }
+            }
+        }
+    }
+    
+    post {
+        success {
+            echo "${SERVICE_NAME} deployed successfully!"
+            // Notify team (Slack, email, etc.)
+        }
+        failure {
+            echo "${SERVICE_NAME} deployment failed!"
+            // Rollback if needed
+            sh '''
+                kubectl rollout undo deployment/${SERVICE_NAME} -n ${NAMESPACE}
+            '''
+        }
+        always {
+            // Cleanup
+            sh 'docker system prune -f'
+        }
+    }
+}

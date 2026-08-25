@@ -1,0 +1,1992 @@
+{
+  "terraform\\modules\\aws-load-balancer-controller\\main.tf": {
+    "filename": "main.tf",
+    "path": "terraform\\modules\\aws-load-balancer-controller\\main.tf",
+    "version": "1.2",
+    "contextFile": "61351fcf-context.json",
+    "chunks": {
+      "7c3b16": {
+        "user": "Prabal Singh",
+        "model": "gpt-4.1",
+        "timestamp": 1787652264,
+        "platform": "VisualStudioCode",
+        "product": "AIPP",
+        "productVersion": "3.2.0",
+        "source": "agent",
+        "type": "agentWriteTool",
+        "extraContext": {
+          "promptMessage": "4b1a040d"
+        },
+        "hash": "fa350668",
+        "messageId": "system_dfb916b0-a06b-11f1-ac80-9da5cdc456f8",
+        "codeBlockId": null,
+        "isActive": true,
+        "hoverData": "\n### Slingshot Generated Code\n\n- **user**: Prabal Singh\n- **model**: gpt-4.1\n- **timestamp**: 8/25/2026, 3:34:24 PM\n- **source**: agent\n- **type**: agentWriteTool\n"
+      }
+    },
+    "lines": {
+      "0": {
+        "chunkId": "7c3b16",
+        "hash": "25fa1b5e",
+        "encoded": "#%20AWS%20Load%20Balancer%20Controller%20Module",
+        "prevChunkIds": []
+      },
+      "1": {
+        "chunkId": "7c3b16",
+        "hash": "cb41359c",
+        "encoded": "#%20Installs%20AWS%20Load%20Balancer%20Controller%20for%20ALB/NLB%20Ingress%20support",
+        "prevChunkIds": []
+      },
+      "3": {
+        "chunkId": "7c3b16",
+        "hash": "33a47863",
+        "encoded": "data%20%22aws_caller_identity%22%20%22current%22%20%7B%7D",
+        "prevChunkIds": []
+      },
+      "5": {
+        "chunkId": "7c3b16",
+        "hash": "dc89eb96",
+        "encoded": "#%20Create%20IAM%20policy%20for%20AWS%20Load%20Balancer%20Controller",
+        "prevChunkIds": []
+      },
+      "6": {
+        "chunkId": "7c3b16",
+        "hash": "607003e1",
+        "encoded": "data%20%22aws_iam_policy_document%22%20%22aws_load_balancer_controller%22%20%7B",
+        "prevChunkIds": []
+      },
+      "7": {
+        "chunkId": "7c3b16",
+        "hash": "5cf5089d",
+        "encoded": "statement%20%7B",
+        "prevChunkIds": []
+      },
+      "8": {
+        "chunkId": "7c3b16",
+        "hash": "ce75d840",
+        "encoded": "effect%20=%20%22Allow%22",
+        "prevChunkIds": []
+      },
+      "9": {
+        "chunkId": "7c3b16",
+        "hash": "a368613d",
+        "encoded": "actions%20=%20%5B",
+        "prevChunkIds": []
+      },
+      "10": {
+        "chunkId": "7c3b16",
+        "hash": "209c0b46",
+        "encoded": "%22iam:CreateServiceLinkedRole%22",
+        "prevChunkIds": []
+      },
+      "11": {
+        "chunkId": "7c3b16",
+        "hash": "52135c3d",
+        "encoded": "%5D",
+        "prevChunkIds": []
+      },
+      "12": {
+        "chunkId": "7c3b16",
+        "hash": "57c986cc",
+        "encoded": "resources%20=%20%5B%22*%22%5D",
+        "prevChunkIds": []
+      },
+      "13": {
+        "chunkId": "7c3b16",
+        "hash": "960b08a1",
+        "encoded": "condition%20%7B",
+        "prevChunkIds": []
+      },
+      "14": {
+        "chunkId": "7c3b16",
+        "hash": "4208b091",
+        "encoded": "test%20%20%20%20%20=%20%22StringEquals%22",
+        "prevChunkIds": []
+      },
+      "15": {
+        "chunkId": "7c3b16",
+        "hash": "fdac7cbd",
+        "encoded": "variable%20=%20%22iam:AWSServiceName%22",
+        "prevChunkIds": []
+      },
+      "16": {
+        "chunkId": "7c3b16",
+        "hash": "3e13bce2",
+        "encoded": "values%20%20%20=%20%5B%22elasticloadbalancing.amazonaws.com%22%5D",
+        "prevChunkIds": []
+      },
+      "17": {
+        "chunkId": "7c3b16",
+        "hash": "76477189",
+        "encoded": "%7D",
+        "prevChunkIds": []
+      },
+      "18": {
+        "chunkId": "7c3b16",
+        "hash": "ee20bc2a",
+        "encoded": "%7D",
+        "prevChunkIds": []
+      },
+      "20": {
+        "chunkId": "7c3b16",
+        "hash": "46ac7883",
+        "encoded": "statement%20%7B",
+        "prevChunkIds": []
+      },
+      "21": {
+        "chunkId": "7c3b16",
+        "hash": "253ffe79",
+        "encoded": "effect%20=%20%22Allow%22",
+        "prevChunkIds": []
+      },
+      "22": {
+        "chunkId": "7c3b16",
+        "hash": "d22015d8",
+        "encoded": "actions%20=%20%5B",
+        "prevChunkIds": []
+      },
+      "23": {
+        "chunkId": "7c3b16",
+        "hash": "0401a4d2",
+        "encoded": "%22ec2:DescribeAccountAttributes%22,",
+        "prevChunkIds": []
+      },
+      "24": {
+        "chunkId": "7c3b16",
+        "hash": "ed9e48cc",
+        "encoded": "%22ec2:DescribeAddresses%22,",
+        "prevChunkIds": []
+      },
+      "25": {
+        "chunkId": "7c3b16",
+        "hash": "2a55ef7b",
+        "encoded": "%22ec2:DescribeAvailabilityZones%22,",
+        "prevChunkIds": []
+      },
+      "26": {
+        "chunkId": "7c3b16",
+        "hash": "6ab2b68c",
+        "encoded": "%22ec2:DescribeInternetGateways%22,",
+        "prevChunkIds": []
+      },
+      "27": {
+        "chunkId": "7c3b16",
+        "hash": "0de8082c",
+        "encoded": "%22ec2:DescribeVpcs%22,",
+        "prevChunkIds": []
+      },
+      "28": {
+        "chunkId": "7c3b16",
+        "hash": "7399ce40",
+        "encoded": "%22ec2:DescribeVpcPeeringConnections%22,",
+        "prevChunkIds": []
+      },
+      "29": {
+        "chunkId": "7c3b16",
+        "hash": "904147d1",
+        "encoded": "%22ec2:DescribeSubnets%22,",
+        "prevChunkIds": []
+      },
+      "30": {
+        "chunkId": "7c3b16",
+        "hash": "0d1071dd",
+        "encoded": "%22ec2:DescribeSecurityGroups%22,",
+        "prevChunkIds": []
+      },
+      "31": {
+        "chunkId": "7c3b16",
+        "hash": "1bc8b0d1",
+        "encoded": "%22ec2:DescribeInstances%22,",
+        "prevChunkIds": []
+      },
+      "32": {
+        "chunkId": "7c3b16",
+        "hash": "6010c924",
+        "encoded": "%22ec2:DescribeNetworkInterfaces%22,",
+        "prevChunkIds": []
+      },
+      "33": {
+        "chunkId": "7c3b16",
+        "hash": "aa881886",
+        "encoded": "%22ec2:DescribeTags%22,",
+        "prevChunkIds": []
+      },
+      "34": {
+        "chunkId": "7c3b16",
+        "hash": "b6b48ce3",
+        "encoded": "%22ec2:GetCoipPoolUsage%22,",
+        "prevChunkIds": []
+      },
+      "35": {
+        "chunkId": "7c3b16",
+        "hash": "f784da4e",
+        "encoded": "%22ec2:DescribeCoipPools%22,",
+        "prevChunkIds": []
+      },
+      "36": {
+        "chunkId": "7c3b16",
+        "hash": "054510a0",
+        "encoded": "%22elasticloadbalancing:DescribeLoadBalancers%22,",
+        "prevChunkIds": []
+      },
+      "37": {
+        "chunkId": "7c3b16",
+        "hash": "c0c0e77b",
+        "encoded": "%22elasticloadbalancing:DescribeLoadBalancerAttributes%22,",
+        "prevChunkIds": []
+      },
+      "38": {
+        "chunkId": "7c3b16",
+        "hash": "bdf35da8",
+        "encoded": "%22elasticloadbalancing:DescribeListeners%22,",
+        "prevChunkIds": []
+      },
+      "39": {
+        "chunkId": "7c3b16",
+        "hash": "38097813",
+        "encoded": "%22elasticloadbalancing:DescribeListenerCertificates%22,",
+        "prevChunkIds": []
+      },
+      "40": {
+        "chunkId": "7c3b16",
+        "hash": "9592a757",
+        "encoded": "%22elasticloadbalancing:DescribeSSLPolicies%22,",
+        "prevChunkIds": []
+      },
+      "41": {
+        "chunkId": "7c3b16",
+        "hash": "88d87155",
+        "encoded": "%22elasticloadbalancing:DescribeRules%22,",
+        "prevChunkIds": []
+      },
+      "42": {
+        "chunkId": "7c3b16",
+        "hash": "fbe3a3b9",
+        "encoded": "%22elasticloadbalancing:DescribeTargetGroups%22,",
+        "prevChunkIds": []
+      },
+      "43": {
+        "chunkId": "7c3b16",
+        "hash": "e0ad25ef",
+        "encoded": "%22elasticloadbalancing:DescribeTargetGroupAttributes%22,",
+        "prevChunkIds": []
+      },
+      "44": {
+        "chunkId": "7c3b16",
+        "hash": "cdd08678",
+        "encoded": "%22elasticloadbalancing:DescribeTargetHealth%22,",
+        "prevChunkIds": []
+      },
+      "45": {
+        "chunkId": "7c3b16",
+        "hash": "95f1f5a0",
+        "encoded": "%22elasticloadbalancing:DescribeTags%22",
+        "prevChunkIds": []
+      },
+      "46": {
+        "chunkId": "7c3b16",
+        "hash": "eed87b26",
+        "encoded": "%5D",
+        "prevChunkIds": []
+      },
+      "47": {
+        "chunkId": "7c3b16",
+        "hash": "a6bfe30d",
+        "encoded": "resources%20=%20%5B%22*%22%5D",
+        "prevChunkIds": []
+      },
+      "48": {
+        "chunkId": "7c3b16",
+        "hash": "d90811a0",
+        "encoded": "%7D",
+        "prevChunkIds": []
+      },
+      "50": {
+        "chunkId": "7c3b16",
+        "hash": "a492b248",
+        "encoded": "statement%20%7B",
+        "prevChunkIds": []
+      },
+      "51": {
+        "chunkId": "7c3b16",
+        "hash": "015f530f",
+        "encoded": "effect%20=%20%22Allow%22",
+        "prevChunkIds": []
+      },
+      "52": {
+        "chunkId": "7c3b16",
+        "hash": "a25d8829",
+        "encoded": "actions%20=%20%5B",
+        "prevChunkIds": []
+      },
+      "53": {
+        "chunkId": "7c3b16",
+        "hash": "2c860906",
+        "encoded": "%22cognito-idp:DescribeUserPoolClient%22,",
+        "prevChunkIds": []
+      },
+      "54": {
+        "chunkId": "7c3b16",
+        "hash": "138de7a8",
+        "encoded": "%22acm:ListCertificates%22,",
+        "prevChunkIds": []
+      },
+      "55": {
+        "chunkId": "7c3b16",
+        "hash": "e65a2aa6",
+        "encoded": "%22acm:DescribeCertificate%22,",
+        "prevChunkIds": []
+      },
+      "56": {
+        "chunkId": "7c3b16",
+        "hash": "f623e871",
+        "encoded": "%22iam:ListServerCertificates%22,",
+        "prevChunkIds": []
+      },
+      "57": {
+        "chunkId": "7c3b16",
+        "hash": "b30ec564",
+        "encoded": "%22iam:GetServerCertificate%22,",
+        "prevChunkIds": []
+      },
+      "58": {
+        "chunkId": "7c3b16",
+        "hash": "0bea2387",
+        "encoded": "%22waf-regional:GetWebACL%22,",
+        "prevChunkIds": []
+      },
+      "59": {
+        "chunkId": "7c3b16",
+        "hash": "b26b7999",
+        "encoded": "%22waf-regional:GetWebACLForResource%22,",
+        "prevChunkIds": []
+      },
+      "60": {
+        "chunkId": "7c3b16",
+        "hash": "fb694b9a",
+        "encoded": "%22waf-regional:AssociateWebACL%22,",
+        "prevChunkIds": []
+      },
+      "61": {
+        "chunkId": "7c3b16",
+        "hash": "ab612b77",
+        "encoded": "%22waf-regional:DisassociateWebACL%22,",
+        "prevChunkIds": []
+      },
+      "62": {
+        "chunkId": "7c3b16",
+        "hash": "4dea6ef3",
+        "encoded": "%22wafv2:GetWebACL%22,",
+        "prevChunkIds": []
+      },
+      "63": {
+        "chunkId": "7c3b16",
+        "hash": "3b424111",
+        "encoded": "%22wafv2:GetWebACLForResource%22,",
+        "prevChunkIds": []
+      },
+      "64": {
+        "chunkId": "7c3b16",
+        "hash": "68c305e6",
+        "encoded": "%22wafv2:AssociateWebACL%22,",
+        "prevChunkIds": []
+      },
+      "65": {
+        "chunkId": "7c3b16",
+        "hash": "f28b7270",
+        "encoded": "%22wafv2:DisassociateWebACL%22,",
+        "prevChunkIds": []
+      },
+      "66": {
+        "chunkId": "7c3b16",
+        "hash": "49b5e7c2",
+        "encoded": "%22shield:GetSubscriptionState%22,",
+        "prevChunkIds": []
+      },
+      "67": {
+        "chunkId": "7c3b16",
+        "hash": "b49dfd7e",
+        "encoded": "%22shield:DescribeProtection%22,",
+        "prevChunkIds": []
+      },
+      "68": {
+        "chunkId": "7c3b16",
+        "hash": "33482351",
+        "encoded": "%22shield:CreateProtection%22,",
+        "prevChunkIds": []
+      },
+      "69": {
+        "chunkId": "7c3b16",
+        "hash": "ee2439c0",
+        "encoded": "%22shield:DeleteProtection%22",
+        "prevChunkIds": []
+      },
+      "70": {
+        "chunkId": "7c3b16",
+        "hash": "3ad57366",
+        "encoded": "%5D",
+        "prevChunkIds": []
+      },
+      "71": {
+        "chunkId": "7c3b16",
+        "hash": "48c81e29",
+        "encoded": "resources%20=%20%5B%22*%22%5D",
+        "prevChunkIds": []
+      },
+      "72": {
+        "chunkId": "7c3b16",
+        "hash": "ae47b750",
+        "encoded": "%7D",
+        "prevChunkIds": []
+      },
+      "74": {
+        "chunkId": "7c3b16",
+        "hash": "9486734e",
+        "encoded": "statement%20%7B",
+        "prevChunkIds": []
+      },
+      "75": {
+        "chunkId": "7c3b16",
+        "hash": "9528dd5c",
+        "encoded": "effect%20=%20%22Allow%22",
+        "prevChunkIds": []
+      },
+      "76": {
+        "chunkId": "7c3b16",
+        "hash": "f55a5a7c",
+        "encoded": "actions%20=%20%5B",
+        "prevChunkIds": []
+      },
+      "77": {
+        "chunkId": "7c3b16",
+        "hash": "1b8b562a",
+        "encoded": "%22ec2:AuthorizeSecurityGroupIngress%22,",
+        "prevChunkIds": []
+      },
+      "78": {
+        "chunkId": "7c3b16",
+        "hash": "22ef5bad",
+        "encoded": "%22ec2:RevokeSecurityGroupIngress%22,",
+        "prevChunkIds": []
+      },
+      "79": {
+        "chunkId": "7c3b16",
+        "hash": "ae7c84da",
+        "encoded": "%22ec2:CreateSecurityGroup%22",
+        "prevChunkIds": []
+      },
+      "80": {
+        "chunkId": "7c3b16",
+        "hash": "69c148ec",
+        "encoded": "%5D",
+        "prevChunkIds": []
+      },
+      "81": {
+        "chunkId": "7c3b16",
+        "hash": "e0e6d4df",
+        "encoded": "resources%20=%20%5B%22*%22%5D",
+        "prevChunkIds": []
+      },
+      "82": {
+        "chunkId": "7c3b16",
+        "hash": "74977a35",
+        "encoded": "%7D",
+        "prevChunkIds": []
+      },
+      "84": {
+        "chunkId": "7c3b16",
+        "hash": "af38a371",
+        "encoded": "statement%20%7B",
+        "prevChunkIds": []
+      },
+      "85": {
+        "chunkId": "7c3b16",
+        "hash": "17702991",
+        "encoded": "effect%20=%20%22Allow%22",
+        "prevChunkIds": []
+      },
+      "86": {
+        "chunkId": "7c3b16",
+        "hash": "b276c10d",
+        "encoded": "actions%20=%20%5B",
+        "prevChunkIds": []
+      },
+      "87": {
+        "chunkId": "7c3b16",
+        "hash": "73548efe",
+        "encoded": "%22ec2:CreateTags%22",
+        "prevChunkIds": []
+      },
+      "88": {
+        "chunkId": "7c3b16",
+        "hash": "c353d0e8",
+        "encoded": "%5D",
+        "prevChunkIds": []
+      },
+      "89": {
+        "chunkId": "7c3b16",
+        "hash": "5dfc5e98",
+        "encoded": "resources%20=%20%5B%22arn:aws:ec2:*:*:security-group/*%22%5D",
+        "prevChunkIds": []
+      },
+      "90": {
+        "chunkId": "7c3b16",
+        "hash": "8b276202",
+        "encoded": "condition%20%7B",
+        "prevChunkIds": []
+      },
+      "91": {
+        "chunkId": "7c3b16",
+        "hash": "5a18b027",
+        "encoded": "test%20%20%20%20%20=%20%22StringEquals%22",
+        "prevChunkIds": []
+      },
+      "92": {
+        "chunkId": "7c3b16",
+        "hash": "ec8ae6f2",
+        "encoded": "variable%20=%20%22ec2:CreateAction%22",
+        "prevChunkIds": []
+      },
+      "93": {
+        "chunkId": "7c3b16",
+        "hash": "f9eaf215",
+        "encoded": "values%20%20%20=%20%5B%22CreateSecurityGroup%22%5D",
+        "prevChunkIds": []
+      },
+      "94": {
+        "chunkId": "7c3b16",
+        "hash": "db89230b",
+        "encoded": "%7D",
+        "prevChunkIds": []
+      },
+      "95": {
+        "chunkId": "7c3b16",
+        "hash": "c88889d8",
+        "encoded": "condition%20%7B",
+        "prevChunkIds": []
+      },
+      "96": {
+        "chunkId": "7c3b16",
+        "hash": "99bd44d9",
+        "encoded": "test%20%20%20%20%20=%20%22Null%22",
+        "prevChunkIds": []
+      },
+      "97": {
+        "chunkId": "7c3b16",
+        "hash": "451e54f9",
+        "encoded": "variable%20=%20%22aws:RequestTag/elbv2.k8s.aws/cluster%22",
+        "prevChunkIds": []
+      },
+      "98": {
+        "chunkId": "7c3b16",
+        "hash": "fdc3420e",
+        "encoded": "values%20%20%20=%20%5B%22false%22%5D",
+        "prevChunkIds": []
+      },
+      "99": {
+        "chunkId": "7c3b16",
+        "hash": "22a07c3b",
+        "encoded": "%7D",
+        "prevChunkIds": []
+      },
+      "100": {
+        "chunkId": "7c3b16",
+        "hash": "020d2fe1",
+        "encoded": "%7D",
+        "prevChunkIds": []
+      },
+      "102": {
+        "chunkId": "7c3b16",
+        "hash": "11c289e5",
+        "encoded": "statement%20%7B",
+        "prevChunkIds": []
+      },
+      "103": {
+        "chunkId": "7c3b16",
+        "hash": "3af18878",
+        "encoded": "effect%20=%20%22Allow%22",
+        "prevChunkIds": []
+      },
+      "104": {
+        "chunkId": "7c3b16",
+        "hash": "86fa3385",
+        "encoded": "actions%20=%20%5B",
+        "prevChunkIds": []
+      },
+      "105": {
+        "chunkId": "7c3b16",
+        "hash": "c189987b",
+        "encoded": "%22ec2:CreateTags%22,",
+        "prevChunkIds": []
+      },
+      "106": {
+        "chunkId": "7c3b16",
+        "hash": "521fe07a",
+        "encoded": "%22ec2:DeleteTags%22",
+        "prevChunkIds": []
+      },
+      "107": {
+        "chunkId": "7c3b16",
+        "hash": "6ffcf704",
+        "encoded": "%5D",
+        "prevChunkIds": []
+      },
+      "108": {
+        "chunkId": "7c3b16",
+        "hash": "5c66853e",
+        "encoded": "resources%20=%20%5B%22arn:aws:ec2:*:*:security-group/*%22%5D",
+        "prevChunkIds": []
+      },
+      "109": {
+        "chunkId": "7c3b16",
+        "hash": "c0adbb01",
+        "encoded": "condition%20%7B",
+        "prevChunkIds": []
+      },
+      "110": {
+        "chunkId": "7c3b16",
+        "hash": "a1d9bc6b",
+        "encoded": "test%20%20%20%20%20=%20%22Null%22",
+        "prevChunkIds": []
+      },
+      "111": {
+        "chunkId": "7c3b16",
+        "hash": "96044d4d",
+        "encoded": "variable%20=%20%22aws:RequestTag/elbv2.k8s.aws/cluster%22",
+        "prevChunkIds": []
+      },
+      "112": {
+        "chunkId": "7c3b16",
+        "hash": "42d57b9f",
+        "encoded": "values%20%20%20=%20%5B%22true%22%5D",
+        "prevChunkIds": []
+      },
+      "113": {
+        "chunkId": "7c3b16",
+        "hash": "fd8e1155",
+        "encoded": "%7D",
+        "prevChunkIds": []
+      },
+      "114": {
+        "chunkId": "7c3b16",
+        "hash": "1b20e86a",
+        "encoded": "condition%20%7B",
+        "prevChunkIds": []
+      },
+      "115": {
+        "chunkId": "7c3b16",
+        "hash": "c3025dd7",
+        "encoded": "test%20%20%20%20%20=%20%22Null%22",
+        "prevChunkIds": []
+      },
+      "116": {
+        "chunkId": "7c3b16",
+        "hash": "839e6b79",
+        "encoded": "variable%20=%20%22aws:ResourceTag/elbv2.k8s.aws/cluster%22",
+        "prevChunkIds": []
+      },
+      "117": {
+        "chunkId": "7c3b16",
+        "hash": "ac2045f3",
+        "encoded": "values%20%20%20=%20%5B%22false%22%5D",
+        "prevChunkIds": []
+      },
+      "118": {
+        "chunkId": "7c3b16",
+        "hash": "715028b0",
+        "encoded": "%7D",
+        "prevChunkIds": []
+      },
+      "119": {
+        "chunkId": "7c3b16",
+        "hash": "beea77ea",
+        "encoded": "%7D",
+        "prevChunkIds": []
+      },
+      "121": {
+        "chunkId": "7c3b16",
+        "hash": "a339b14b",
+        "encoded": "statement%20%7B",
+        "prevChunkIds": []
+      },
+      "122": {
+        "chunkId": "7c3b16",
+        "hash": "fa365e67",
+        "encoded": "effect%20=%20%22Allow%22",
+        "prevChunkIds": []
+      },
+      "123": {
+        "chunkId": "7c3b16",
+        "hash": "1f745283",
+        "encoded": "actions%20=%20%5B",
+        "prevChunkIds": []
+      },
+      "124": {
+        "chunkId": "7c3b16",
+        "hash": "6f51a86e",
+        "encoded": "%22ec2:AuthorizeSecurityGroupIngress%22,",
+        "prevChunkIds": []
+      },
+      "125": {
+        "chunkId": "7c3b16",
+        "hash": "dda443cd",
+        "encoded": "%22ec2:RevokeSecurityGroupIngress%22,",
+        "prevChunkIds": []
+      },
+      "126": {
+        "chunkId": "7c3b16",
+        "hash": "4851b647",
+        "encoded": "%22ec2:DeleteSecurityGroup%22",
+        "prevChunkIds": []
+      },
+      "127": {
+        "chunkId": "7c3b16",
+        "hash": "9594869c",
+        "encoded": "%5D",
+        "prevChunkIds": []
+      },
+      "128": {
+        "chunkId": "7c3b16",
+        "hash": "0affdad4",
+        "encoded": "resources%20=%20%5B%22*%22%5D",
+        "prevChunkIds": []
+      },
+      "129": {
+        "chunkId": "7c3b16",
+        "hash": "5ed67fb4",
+        "encoded": "condition%20%7B",
+        "prevChunkIds": []
+      },
+      "130": {
+        "chunkId": "7c3b16",
+        "hash": "99e0f2d1",
+        "encoded": "test%20%20%20%20%20=%20%22Null%22",
+        "prevChunkIds": []
+      },
+      "131": {
+        "chunkId": "7c3b16",
+        "hash": "4450e9d5",
+        "encoded": "variable%20=%20%22aws:ResourceTag/elbv2.k8s.aws/cluster%22",
+        "prevChunkIds": []
+      },
+      "132": {
+        "chunkId": "7c3b16",
+        "hash": "1236913e",
+        "encoded": "values%20%20%20=%20%5B%22false%22%5D",
+        "prevChunkIds": []
+      },
+      "133": {
+        "chunkId": "7c3b16",
+        "hash": "7ebeb133",
+        "encoded": "%7D",
+        "prevChunkIds": []
+      },
+      "134": {
+        "chunkId": "7c3b16",
+        "hash": "59c23335",
+        "encoded": "%7D",
+        "prevChunkIds": []
+      },
+      "136": {
+        "chunkId": "7c3b16",
+        "hash": "b714ead3",
+        "encoded": "statement%20%7B",
+        "prevChunkIds": []
+      },
+      "137": {
+        "chunkId": "7c3b16",
+        "hash": "941e3eb5",
+        "encoded": "effect%20=%20%22Allow%22",
+        "prevChunkIds": []
+      },
+      "138": {
+        "chunkId": "7c3b16",
+        "hash": "e5dea28f",
+        "encoded": "actions%20=%20%5B",
+        "prevChunkIds": []
+      },
+      "139": {
+        "chunkId": "7c3b16",
+        "hash": "fa57a3d2",
+        "encoded": "%22elasticloadbalancing:CreateLoadBalancer%22,",
+        "prevChunkIds": []
+      },
+      "140": {
+        "chunkId": "7c3b16",
+        "hash": "bc718ca8",
+        "encoded": "%22elasticloadbalancing:CreateTargetGroup%22",
+        "prevChunkIds": []
+      },
+      "141": {
+        "chunkId": "7c3b16",
+        "hash": "8d350798",
+        "encoded": "%5D",
+        "prevChunkIds": []
+      },
+      "142": {
+        "chunkId": "7c3b16",
+        "hash": "50060072",
+        "encoded": "resources%20=%20%5B%22*%22%5D",
+        "prevChunkIds": []
+      },
+      "143": {
+        "chunkId": "7c3b16",
+        "hash": "35ae5da4",
+        "encoded": "condition%20%7B",
+        "prevChunkIds": []
+      },
+      "144": {
+        "chunkId": "7c3b16",
+        "hash": "74ca3b58",
+        "encoded": "test%20%20%20%20%20=%20%22Null%22",
+        "prevChunkIds": []
+      },
+      "145": {
+        "chunkId": "7c3b16",
+        "hash": "97c25c98",
+        "encoded": "variable%20=%20%22aws:RequestTag/elbv2.k8s.aws/cluster%22",
+        "prevChunkIds": []
+      },
+      "146": {
+        "chunkId": "7c3b16",
+        "hash": "1bc201af",
+        "encoded": "values%20%20%20=%20%5B%22false%22%5D",
+        "prevChunkIds": []
+      },
+      "147": {
+        "chunkId": "7c3b16",
+        "hash": "f787a6d1",
+        "encoded": "%7D",
+        "prevChunkIds": []
+      },
+      "148": {
+        "chunkId": "7c3b16",
+        "hash": "a6adb000",
+        "encoded": "%7D",
+        "prevChunkIds": []
+      },
+      "150": {
+        "chunkId": "7c3b16",
+        "hash": "2a7f6390",
+        "encoded": "statement%20%7B",
+        "prevChunkIds": []
+      },
+      "151": {
+        "chunkId": "7c3b16",
+        "hash": "28b6e6c3",
+        "encoded": "effect%20=%20%22Allow%22",
+        "prevChunkIds": []
+      },
+      "152": {
+        "chunkId": "7c3b16",
+        "hash": "61132046",
+        "encoded": "actions%20=%20%5B",
+        "prevChunkIds": []
+      },
+      "153": {
+        "chunkId": "7c3b16",
+        "hash": "963d5f02",
+        "encoded": "%22elasticloadbalancing:CreateListener%22,",
+        "prevChunkIds": []
+      },
+      "154": {
+        "chunkId": "7c3b16",
+        "hash": "64356f9c",
+        "encoded": "%22elasticloadbalancing:DeleteListener%22,",
+        "prevChunkIds": []
+      },
+      "155": {
+        "chunkId": "7c3b16",
+        "hash": "a848e08a",
+        "encoded": "%22elasticloadbalancing:CreateRule%22,",
+        "prevChunkIds": []
+      },
+      "156": {
+        "chunkId": "7c3b16",
+        "hash": "757c85b8",
+        "encoded": "%22elasticloadbalancing:DeleteRule%22",
+        "prevChunkIds": []
+      },
+      "157": {
+        "chunkId": "7c3b16",
+        "hash": "687cd2d8",
+        "encoded": "%5D",
+        "prevChunkIds": []
+      },
+      "158": {
+        "chunkId": "7c3b16",
+        "hash": "72e7c78f",
+        "encoded": "resources%20=%20%5B%22*%22%5D",
+        "prevChunkIds": []
+      },
+      "159": {
+        "chunkId": "7c3b16",
+        "hash": "53cff946",
+        "encoded": "%7D",
+        "prevChunkIds": []
+      },
+      "161": {
+        "chunkId": "7c3b16",
+        "hash": "bdf11de0",
+        "encoded": "statement%20%7B",
+        "prevChunkIds": []
+      },
+      "162": {
+        "chunkId": "7c3b16",
+        "hash": "ab702b21",
+        "encoded": "effect%20=%20%22Allow%22",
+        "prevChunkIds": []
+      },
+      "163": {
+        "chunkId": "7c3b16",
+        "hash": "7ac454a0",
+        "encoded": "actions%20=%20%5B",
+        "prevChunkIds": []
+      },
+      "164": {
+        "chunkId": "7c3b16",
+        "hash": "ac6bbdd5",
+        "encoded": "%22elasticloadbalancing:AddTags%22,",
+        "prevChunkIds": []
+      },
+      "165": {
+        "chunkId": "7c3b16",
+        "hash": "10d7fae6",
+        "encoded": "%22elasticloadbalancing:RemoveTags%22",
+        "prevChunkIds": []
+      },
+      "166": {
+        "chunkId": "7c3b16",
+        "hash": "0e563c3a",
+        "encoded": "%5D",
+        "prevChunkIds": []
+      },
+      "167": {
+        "chunkId": "7c3b16",
+        "hash": "5450160a",
+        "encoded": "resources%20=%20%5B",
+        "prevChunkIds": []
+      },
+      "168": {
+        "chunkId": "7c3b16",
+        "hash": "2afe48af",
+        "encoded": "%22arn:aws:elasticloadbalancing:*:*:targetgroup/*/*%22,",
+        "prevChunkIds": []
+      },
+      "169": {
+        "chunkId": "7c3b16",
+        "hash": "a8b0ff43",
+        "encoded": "%22arn:aws:elasticloadbalancing:*:*:loadbalancer/net/*/*%22,",
+        "prevChunkIds": []
+      },
+      "170": {
+        "chunkId": "7c3b16",
+        "hash": "7c7b3b46",
+        "encoded": "%22arn:aws:elasticloadbalancing:*:*:loadbalancer/app/*/*%22",
+        "prevChunkIds": []
+      },
+      "171": {
+        "chunkId": "7c3b16",
+        "hash": "7dfa01fd",
+        "encoded": "%5D",
+        "prevChunkIds": []
+      },
+      "172": {
+        "chunkId": "7c3b16",
+        "hash": "e3f6b3c6",
+        "encoded": "condition%20%7B",
+        "prevChunkIds": []
+      },
+      "173": {
+        "chunkId": "7c3b16",
+        "hash": "bb767669",
+        "encoded": "test%20%20%20%20%20=%20%22Null%22",
+        "prevChunkIds": []
+      },
+      "174": {
+        "chunkId": "7c3b16",
+        "hash": "3a5187ef",
+        "encoded": "variable%20=%20%22aws:RequestTag/elbv2.k8s.aws/cluster%22",
+        "prevChunkIds": []
+      },
+      "175": {
+        "chunkId": "7c3b16",
+        "hash": "7ce541a6",
+        "encoded": "values%20%20%20=%20%5B%22true%22%5D",
+        "prevChunkIds": []
+      },
+      "176": {
+        "chunkId": "7c3b16",
+        "hash": "9a3fe29c",
+        "encoded": "%7D",
+        "prevChunkIds": []
+      },
+      "177": {
+        "chunkId": "7c3b16",
+        "hash": "94113034",
+        "encoded": "condition%20%7B",
+        "prevChunkIds": []
+      },
+      "178": {
+        "chunkId": "7c3b16",
+        "hash": "22b0ae7a",
+        "encoded": "test%20%20%20%20%20=%20%22Null%22",
+        "prevChunkIds": []
+      },
+      "179": {
+        "chunkId": "7c3b16",
+        "hash": "4d0f6d89",
+        "encoded": "variable%20=%20%22aws:ResourceTag/elbv2.k8s.aws/cluster%22",
+        "prevChunkIds": []
+      },
+      "180": {
+        "chunkId": "7c3b16",
+        "hash": "0f1665fb",
+        "encoded": "values%20%20%20=%20%5B%22false%22%5D",
+        "prevChunkIds": []
+      },
+      "181": {
+        "chunkId": "7c3b16",
+        "hash": "1e08084c",
+        "encoded": "%7D",
+        "prevChunkIds": []
+      },
+      "182": {
+        "chunkId": "7c3b16",
+        "hash": "ad066da5",
+        "encoded": "%7D",
+        "prevChunkIds": []
+      },
+      "184": {
+        "chunkId": "7c3b16",
+        "hash": "ec48d0bb",
+        "encoded": "statement%20%7B",
+        "prevChunkIds": []
+      },
+      "185": {
+        "chunkId": "7c3b16",
+        "hash": "81016603",
+        "encoded": "effect%20=%20%22Allow%22",
+        "prevChunkIds": []
+      },
+      "186": {
+        "chunkId": "7c3b16",
+        "hash": "a6848758",
+        "encoded": "actions%20=%20%5B",
+        "prevChunkIds": []
+      },
+      "187": {
+        "chunkId": "7c3b16",
+        "hash": "9ce175d5",
+        "encoded": "%22elasticloadbalancing:AddTags%22,",
+        "prevChunkIds": []
+      },
+      "188": {
+        "chunkId": "7c3b16",
+        "hash": "a25c4e84",
+        "encoded": "%22elasticloadbalancing:RemoveTags%22",
+        "prevChunkIds": []
+      },
+      "189": {
+        "chunkId": "7c3b16",
+        "hash": "2657cea7",
+        "encoded": "%5D",
+        "prevChunkIds": []
+      },
+      "190": {
+        "chunkId": "7c3b16",
+        "hash": "5b1bacbc",
+        "encoded": "resources%20=%20%5B",
+        "prevChunkIds": []
+      },
+      "191": {
+        "chunkId": "7c3b16",
+        "hash": "46b646a0",
+        "encoded": "%22arn:aws:elasticloadbalancing:*:*:listener/net/*/*/*%22,",
+        "prevChunkIds": []
+      },
+      "192": {
+        "chunkId": "7c3b16",
+        "hash": "9eb794e1",
+        "encoded": "%22arn:aws:elasticloadbalancing:*:*:listener/app/*/*/*%22,",
+        "prevChunkIds": []
+      },
+      "193": {
+        "chunkId": "7c3b16",
+        "hash": "453a4bdd",
+        "encoded": "%22arn:aws:elasticloadbalancing:*:*:listener-rule/net/*/*/*%22,",
+        "prevChunkIds": []
+      },
+      "194": {
+        "chunkId": "7c3b16",
+        "hash": "8d3d3bf3",
+        "encoded": "%22arn:aws:elasticloadbalancing:*:*:listener-rule/app/*/*/*%22",
+        "prevChunkIds": []
+      },
+      "195": {
+        "chunkId": "7c3b16",
+        "hash": "813c7ec5",
+        "encoded": "%5D",
+        "prevChunkIds": []
+      },
+      "196": {
+        "chunkId": "7c3b16",
+        "hash": "990329ab",
+        "encoded": "%7D",
+        "prevChunkIds": []
+      },
+      "198": {
+        "chunkId": "7c3b16",
+        "hash": "f4a78790",
+        "encoded": "statement%20%7B",
+        "prevChunkIds": []
+      },
+      "199": {
+        "chunkId": "7c3b16",
+        "hash": "da8368f1",
+        "encoded": "effect%20=%20%22Allow%22",
+        "prevChunkIds": []
+      },
+      "200": {
+        "chunkId": "7c3b16",
+        "hash": "bfb5db32",
+        "encoded": "actions%20=%20%5B",
+        "prevChunkIds": []
+      },
+      "201": {
+        "chunkId": "7c3b16",
+        "hash": "86437cbe",
+        "encoded": "%22elasticloadbalancing:ModifyLoadBalancerAttributes%22,",
+        "prevChunkIds": []
+      },
+      "202": {
+        "chunkId": "7c3b16",
+        "hash": "345333e4",
+        "encoded": "%22elasticloadbalancing:SetIpAddressType%22,",
+        "prevChunkIds": []
+      },
+      "203": {
+        "chunkId": "7c3b16",
+        "hash": "39778bd1",
+        "encoded": "%22elasticloadbalancing:SetSecurityGroups%22,",
+        "prevChunkIds": []
+      },
+      "204": {
+        "chunkId": "7c3b16",
+        "hash": "45db5517",
+        "encoded": "%22elasticloadbalancing:SetSubnets%22,",
+        "prevChunkIds": []
+      },
+      "205": {
+        "chunkId": "7c3b16",
+        "hash": "c8ae01a1",
+        "encoded": "%22elasticloadbalancing:DeleteLoadBalancer%22,",
+        "prevChunkIds": []
+      },
+      "206": {
+        "chunkId": "7c3b16",
+        "hash": "76a8cbf1",
+        "encoded": "%22elasticloadbalancing:ModifyTargetGroup%22,",
+        "prevChunkIds": []
+      },
+      "207": {
+        "chunkId": "7c3b16",
+        "hash": "32111a4d",
+        "encoded": "%22elasticloadbalancing:ModifyTargetGroupAttributes%22,",
+        "prevChunkIds": []
+      },
+      "208": {
+        "chunkId": "7c3b16",
+        "hash": "5b623fe7",
+        "encoded": "%22elasticloadbalancing:DeleteTargetGroup%22",
+        "prevChunkIds": []
+      },
+      "209": {
+        "chunkId": "7c3b16",
+        "hash": "75e12ac1",
+        "encoded": "%5D",
+        "prevChunkIds": []
+      },
+      "210": {
+        "chunkId": "7c3b16",
+        "hash": "76fb66bb",
+        "encoded": "resources%20=%20%5B%22*%22%5D",
+        "prevChunkIds": []
+      },
+      "211": {
+        "chunkId": "7c3b16",
+        "hash": "3c9b095d",
+        "encoded": "condition%20%7B",
+        "prevChunkIds": []
+      },
+      "212": {
+        "chunkId": "7c3b16",
+        "hash": "0e0b3db0",
+        "encoded": "test%20%20%20%20%20=%20%22Null%22",
+        "prevChunkIds": []
+      },
+      "213": {
+        "chunkId": "7c3b16",
+        "hash": "f7a03ce5",
+        "encoded": "variable%20=%20%22aws:ResourceTag/elbv2.k8s.aws/cluster%22",
+        "prevChunkIds": []
+      },
+      "214": {
+        "chunkId": "7c3b16",
+        "hash": "35b07a77",
+        "encoded": "values%20%20%20=%20%5B%22false%22%5D",
+        "prevChunkIds": []
+      },
+      "215": {
+        "chunkId": "7c3b16",
+        "hash": "8da2b88b",
+        "encoded": "%7D",
+        "prevChunkIds": []
+      },
+      "216": {
+        "chunkId": "7c3b16",
+        "hash": "84f00426",
+        "encoded": "%7D",
+        "prevChunkIds": []
+      },
+      "218": {
+        "chunkId": "7c3b16",
+        "hash": "3e6862ad",
+        "encoded": "statement%20%7B",
+        "prevChunkIds": []
+      },
+      "219": {
+        "chunkId": "7c3b16",
+        "hash": "712fa44e",
+        "encoded": "effect%20=%20%22Allow%22",
+        "prevChunkIds": []
+      },
+      "220": {
+        "chunkId": "7c3b16",
+        "hash": "d9cfcad4",
+        "encoded": "actions%20=%20%5B",
+        "prevChunkIds": []
+      },
+      "221": {
+        "chunkId": "7c3b16",
+        "hash": "58eaf4b3",
+        "encoded": "%22elasticloadbalancing:RegisterTargets%22,",
+        "prevChunkIds": []
+      },
+      "222": {
+        "chunkId": "7c3b16",
+        "hash": "00922818",
+        "encoded": "%22elasticloadbalancing:DeregisterTargets%22",
+        "prevChunkIds": []
+      },
+      "223": {
+        "chunkId": "7c3b16",
+        "hash": "7e3c7491",
+        "encoded": "%5D",
+        "prevChunkIds": []
+      },
+      "224": {
+        "chunkId": "7c3b16",
+        "hash": "57a29222",
+        "encoded": "resources%20=%20%5B%22arn:aws:elasticloadbalancing:*:*:targetgroup/*/*%22%5D",
+        "prevChunkIds": []
+      },
+      "225": {
+        "chunkId": "7c3b16",
+        "hash": "ed507790",
+        "encoded": "%7D",
+        "prevChunkIds": []
+      },
+      "227": {
+        "chunkId": "7c3b16",
+        "hash": "a0324bb1",
+        "encoded": "statement%20%7B",
+        "prevChunkIds": []
+      },
+      "228": {
+        "chunkId": "7c3b16",
+        "hash": "b14f4ccc",
+        "encoded": "effect%20=%20%22Allow%22",
+        "prevChunkIds": []
+      },
+      "229": {
+        "chunkId": "7c3b16",
+        "hash": "d9d971ee",
+        "encoded": "actions%20=%20%5B",
+        "prevChunkIds": []
+      },
+      "230": {
+        "chunkId": "7c3b16",
+        "hash": "38f08a95",
+        "encoded": "%22elasticloadbalancing:SetWebAcl%22,",
+        "prevChunkIds": []
+      },
+      "231": {
+        "chunkId": "7c3b16",
+        "hash": "c008d501",
+        "encoded": "%22elasticloadbalancing:ModifyListener%22,",
+        "prevChunkIds": []
+      },
+      "232": {
+        "chunkId": "7c3b16",
+        "hash": "eb879861",
+        "encoded": "%22elasticloadbalancing:AddListenerCertificates%22,",
+        "prevChunkIds": []
+      },
+      "233": {
+        "chunkId": "7c3b16",
+        "hash": "d0247870",
+        "encoded": "%22elasticloadbalancing:RemoveListenerCertificates%22,",
+        "prevChunkIds": []
+      },
+      "234": {
+        "chunkId": "7c3b16",
+        "hash": "aed456cd",
+        "encoded": "%22elasticloadbalancing:ModifyRule%22",
+        "prevChunkIds": []
+      },
+      "235": {
+        "chunkId": "7c3b16",
+        "hash": "7f455cf3",
+        "encoded": "%5D",
+        "prevChunkIds": []
+      },
+      "236": {
+        "chunkId": "7c3b16",
+        "hash": "2c87d1a6",
+        "encoded": "resources%20=%20%5B%22*%22%5D",
+        "prevChunkIds": []
+      },
+      "237": {
+        "chunkId": "7c3b16",
+        "hash": "58b80ca9",
+        "encoded": "%7D",
+        "prevChunkIds": []
+      },
+      "238": {
+        "chunkId": "7c3b16",
+        "hash": "eed3c15e",
+        "encoded": "%7D",
+        "prevChunkIds": []
+      },
+      "240": {
+        "chunkId": "7c3b16",
+        "hash": "44f57450",
+        "encoded": "resource%20%22aws_iam_policy%22%20%22aws_load_balancer_controller%22%20%7B",
+        "prevChunkIds": []
+      },
+      "241": {
+        "chunkId": "7c3b16",
+        "hash": "ca6f9bb9",
+        "encoded": "name%20%20%20%20%20%20%20%20=%20%22$%7Bvar.cluster_name%7D-AWSLoadBalancerControllerIAMPolicy%22",
+        "prevChunkIds": []
+      },
+      "242": {
+        "chunkId": "7c3b16",
+        "hash": "703f8568",
+        "encoded": "description%20=%20%22IAM%20policy%20for%20AWS%20Load%20Balancer%20Controller%22",
+        "prevChunkIds": []
+      },
+      "243": {
+        "chunkId": "7c3b16",
+        "hash": "ff63ccce",
+        "encoded": "policy%20%20%20%20%20%20=%20data.aws_iam_policy_document.aws_load_balancer_controller.json",
+        "prevChunkIds": []
+      },
+      "245": {
+        "chunkId": "7c3b16",
+        "hash": "a336e268",
+        "encoded": "tags%20=%20%7B",
+        "prevChunkIds": []
+      },
+      "246": {
+        "chunkId": "7c3b16",
+        "hash": "cbea5402",
+        "encoded": "Name%20%20%20%20%20%20=%20%22$%7Bvar.cluster_name%7D-alb-controller-policy%22",
+        "prevChunkIds": []
+      },
+      "247": {
+        "chunkId": "7c3b16",
+        "hash": "7fe1c998",
+        "encoded": "Cluster%20%20%20=%20var.cluster_name",
+        "prevChunkIds": []
+      },
+      "248": {
+        "chunkId": "7c3b16",
+        "hash": "44ccbbaa",
+        "encoded": "ManagedBy%20=%20%22Terraform%22",
+        "prevChunkIds": []
+      },
+      "249": {
+        "chunkId": "7c3b16",
+        "hash": "2aa52ef0",
+        "encoded": "%7D",
+        "prevChunkIds": []
+      },
+      "250": {
+        "chunkId": "7c3b16",
+        "hash": "8381033a",
+        "encoded": "%7D",
+        "prevChunkIds": []
+      },
+      "252": {
+        "chunkId": "7c3b16",
+        "hash": "b18e36df",
+        "encoded": "#%20IRSA%20for%20AWS%20Load%20Balancer%20Controller",
+        "prevChunkIds": []
+      },
+      "253": {
+        "chunkId": "7c3b16",
+        "hash": "d0fe23ca",
+        "encoded": "data%20%22aws_iam_policy_document%22%20%22aws_load_balancer_controller_assume_role%22%20%7B",
+        "prevChunkIds": []
+      },
+      "254": {
+        "chunkId": "7c3b16",
+        "hash": "ccaa9c5e",
+        "encoded": "statement%20%7B",
+        "prevChunkIds": []
+      },
+      "255": {
+        "chunkId": "7c3b16",
+        "hash": "24991175",
+        "encoded": "effect%20=%20%22Allow%22",
+        "prevChunkIds": []
+      },
+      "256": {
+        "chunkId": "7c3b16",
+        "hash": "ee1b7abf",
+        "encoded": "principals%20%7B",
+        "prevChunkIds": []
+      },
+      "257": {
+        "chunkId": "7c3b16",
+        "hash": "c932e704",
+        "encoded": "type%20%20%20%20%20%20%20%20=%20%22Federated%22",
+        "prevChunkIds": []
+      },
+      "258": {
+        "chunkId": "7c3b16",
+        "hash": "a08581e1",
+        "encoded": "identifiers%20=%20%5B%22arn:aws:iam::$%7Bdata.aws_caller_identity.current.account_id%7D:oidc-provider/$%7Bvar.oidc_provider%7D%22%5D",
+        "prevChunkIds": []
+      },
+      "259": {
+        "chunkId": "7c3b16",
+        "hash": "edd4ba50",
+        "encoded": "%7D",
+        "prevChunkIds": []
+      },
+      "260": {
+        "chunkId": "7c3b16",
+        "hash": "91a7b83e",
+        "encoded": "actions%20=%20%5B%22sts:AssumeRoleWithWebIdentity%22%5D",
+        "prevChunkIds": []
+      },
+      "261": {
+        "chunkId": "7c3b16",
+        "hash": "3460af51",
+        "encoded": "condition%20%7B",
+        "prevChunkIds": []
+      },
+      "262": {
+        "chunkId": "7c3b16",
+        "hash": "c5d85348",
+        "encoded": "test%20%20%20%20%20=%20%22StringEquals%22",
+        "prevChunkIds": []
+      },
+      "263": {
+        "chunkId": "7c3b16",
+        "hash": "1c322b64",
+        "encoded": "variable%20=%20%22$%7Bvar.oidc_provider%7D:sub%22",
+        "prevChunkIds": []
+      },
+      "264": {
+        "chunkId": "7c3b16",
+        "hash": "b9fb7e61",
+        "encoded": "values%20%20%20=%20%5B%22system:serviceaccount:kube-system:aws-load-balancer-controller%22%5D",
+        "prevChunkIds": []
+      },
+      "265": {
+        "chunkId": "7c3b16",
+        "hash": "2b3722a1",
+        "encoded": "%7D",
+        "prevChunkIds": []
+      },
+      "266": {
+        "chunkId": "7c3b16",
+        "hash": "56921815",
+        "encoded": "condition%20%7B",
+        "prevChunkIds": []
+      },
+      "267": {
+        "chunkId": "7c3b16",
+        "hash": "19d8575a",
+        "encoded": "test%20%20%20%20%20=%20%22StringEquals%22",
+        "prevChunkIds": []
+      },
+      "268": {
+        "chunkId": "7c3b16",
+        "hash": "99c40acd",
+        "encoded": "variable%20=%20%22$%7Bvar.oidc_provider%7D:aud%22",
+        "prevChunkIds": []
+      },
+      "269": {
+        "chunkId": "7c3b16",
+        "hash": "d26058c5",
+        "encoded": "values%20%20%20=%20%5B%22sts.amazonaws.com%22%5D",
+        "prevChunkIds": []
+      },
+      "270": {
+        "chunkId": "7c3b16",
+        "hash": "7357472c",
+        "encoded": "%7D",
+        "prevChunkIds": []
+      },
+      "271": {
+        "chunkId": "7c3b16",
+        "hash": "d63e4bb6",
+        "encoded": "%7D",
+        "prevChunkIds": []
+      },
+      "272": {
+        "chunkId": "7c3b16",
+        "hash": "e457dc27",
+        "encoded": "%7D",
+        "prevChunkIds": []
+      },
+      "274": {
+        "chunkId": "7c3b16",
+        "hash": "8ae1d398",
+        "encoded": "resource%20%22aws_iam_role%22%20%22aws_load_balancer_controller%22%20%7B",
+        "prevChunkIds": []
+      },
+      "275": {
+        "chunkId": "7c3b16",
+        "hash": "ec1067d0",
+        "encoded": "name%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20=%20%22$%7Bvar.cluster_name%7D-aws-load-balancer-controller%22",
+        "prevChunkIds": []
+      },
+      "276": {
+        "chunkId": "7c3b16",
+        "hash": "e3a6a5d7",
+        "encoded": "assume_role_policy%20=%20data.aws_iam_policy_document.aws_load_balancer_controller_assume_role.json",
+        "prevChunkIds": []
+      },
+      "278": {
+        "chunkId": "7c3b16",
+        "hash": "d2269cd4",
+        "encoded": "tags%20=%20%7B",
+        "prevChunkIds": []
+      },
+      "279": {
+        "chunkId": "7c3b16",
+        "hash": "99109799",
+        "encoded": "Name%20%20%20%20%20%20=%20%22$%7Bvar.cluster_name%7D-alb-controller-role%22",
+        "prevChunkIds": []
+      },
+      "280": {
+        "chunkId": "7c3b16",
+        "hash": "c493c108",
+        "encoded": "Cluster%20%20%20=%20var.cluster_name",
+        "prevChunkIds": []
+      },
+      "281": {
+        "chunkId": "7c3b16",
+        "hash": "fc6e468e",
+        "encoded": "ManagedBy%20=%20%22Terraform%22",
+        "prevChunkIds": []
+      },
+      "282": {
+        "chunkId": "7c3b16",
+        "hash": "4f3fb1c8",
+        "encoded": "%7D",
+        "prevChunkIds": []
+      },
+      "283": {
+        "chunkId": "7c3b16",
+        "hash": "36d31997",
+        "encoded": "%7D",
+        "prevChunkIds": []
+      },
+      "285": {
+        "chunkId": "7c3b16",
+        "hash": "0938c447",
+        "encoded": "resource%20%22aws_iam_role_policy_attachment%22%20%22aws_load_balancer_controller%22%20%7B",
+        "prevChunkIds": []
+      },
+      "286": {
+        "chunkId": "7c3b16",
+        "hash": "1e02d112",
+        "encoded": "role%20%20%20%20%20%20%20=%20aws_iam_role.aws_load_balancer_controller.name",
+        "prevChunkIds": []
+      },
+      "287": {
+        "chunkId": "7c3b16",
+        "hash": "fc95cab6",
+        "encoded": "policy_arn%20=%20aws_iam_policy.aws_load_balancer_controller.arn",
+        "prevChunkIds": []
+      },
+      "288": {
+        "chunkId": "7c3b16",
+        "hash": "bf9641d2",
+        "encoded": "%7D",
+        "prevChunkIds": []
+      },
+      "290": {
+        "chunkId": "7c3b16",
+        "hash": "81a60db3",
+        "encoded": "#%20Service%20Account%20for%20AWS%20Load%20Balancer%20Controller",
+        "prevChunkIds": []
+      },
+      "291": {
+        "chunkId": "7c3b16",
+        "hash": "4aef14f0",
+        "encoded": "resource%20%22kubernetes_service_account%22%20%22aws_load_balancer_controller%22%20%7B",
+        "prevChunkIds": []
+      },
+      "292": {
+        "chunkId": "7c3b16",
+        "hash": "53c4c568",
+        "encoded": "metadata%20%7B",
+        "prevChunkIds": []
+      },
+      "293": {
+        "chunkId": "7c3b16",
+        "hash": "d583a603",
+        "encoded": "name%20%20%20%20%20%20=%20%22aws-load-balancer-controller%22",
+        "prevChunkIds": []
+      },
+      "294": {
+        "chunkId": "7c3b16",
+        "hash": "b797bd2e",
+        "encoded": "namespace%20=%20%22kube-system%22",
+        "prevChunkIds": []
+      },
+      "295": {
+        "chunkId": "7c3b16",
+        "hash": "fad6d613",
+        "encoded": "annotations%20=%20%7B",
+        "prevChunkIds": []
+      },
+      "296": {
+        "chunkId": "7c3b16",
+        "hash": "03dedd47",
+        "encoded": "%22eks.amazonaws.com/role-arn%22%20=%20aws_iam_role.aws_load_balancer_controller.arn",
+        "prevChunkIds": []
+      },
+      "297": {
+        "chunkId": "7c3b16",
+        "hash": "24d7719a",
+        "encoded": "%7D",
+        "prevChunkIds": []
+      },
+      "298": {
+        "chunkId": "7c3b16",
+        "hash": "1e0d7aa1",
+        "encoded": "labels%20=%20%7B",
+        "prevChunkIds": []
+      },
+      "299": {
+        "chunkId": "7c3b16",
+        "hash": "d84778ec",
+        "encoded": "%22app.kubernetes.io/name%22%20%20%20%20%20%20%20=%20%22aws-load-balancer-controller%22",
+        "prevChunkIds": []
+      },
+      "300": {
+        "chunkId": "7c3b16",
+        "hash": "6f40243a",
+        "encoded": "%22app.kubernetes.io/component%22%20%20=%20%22controller%22",
+        "prevChunkIds": []
+      },
+      "301": {
+        "chunkId": "7c3b16",
+        "hash": "5a4ca75e",
+        "encoded": "%22app.kubernetes.io/managed-by%22%20=%20%22terraform%22",
+        "prevChunkIds": []
+      },
+      "302": {
+        "chunkId": "7c3b16",
+        "hash": "b4d113d9",
+        "encoded": "%7D",
+        "prevChunkIds": []
+      },
+      "303": {
+        "chunkId": "7c3b16",
+        "hash": "ca7d8d23",
+        "encoded": "%7D",
+        "prevChunkIds": []
+      },
+      "304": {
+        "chunkId": "7c3b16",
+        "hash": "5caa522d",
+        "encoded": "%7D",
+        "prevChunkIds": []
+      },
+      "306": {
+        "chunkId": "7c3b16",
+        "hash": "02c158a2",
+        "encoded": "#%20Install%20AWS%20Load%20Balancer%20Controller%20using%20Helm",
+        "prevChunkIds": []
+      },
+      "307": {
+        "chunkId": "7c3b16",
+        "hash": "8e81944d",
+        "encoded": "resource%20%22helm_release%22%20%22aws_load_balancer_controller%22%20%7B",
+        "prevChunkIds": []
+      },
+      "308": {
+        "chunkId": "7c3b16",
+        "hash": "e202d2ac",
+        "encoded": "name%20%20%20%20%20%20%20=%20%22aws-load-balancer-controller%22",
+        "prevChunkIds": []
+      },
+      "309": {
+        "chunkId": "7c3b16",
+        "hash": "c76f3ca3",
+        "encoded": "repository%20=%20%22https://aws.github.io/eks-charts%22",
+        "prevChunkIds": []
+      },
+      "310": {
+        "chunkId": "7c3b16",
+        "hash": "d40801f2",
+        "encoded": "chart%20%20%20%20%20%20=%20%22aws-load-balancer-controller%22",
+        "prevChunkIds": []
+      },
+      "311": {
+        "chunkId": "7c3b16",
+        "hash": "294824ea",
+        "encoded": "namespace%20%20=%20%22kube-system%22",
+        "prevChunkIds": []
+      },
+      "312": {
+        "chunkId": "7c3b16",
+        "hash": "c8d29219",
+        "encoded": "version%20%20%20%20=%20var.helm_chart_version",
+        "prevChunkIds": []
+      },
+      "314": {
+        "chunkId": "7c3b16",
+        "hash": "16fd253f",
+        "encoded": "set%20%7B",
+        "prevChunkIds": []
+      },
+      "315": {
+        "chunkId": "7c3b16",
+        "hash": "0df016d1",
+        "encoded": "name%20%20=%20%22clusterName%22",
+        "prevChunkIds": []
+      },
+      "316": {
+        "chunkId": "7c3b16",
+        "hash": "74466344",
+        "encoded": "value%20=%20var.cluster_name",
+        "prevChunkIds": []
+      },
+      "317": {
+        "chunkId": "7c3b16",
+        "hash": "7daf7dab",
+        "encoded": "%7D",
+        "prevChunkIds": []
+      },
+      "319": {
+        "chunkId": "7c3b16",
+        "hash": "0db40983",
+        "encoded": "set%20%7B",
+        "prevChunkIds": []
+      },
+      "320": {
+        "chunkId": "7c3b16",
+        "hash": "3b01e657",
+        "encoded": "name%20%20=%20%22serviceAccount.create%22",
+        "prevChunkIds": []
+      },
+      "321": {
+        "chunkId": "7c3b16",
+        "hash": "5ad6c837",
+        "encoded": "value%20=%20%22false%22",
+        "prevChunkIds": []
+      },
+      "322": {
+        "chunkId": "7c3b16",
+        "hash": "b752c9e4",
+        "encoded": "%7D",
+        "prevChunkIds": []
+      },
+      "324": {
+        "chunkId": "7c3b16",
+        "hash": "40eb22f0",
+        "encoded": "set%20%7B",
+        "prevChunkIds": []
+      },
+      "325": {
+        "chunkId": "7c3b16",
+        "hash": "2a7f9d6f",
+        "encoded": "name%20%20=%20%22serviceAccount.name%22",
+        "prevChunkIds": []
+      },
+      "326": {
+        "chunkId": "7c3b16",
+        "hash": "333d969a",
+        "encoded": "value%20=%20kubernetes_service_account.aws_load_balancer_controller.metadata%5B0%5D.name",
+        "prevChunkIds": []
+      },
+      "327": {
+        "chunkId": "7c3b16",
+        "hash": "c35ae2aa",
+        "encoded": "%7D",
+        "prevChunkIds": []
+      },
+      "329": {
+        "chunkId": "7c3b16",
+        "hash": "e92a1af9",
+        "encoded": "set%20%7B",
+        "prevChunkIds": []
+      },
+      "330": {
+        "chunkId": "7c3b16",
+        "hash": "a2f17a0e",
+        "encoded": "name%20%20=%20%22region%22",
+        "prevChunkIds": []
+      },
+      "331": {
+        "chunkId": "7c3b16",
+        "hash": "320a6098",
+        "encoded": "value%20=%20var.aws_region",
+        "prevChunkIds": []
+      },
+      "332": {
+        "chunkId": "7c3b16",
+        "hash": "64de5ec8",
+        "encoded": "%7D",
+        "prevChunkIds": []
+      },
+      "334": {
+        "chunkId": "7c3b16",
+        "hash": "8f964406",
+        "encoded": "set%20%7B",
+        "prevChunkIds": []
+      },
+      "335": {
+        "chunkId": "7c3b16",
+        "hash": "d5167365",
+        "encoded": "name%20%20=%20%22vpcId%22",
+        "prevChunkIds": []
+      },
+      "336": {
+        "chunkId": "7c3b16",
+        "hash": "a283a278",
+        "encoded": "value%20=%20var.vpc_id",
+        "prevChunkIds": []
+      },
+      "337": {
+        "chunkId": "7c3b16",
+        "hash": "3ce50952",
+        "encoded": "%7D",
+        "prevChunkIds": []
+      },
+      "339": {
+        "chunkId": "7c3b16",
+        "hash": "d6443e06",
+        "encoded": "set%20%7B",
+        "prevChunkIds": []
+      },
+      "340": {
+        "chunkId": "7c3b16",
+        "hash": "82e6921d",
+        "encoded": "name%20%20=%20%22enableShield%22",
+        "prevChunkIds": []
+      },
+      "341": {
+        "chunkId": "7c3b16",
+        "hash": "2e4fbeed",
+        "encoded": "value%20=%20var.enable_shield",
+        "prevChunkIds": []
+      },
+      "342": {
+        "chunkId": "7c3b16",
+        "hash": "8929312f",
+        "encoded": "%7D",
+        "prevChunkIds": []
+      },
+      "344": {
+        "chunkId": "7c3b16",
+        "hash": "f712b467",
+        "encoded": "set%20%7B",
+        "prevChunkIds": []
+      },
+      "345": {
+        "chunkId": "7c3b16",
+        "hash": "88ddcae3",
+        "encoded": "name%20%20=%20%22enableWaf%22",
+        "prevChunkIds": []
+      },
+      "346": {
+        "chunkId": "7c3b16",
+        "hash": "c88b1304",
+        "encoded": "value%20=%20var.enable_waf",
+        "prevChunkIds": []
+      },
+      "347": {
+        "chunkId": "7c3b16",
+        "hash": "15bfe668",
+        "encoded": "%7D",
+        "prevChunkIds": []
+      },
+      "349": {
+        "chunkId": "7c3b16",
+        "hash": "90d8448b",
+        "encoded": "set%20%7B",
+        "prevChunkIds": []
+      },
+      "350": {
+        "chunkId": "7c3b16",
+        "hash": "a5bff0e8",
+        "encoded": "name%20%20=%20%22enableWafv2%22",
+        "prevChunkIds": []
+      },
+      "351": {
+        "chunkId": "7c3b16",
+        "hash": "a189fef2",
+        "encoded": "value%20=%20var.enable_wafv2",
+        "prevChunkIds": []
+      },
+      "352": {
+        "chunkId": "7c3b16",
+        "hash": "37999362",
+        "encoded": "%7D",
+        "prevChunkIds": []
+      },
+      "354": {
+        "chunkId": "7c3b16",
+        "hash": "2787e889",
+        "encoded": "depends_on%20=%20%5B",
+        "prevChunkIds": []
+      },
+      "355": {
+        "chunkId": "7c3b16",
+        "hash": "01f24259",
+        "encoded": "kubernetes_service_account.aws_load_balancer_controller,",
+        "prevChunkIds": []
+      },
+      "356": {
+        "chunkId": "7c3b16",
+        "hash": "11998ba7",
+        "encoded": "aws_iam_role_policy_attachment.aws_load_balancer_controller",
+        "prevChunkIds": []
+      },
+      "357": {
+        "chunkId": "7c3b16",
+        "hash": "02f62415",
+        "encoded": "%5D",
+        "prevChunkIds": []
+      },
+      "358": {
+        "chunkId": "7c3b16",
+        "hash": "9cb0729a",
+        "encoded": "%7D",
+        "prevChunkIds": []
+      }
+    }
+  }
+}

@@ -1,0 +1,96 @@
+{
+  "terraform\\meracommerce-dev.tfvars": {
+    "filename": "meracommerce-dev.tfvars",
+    "path": "terraform\\meracommerce-dev.tfvars",
+    "version": "1.2",
+    "contextFile": "bf62cecb-context.json",
+    "chunks": {
+      "4e8230": {
+        "user": "Prabal Singh",
+        "model": "gpt-4.1",
+        "timestamp": 1787649002,
+        "platform": "VisualStudioCode",
+        "product": "AIPP",
+        "productVersion": "3.2.0",
+        "source": "agent",
+        "type": "agentEditTool",
+        "extraContext": {
+          "promptMessage": "70a1d371"
+        },
+        "hash": "cce63bfe",
+        "messageId": "system_69ff0350-a064-11f1-ac80-9da5cdc456f8",
+        "codeBlockId": null,
+        "isActive": true,
+        "hoverData": "\n### Slingshot Generated Code\n\n- **user**: Prabal Singh\n- **model**: gpt-4.1\n- **timestamp**: 8/25/2026, 2:40:02 PM\n- **source**: agent\n- **type**: agentEditTool\n"
+      }
+    },
+    "lines": {
+      "0": {
+        "chunkId": "4e8230",
+        "hash": "72708d46",
+        "encoded": "#%20Environment:%20Development",
+        "prevChunkIds": []
+      },
+      "1": {
+        "chunkId": "4e8230",
+        "hash": "5ab7868e",
+        "encoded": "cluster_name%20%20%20%20%20%20%20%20=%20%22meracommerce-dev%22",
+        "prevChunkIds": []
+      },
+      "2": {
+        "chunkId": "4e8230",
+        "hash": "8e6dad83",
+        "encoded": "region%20%20%20%20%20%20%20%20%20%20%20%20%20%20=%20%22us-east-1%22",
+        "prevChunkIds": []
+      },
+      "3": {
+        "chunkId": "4e8230",
+        "hash": "80d652c4",
+        "encoded": "availability_zones%20=%20%5B%22us-east-1a%22,%20%22us-east-1b%22,%20%22us-east-1c%22%5D",
+        "prevChunkIds": []
+      },
+      "4": {
+        "chunkId": "4e8230",
+        "hash": "5da140f1",
+        "encoded": "namespace%20%20%20%20%20%20%20%20%20%20%20=%20%22customer-ns%22",
+        "prevChunkIds": []
+      },
+      "5": {
+        "chunkId": "4e8230",
+        "hash": "8cd8d452",
+        "encoded": "service_account%20%20%20%20%20=%20%22customer-sa%22",
+        "prevChunkIds": []
+      },
+      "6": {
+        "chunkId": "4e8230",
+        "hash": "5200fbcf",
+        "encoded": "cluster_version%20%20%20%20%20=%20%221.31%22%20%20#%20Using%20stable%20Kubernetes%20version",
+        "prevChunkIds": []
+      },
+      "7": {
+        "chunkId": "4e8230",
+        "hash": "bbb6a81e",
+        "encoded": "node_instance_type%20%20=%20%22t3.medium%22",
+        "prevChunkIds": []
+      },
+      "8": {
+        "chunkId": "4e8230",
+        "hash": "73badeb4",
+        "encoded": "node_desired%20%20%20%20%20%20%20%20=%202",
+        "prevChunkIds": []
+      },
+      "9": {
+        "chunkId": "4e8230",
+        "hash": "b31a8e73",
+        "encoded": "node_min%20%20%20%20%20%20%20%20%20%20%20%20=%201",
+        "prevChunkIds": []
+      },
+      "10": {
+        "chunkId": "4e8230",
+        "hash": "17fafb7a",
+        "encoded": "node_max%20%20%20%20%20%20%20%20%20%20%20%20=%203",
+        "prevChunkIds": []
+      }
+    }
+  }
+}

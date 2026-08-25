@@ -1,0 +1,102 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: order-service
+  namespace: order-service-ns
+  labels:
+    app: order-service
+    version: v1
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: order-service
+  template:
+    metadata:
+      labels:
+        app: order-service
+        version: v1
+    spec:
+      serviceAccountName: order-sa
+      containers:
+      - name: order-service
+        image: ${ECR_REGISTRY}/order-service:${IMAGE_TAG}
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 8080
+          name: http
+          protocol: TCP
+        env:
+        - name: SPRING_PROFILES_ACTIVE
+          value: "prod"
+        - name: SERVER_PORT
+          value: "8080"
+        # Reference ConfigMap
+        envFrom:
+        - configMapRef:
+            name: order-service-config
+        # Reference Secrets
+        - secretRef:
+            name: order-service-secret
+        resources:
+          requests:
+            memory: "512Mi"
+            cpu: "250m"
+          limits:
+            memory: "1Gi"
+            cpu: "500m"
+        livenessProbe:
+          httpGet:
+            path: /actuator/health/liveness
+            port: 8080
+          initialDelaySeconds: 120
+          periodSeconds: 10
+          timeoutSeconds: 5
+          failureThreshold: 3
+        readinessProbe:
+          httpGet:
+            path: /actuator/health/readiness
+            port: 8080
+          initialDelaySeconds: 30
+          periodSeconds: 5
+          timeoutSeconds: 3
+          failureThreshold: 3
+      terminationGracePeriodSeconds: 30
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: order-service
+  namespace: order-service-ns
+  labels:
+    app: order-service
+spec:
+  type: ClusterIP
+  ports:
+  - port: 8080
+    targetPort: 8080
+    protocol: TCP
+    name: http
+  selector:
+    app: order-service
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: order-service-config
+  namespace: order-service-ns
+data:
+  APPLICATION_NAME: "order-service"
+  LOG_LEVEL: "INFO"
+  # Add your application-specific configurations here
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: order-service-secret
+  namespace: order-service-ns
+type: Opaque
+data:
+  # Base64 encoded secrets
+  # Use kubectl create secret or External Secrets Operator
+  # Example: DATABASE_PASSWORD: <base64-encoded-value>

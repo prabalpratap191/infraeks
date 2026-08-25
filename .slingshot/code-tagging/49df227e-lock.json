@@ -1,0 +1,2412 @@
+{
+  "IMPLEMENTATION_GUIDE.md": {
+    "filename": "IMPLEMENTATION_GUIDE.md",
+    "path": "IMPLEMENTATION_GUIDE.md",
+    "version": "1.2",
+    "contextFile": "49df227e-context.json",
+    "chunks": {
+      "db4e44": {
+        "user": "Prabal Singh",
+        "model": "gpt-4.1",
+        "timestamp": 1787652681,
+        "platform": "VisualStudioCode",
+        "product": "AIPP",
+        "productVersion": "3.2.0",
+        "source": "agent",
+        "type": "agentWriteTool",
+        "extraContext": {
+          "promptMessage": "4b1a040d"
+        },
+        "hash": "4b0c576c",
+        "messageId": "system_dfb916b0-a06b-11f1-ac80-9da5cdc456f8",
+        "codeBlockId": null,
+        "isActive": true,
+        "hoverData": "\n### Slingshot Generated Code\n\n- **user**: Prabal Singh\n- **model**: gpt-4.1\n- **timestamp**: 8/25/2026, 3:41:21 PM\n- **source**: agent\n- **type**: agentWriteTool\n"
+      }
+    },
+    "lines": {
+      "0": {
+        "chunkId": "db4e44",
+        "hash": "14ba3721",
+        "encoded": "#%20Multi-Microservices%20Deployment%20-%20Implementation%20Guide",
+        "prevChunkIds": []
+      },
+      "2": {
+        "chunkId": "db4e44",
+        "hash": "5ac33061",
+        "encoded": "##%20Overview",
+        "prevChunkIds": []
+      },
+      "4": {
+        "chunkId": "db4e44",
+        "hash": "59ea2179",
+        "encoded": "This%20guide%20provides%20step-by-step%20instructions%20to%20deploy%20multiple%20Java%20microservices%20(Order,%20Catalog,%20Customer)%20to%20your%20EKS%20cluster%20from%20separate%20CI/CD%20pipelines.",
+        "prevChunkIds": []
+      },
+      "6": {
+        "chunkId": "db4e44",
+        "hash": "7d0f37a4",
+        "encoded": "##%20Changes%20Made%20to%20Support%20Multi-Microservice%20Deployment",
+        "prevChunkIds": []
+      },
+      "8": {
+        "chunkId": "db4e44",
+        "hash": "1bc431e1",
+        "encoded": "###%20%E2%9C%85%20New%20Terraform%20Modules%20Created",
+        "prevChunkIds": []
+      },
+      "10": {
+        "chunkId": "db4e44",
+        "hash": "07927b5f",
+        "encoded": "1.%20**%60terraform/modules/microservices/%60**%20-%20Comprehensive%20module%20for%20each%20microservice",
+        "prevChunkIds": []
+      },
+      "11": {
+        "chunkId": "db4e44",
+        "hash": "e6fe48d8",
+        "encoded": "-%20Namespace%20creation%20with%20labels",
+        "prevChunkIds": []
+      },
+      "12": {
+        "chunkId": "db4e44",
+        "hash": "ab621fa1",
+        "encoded": "-%20Service%20Account%20with%20IRSA%20(IAM%20Roles%20for%20Service%20Accounts)",
+        "prevChunkIds": []
+      },
+      "13": {
+        "chunkId": "db4e44",
+        "hash": "fe981feb",
+        "encoded": "-%20IAM%20Role%20and%20Policies%20for%20AWS%20resource%20access%20(S3,%20DynamoDB,%20SQS,%20Secrets%20Manager)",
+        "prevChunkIds": []
+      },
+      "14": {
+        "chunkId": "db4e44",
+        "hash": "696ae71a",
+        "encoded": "-%20RBAC%20(Role/RoleBinding)",
+        "prevChunkIds": []
+      },
+      "15": {
+        "chunkId": "db4e44",
+        "hash": "157c8301",
+        "encoded": "-%20Network%20Policies%20for%20ingress/egress%20rules",
+        "prevChunkIds": []
+      },
+      "16": {
+        "chunkId": "db4e44",
+        "hash": "eca57d07",
+        "encoded": "-%20Resource%20Quotas%20and%20Limit%20Ranges",
+        "prevChunkIds": []
+      },
+      "18": {
+        "chunkId": "db4e44",
+        "hash": "bcf319ad",
+        "encoded": "2.%20**%60terraform/modules/aws-load-balancer-controller/%60**%20-%20ALB/NLB%20support",
+        "prevChunkIds": []
+      },
+      "19": {
+        "chunkId": "db4e44",
+        "hash": "b91b51d1",
+        "encoded": "-%20Installs%20AWS%20Load%20Balancer%20Controller%20via%20Helm",
+        "prevChunkIds": []
+      },
+      "20": {
+        "chunkId": "db4e44",
+        "hash": "54e46905",
+        "encoded": "-%20Configures%20IRSA%20for%20the%20controller",
+        "prevChunkIds": []
+      },
+      "21": {
+        "chunkId": "db4e44",
+        "hash": "29b8ee01",
+        "encoded": "-%20Sets%20up%20required%20IAM%20policies",
+        "prevChunkIds": []
+      },
+      "23": {
+        "chunkId": "db4e44",
+        "hash": "04d8ee5b",
+        "encoded": "###%20%E2%9C%85%20Updated%20Terraform%20Configuration",
+        "prevChunkIds": []
+      },
+      "25": {
+        "chunkId": "db4e44",
+        "hash": "b006abcf",
+        "encoded": "1.%20**%60terraform/main.tf%60**",
+        "prevChunkIds": []
+      },
+      "26": {
+        "chunkId": "db4e44",
+        "hash": "f1e46cec",
+        "encoded": "-%20Added%20Helm%20provider%20for%20Kubernetes%20addons",
+        "prevChunkIds": []
+      },
+      "27": {
+        "chunkId": "db4e44",
+        "hash": "bfaa3ea7",
+        "encoded": "-%20Instantiated%20AWS%20Load%20Balancer%20Controller",
+        "prevChunkIds": []
+      },
+      "28": {
+        "chunkId": "db4e44",
+        "hash": "af4424dc",
+        "encoded": "-%20Created%203%20microservice%20instances%20(order,%20catalog,%20customer)",
+        "prevChunkIds": []
+      },
+      "29": {
+        "chunkId": "db4e44",
+        "hash": "f245848e",
+        "encoded": "-%20Configured%20inter-service%20network%20policies",
+        "prevChunkIds": []
+      },
+      "31": {
+        "chunkId": "db4e44",
+        "hash": "c8655165",
+        "encoded": "2.%20**%60terraform/variables.tf%60**",
+        "prevChunkIds": []
+      },
+      "32": {
+        "chunkId": "db4e44",
+        "hash": "12ae65f6",
+        "encoded": "-%20Added%20microservice-specific%20AWS%20resource%20access%20variables",
+        "prevChunkIds": []
+      },
+      "33": {
+        "chunkId": "db4e44",
+        "hash": "c1159a5f",
+        "encoded": "-%20Support%20for%20per-service%20S3,%20DynamoDB,%20SQS,%20Secrets%20Manager%20permissions",
+        "prevChunkIds": []
+      },
+      "35": {
+        "chunkId": "db4e44",
+        "hash": "89b1e6da",
+        "encoded": "3.%20**%60terraform/outputs.tf%60**",
+        "prevChunkIds": []
+      },
+      "36": {
+        "chunkId": "db4e44",
+        "hash": "222ecfc0",
+        "encoded": "-%20Export%20namespace%20names,%20service%20accounts,%20IAM%20role%20ARNs",
+        "prevChunkIds": []
+      },
+      "37": {
+        "chunkId": "db4e44",
+        "hash": "6cbbdfed",
+        "encoded": "-%20kubectl%20configuration%20command",
+        "prevChunkIds": []
+      },
+      "39": {
+        "chunkId": "db4e44",
+        "hash": "d7d71eb0",
+        "encoded": "4.%20**%60terraform/provider.tf%60**",
+        "prevChunkIds": []
+      },
+      "40": {
+        "chunkId": "db4e44",
+        "hash": "9194a7a4",
+        "encoded": "-%20Added%20Helm%20provider%20configuration",
+        "prevChunkIds": []
+      },
+      "42": {
+        "chunkId": "db4e44",
+        "hash": "524fdde4",
+        "encoded": "5.%20**%60terraform/modules/eks/outputs.tf%60**",
+        "prevChunkIds": []
+      },
+      "43": {
+        "chunkId": "db4e44",
+        "hash": "e9bc511c",
+        "encoded": "-%20Added%20OIDC%20provider%20outputs%20for%20IRSA",
+        "prevChunkIds": []
+      },
+      "45": {
+        "chunkId": "db4e44",
+        "hash": "fdbc5311",
+        "encoded": "###%20%E2%9C%85%20Kubernetes%20Manifests%20Created",
+        "prevChunkIds": []
+      },
+      "47": {
+        "chunkId": "db4e44",
+        "hash": "c8eca988",
+        "encoded": "-%20**%60k8s-manifests/order-service/deployment.yaml%60**",
+        "prevChunkIds": []
+      },
+      "48": {
+        "chunkId": "db4e44",
+        "hash": "4aa02415",
+        "encoded": "-%20**%60k8s-manifests/catalog-service/deployment.yaml%60**",
+        "prevChunkIds": []
+      },
+      "49": {
+        "chunkId": "db4e44",
+        "hash": "3cf54378",
+        "encoded": "-%20**%60k8s-manifests/customer-service/deployment.yaml%60**",
+        "prevChunkIds": []
+      },
+      "50": {
+        "chunkId": "db4e44",
+        "hash": "2aba4e3b",
+        "encoded": "-%20**%60k8s-manifests/ingress.yaml%60**%20-%20Shared%20ALB%20ingress",
+        "prevChunkIds": []
+      },
+      "52": {
+        "chunkId": "db4e44",
+        "hash": "70647117",
+        "encoded": "Each%20includes:",
+        "prevChunkIds": []
+      },
+      "53": {
+        "chunkId": "db4e44",
+        "hash": "e509e3d3",
+        "encoded": "-%20Deployment%20with%20health%20checks,%20resource%20limits",
+        "prevChunkIds": []
+      },
+      "54": {
+        "chunkId": "db4e44",
+        "hash": "148dd003",
+        "encoded": "-%20ClusterIP%20Service",
+        "prevChunkIds": []
+      },
+      "55": {
+        "chunkId": "db4e44",
+        "hash": "1c7e3587",
+        "encoded": "-%20ConfigMap%20for%20application%20config",
+        "prevChunkIds": []
+      },
+      "56": {
+        "chunkId": "db4e44",
+        "hash": "4be678d8",
+        "encoded": "-%20Secret%20placeholder",
+        "prevChunkIds": []
+      },
+      "58": {
+        "chunkId": "db4e44",
+        "hash": "f477957a",
+        "encoded": "###%20%E2%9C%85%20CI/CD%20Pipeline%20Templates",
+        "prevChunkIds": []
+      },
+      "60": {
+        "chunkId": "db4e44",
+        "hash": "def76e81",
+        "encoded": "-%20**%60jenkins-pipelines/Jenkinsfile-order-service%60**",
+        "prevChunkIds": []
+      },
+      "61": {
+        "chunkId": "db4e44",
+        "hash": "bbea220f",
+        "encoded": "-%20**%60jenkins-pipelines/Jenkinsfile-catalog-service%60**",
+        "prevChunkIds": []
+      },
+      "62": {
+        "chunkId": "db4e44",
+        "hash": "1e05d2b3",
+        "encoded": "-%20**%60jenkins-pipelines/Jenkinsfile-customer-service%60**%20(similar%20pattern)",
+        "prevChunkIds": []
+      },
+      "64": {
+        "chunkId": "db4e44",
+        "hash": "3c1f9cd8",
+        "encoded": "---",
+        "prevChunkIds": []
+      },
+      "66": {
+        "chunkId": "db4e44",
+        "hash": "874e0a86",
+        "encoded": "##%20Prerequisites",
+        "prevChunkIds": []
+      },
+      "68": {
+        "chunkId": "db4e44",
+        "hash": "fb9c36b9",
+        "encoded": "###%201.%20AWS%20Resources",
+        "prevChunkIds": []
+      },
+      "69": {
+        "chunkId": "db4e44",
+        "hash": "80b743e9",
+        "encoded": "-%20%E2%9C%85%20EKS%20Cluster%20(already%20provisioned:%20%60meracommerce-dev%60)",
+        "prevChunkIds": []
+      },
+      "70": {
+        "chunkId": "db4e44",
+        "hash": "111024a7",
+        "encoded": "-%20%E2%9C%85%20ECR%20Repositories%20for%20each%20service",
+        "prevChunkIds": []
+      },
+      "71": {
+        "chunkId": "db4e44",
+        "hash": "1befe230",
+        "encoded": "-%20%E2%9A%A0%EF%B8%8F%20(Optional)%20ACM%20Certificate%20for%20HTTPS",
+        "prevChunkIds": []
+      },
+      "72": {
+        "chunkId": "db4e44",
+        "hash": "95f161a3",
+        "encoded": "-%20%E2%9A%A0%EF%B8%8F%20(Optional)%20Route53%20hosted%20zone%20for%20DNS",
+        "prevChunkIds": []
+      },
+      "74": {
+        "chunkId": "db4e44",
+        "hash": "41fc7e48",
+        "encoded": "###%202.%20Jenkins%20Setup",
+        "prevChunkIds": []
+      },
+      "75": {
+        "chunkId": "db4e44",
+        "hash": "65b334a6",
+        "encoded": "-%20Jenkins%20with%20AWS%20credentials%20configured%20(ID:%20%60jenkins-user%60)",
+        "prevChunkIds": []
+      },
+      "76": {
+        "chunkId": "db4e44",
+        "hash": "c37df3fe",
+        "encoded": "-%20Jenkins%20plugins:",
+        "prevChunkIds": []
+      },
+      "77": {
+        "chunkId": "db4e44",
+        "hash": "99d42387",
+        "encoded": "-%20AWS%20Credentials%20Plugin",
+        "prevChunkIds": []
+      },
+      "78": {
+        "chunkId": "db4e44",
+        "hash": "29a8275b",
+        "encoded": "-%20Kubernetes%20CLI%20Plugin",
+        "prevChunkIds": []
+      },
+      "79": {
+        "chunkId": "db4e44",
+        "hash": "7918ae44",
+        "encoded": "-%20Docker%20Pipeline%20Plugin",
+        "prevChunkIds": []
+      },
+      "80": {
+        "chunkId": "db4e44",
+        "hash": "095d218e",
+        "encoded": "-%20Pipeline%20Plugin",
+        "prevChunkIds": []
+      },
+      "82": {
+        "chunkId": "db4e44",
+        "hash": "a5248ef7",
+        "encoded": "###%203.%20Local%20Tools",
+        "prevChunkIds": []
+      },
+      "83": {
+        "chunkId": "db4e44",
+        "hash": "e77adb8e",
+        "encoded": "-%20AWS%20CLI%20configured",
+        "prevChunkIds": []
+      },
+      "84": {
+        "chunkId": "db4e44",
+        "hash": "d803ff22",
+        "encoded": "-%20kubectl",
+        "prevChunkIds": []
+      },
+      "85": {
+        "chunkId": "db4e44",
+        "hash": "f11fc016",
+        "encoded": "-%20Terraform%20%3E=%201.0",
+        "prevChunkIds": []
+      },
+      "86": {
+        "chunkId": "db4e44",
+        "hash": "c2257119",
+        "encoded": "-%20Docker",
+        "prevChunkIds": []
+      },
+      "88": {
+        "chunkId": "db4e44",
+        "hash": "dc85a00a",
+        "encoded": "---",
+        "prevChunkIds": []
+      },
+      "90": {
+        "chunkId": "db4e44",
+        "hash": "2f392e72",
+        "encoded": "##%20Step-by-Step%20Implementation",
+        "prevChunkIds": []
+      },
+      "92": {
+        "chunkId": "db4e44",
+        "hash": "91c0daae",
+        "encoded": "###%20Phase%201:%20Infrastructure%20Setup%20(Terraform)",
+        "prevChunkIds": []
+      },
+      "94": {
+        "chunkId": "db4e44",
+        "hash": "0c654759",
+        "encoded": "####%20Step%201.1:%20Create%20ECR%20Repositories",
+        "prevChunkIds": []
+      },
+      "96": {
+        "chunkId": "db4e44",
+        "hash": "a7bf3789",
+        "encoded": "%60%60%60bash",
+        "prevChunkIds": []
+      },
+      "97": {
+        "chunkId": "db4e44",
+        "hash": "3e87b4b0",
+        "encoded": "#%20Create%20ECR%20repositories%20for%20microservices",
+        "prevChunkIds": []
+      },
+      "98": {
+        "chunkId": "db4e44",
+        "hash": "e43f58ce",
+        "encoded": "aws%20ecr%20create-repository%20--repository-name%20order-service%20--region%20us-east-1",
+        "prevChunkIds": []
+      },
+      "99": {
+        "chunkId": "db4e44",
+        "hash": "6b978374",
+        "encoded": "aws%20ecr%20create-repository%20--repository-name%20catalog-service%20--region%20us-east-1",
+        "prevChunkIds": []
+      },
+      "100": {
+        "chunkId": "db4e44",
+        "hash": "58396670",
+        "encoded": "aws%20ecr%20create-repository%20--repository-name%20customer-service%20--region%20us-east-1",
+        "prevChunkIds": []
+      },
+      "102": {
+        "chunkId": "db4e44",
+        "hash": "c888784e",
+        "encoded": "#%20Get%20repository%20URIs",
+        "prevChunkIds": []
+      },
+      "103": {
+        "chunkId": "db4e44",
+        "hash": "6d164a17",
+        "encoded": "aws%20ecr%20describe-repositories%20--region%20us-east-1%20--query%20'repositories%5B%5D.repositoryUri'",
+        "prevChunkIds": []
+      },
+      "104": {
+        "chunkId": "db4e44",
+        "hash": "062ff69e",
+        "encoded": "%60%60%60",
+        "prevChunkIds": []
+      },
+      "106": {
+        "chunkId": "db4e44",
+        "hash": "aa097965",
+        "encoded": "####%20Step%201.2:%20Update%20tfvars%20(Optional%20-%20if%20services%20need%20AWS%20resource%20access)",
+        "prevChunkIds": []
+      },
+      "108": {
+        "chunkId": "db4e44",
+        "hash": "87626df4",
+        "encoded": "Edit%20%60terraform/meracommerce-dev.tfvars%60:",
+        "prevChunkIds": []
+      },
+      "110": {
+        "chunkId": "db4e44",
+        "hash": "af037251",
+        "encoded": "%60%60%60hcl",
+        "prevChunkIds": []
+      },
+      "111": {
+        "chunkId": "db4e44",
+        "hash": "02f6e70e",
+        "encoded": "#%20Existing%20variables",
+        "prevChunkIds": []
+      },
+      "112": {
+        "chunkId": "db4e44",
+        "hash": "1dc7f4e9",
+        "encoded": "cluster_name%20%20%20%20%20%20%20%20=%20%22meracommerce-dev%22",
+        "prevChunkIds": []
+      },
+      "113": {
+        "chunkId": "db4e44",
+        "hash": "4aa51d7c",
+        "encoded": "region%20%20%20%20%20%20%20%20%20%20%20%20%20%20=%20%22us-east-1%22",
+        "prevChunkIds": []
+      },
+      "114": {
+        "chunkId": "db4e44",
+        "hash": "278c1562",
+        "encoded": "availability_zones%20%20=%20%5B%22us-east-1a%22,%20%22us-east-1b%22,%20%22us-east-1c%22%5D",
+        "prevChunkIds": []
+      },
+      "115": {
+        "chunkId": "db4e44",
+        "hash": "59911c1d",
+        "encoded": "namespace%20%20%20%20%20%20%20%20%20%20%20=%20%22customer-ns%22%20%20#%20Legacy%20-%20not%20used",
+        "prevChunkIds": []
+      },
+      "116": {
+        "chunkId": "db4e44",
+        "hash": "9507ddb9",
+        "encoded": "service_account%20%20%20%20%20=%20%22customer-sa%22%20%20#%20Legacy%20-%20not%20used",
+        "prevChunkIds": []
+      },
+      "117": {
+        "chunkId": "db4e44",
+        "hash": "d30c1be0",
+        "encoded": "cluster_version%20%20%20%20%20=%20%221.31%22",
+        "prevChunkIds": []
+      },
+      "118": {
+        "chunkId": "db4e44",
+        "hash": "2be040b8",
+        "encoded": "node_instance_type%20%20=%20%22t3.medium%22",
+        "prevChunkIds": []
+      },
+      "119": {
+        "chunkId": "db4e44",
+        "hash": "824777b5",
+        "encoded": "node_desired%20%20%20%20%20%20%20%20=%202",
+        "prevChunkIds": []
+      },
+      "120": {
+        "chunkId": "db4e44",
+        "hash": "a7c319cd",
+        "encoded": "node_min%20%20%20%20%20%20%20%20%20%20%20%20=%201",
+        "prevChunkIds": []
+      },
+      "121": {
+        "chunkId": "db4e44",
+        "hash": "58f9ddb2",
+        "encoded": "node_max%20%20%20%20%20%20%20%20%20%20%20%20=%203",
+        "prevChunkIds": []
+      },
+      "122": {
+        "chunkId": "db4e44",
+        "hash": "21b0ae8d",
+        "encoded": "environment%20%20%20%20%20%20%20%20%20=%20%22dev%22",
+        "prevChunkIds": []
+      },
+      "124": {
+        "chunkId": "db4e44",
+        "hash": "3f062890",
+        "encoded": "#%20Order%20Service%20AWS%20Resources%20(add%20if%20needed)",
+        "prevChunkIds": []
+      },
+      "125": {
+        "chunkId": "db4e44",
+        "hash": "88d37393",
+        "encoded": "order_service_s3_buckets%20%20%20%20%20%20%20=%20%5B%22my-orders-bucket%22%5D",
+        "prevChunkIds": []
+      },
+      "126": {
+        "chunkId": "db4e44",
+        "hash": "60783b1c",
+        "encoded": "order_service_dynamodb_tables%20%20=%20%5B%22orders-table%22%5D",
+        "prevChunkIds": []
+      },
+      "127": {
+        "chunkId": "db4e44",
+        "hash": "d52f32bd",
+        "encoded": "order_service_sqs_queues%20%20%20%20%20%20%20=%20%5B%22order-queue%22%5D",
+        "prevChunkIds": []
+      },
+      "128": {
+        "chunkId": "db4e44",
+        "hash": "661fc6e5",
+        "encoded": "order_service_secrets%20%20%20%20%20%20%20%20%20%20=%20%5B%22arn:aws:secretsmanager:us-east-1:ACCOUNT:secret:order-db-password%22%5D",
+        "prevChunkIds": []
+      },
+      "130": {
+        "chunkId": "db4e44",
+        "hash": "dc300d1a",
+        "encoded": "#%20Catalog%20Service%20AWS%20Resources",
+        "prevChunkIds": []
+      },
+      "131": {
+        "chunkId": "db4e44",
+        "hash": "8df5bf0b",
+        "encoded": "catalog_service_s3_buckets%20%20%20%20%20=%20%5B%22catalog-images-bucket%22%5D",
+        "prevChunkIds": []
+      },
+      "132": {
+        "chunkId": "db4e44",
+        "hash": "e966bdcb",
+        "encoded": "catalog_service_dynamodb_tables%20=%20%5B%22products-table%22%5D",
+        "prevChunkIds": []
+      },
+      "134": {
+        "chunkId": "db4e44",
+        "hash": "4ccb7d75",
+        "encoded": "#%20Customer%20Service%20AWS%20Resources",
+        "prevChunkIds": []
+      },
+      "135": {
+        "chunkId": "db4e44",
+        "hash": "147b7c9d",
+        "encoded": "customer_service_dynamodb_tables%20=%20%5B%22customers-table%22%5D",
+        "prevChunkIds": []
+      },
+      "136": {
+        "chunkId": "db4e44",
+        "hash": "c676fc09",
+        "encoded": "%60%60%60",
+        "prevChunkIds": []
+      },
+      "138": {
+        "chunkId": "db4e44",
+        "hash": "9fe7e552",
+        "encoded": "####%20Step%201.3:%20Initialize%20and%20Apply%20Terraform",
+        "prevChunkIds": []
+      },
+      "140": {
+        "chunkId": "db4e44",
+        "hash": "a17d7f88",
+        "encoded": "%60%60%60bash",
+        "prevChunkIds": []
+      },
+      "141": {
+        "chunkId": "db4e44",
+        "hash": "ff8b0339",
+        "encoded": "cd%20terraform",
+        "prevChunkIds": []
+      },
+      "143": {
+        "chunkId": "db4e44",
+        "hash": "88ca92dd",
+        "encoded": "#%20Clean%20previous%20state",
+        "prevChunkIds": []
+      },
+      "144": {
+        "chunkId": "db4e44",
+        "hash": "977bd005",
+        "encoded": "rm%20-rf%20.terraform%20.terraform.lock.hcl",
+        "prevChunkIds": []
+      },
+      "146": {
+        "chunkId": "db4e44",
+        "hash": "4b0456ae",
+        "encoded": "#%20Initialize",
+        "prevChunkIds": []
+      },
+      "147": {
+        "chunkId": "db4e44",
+        "hash": "4ea65d71",
+        "encoded": "terraform%20init",
+        "prevChunkIds": []
+      },
+      "149": {
+        "chunkId": "db4e44",
+        "hash": "28a779c4",
+        "encoded": "#%20Validate",
+        "prevChunkIds": []
+      },
+      "150": {
+        "chunkId": "db4e44",
+        "hash": "4d1137e9",
+        "encoded": "terraform%20validate",
+        "prevChunkIds": []
+      },
+      "152": {
+        "chunkId": "db4e44",
+        "hash": "8555fd9b",
+        "encoded": "#%20Plan",
+        "prevChunkIds": []
+      },
+      "153": {
+        "chunkId": "db4e44",
+        "hash": "7fd0b714",
+        "encoded": "terraform%20plan%20%5C",
+        "prevChunkIds": []
+      },
+      "154": {
+        "chunkId": "db4e44",
+        "hash": "cfc843a3",
+        "encoded": "-var%20cluster_name=meracommerce-dev%20%5C",
+        "prevChunkIds": []
+      },
+      "155": {
+        "chunkId": "db4e44",
+        "hash": "5f3ce4d9",
+        "encoded": "-var%20namespace=customer-ns%20%5C",
+        "prevChunkIds": []
+      },
+      "156": {
+        "chunkId": "db4e44",
+        "hash": "5ef734eb",
+        "encoded": "-var%20service_account=customer-sa%20%5C",
+        "prevChunkIds": []
+      },
+      "157": {
+        "chunkId": "db4e44",
+        "hash": "da883313",
+        "encoded": "-var-file=meracommerce-dev.tfvars",
+        "prevChunkIds": []
+      },
+      "159": {
+        "chunkId": "db4e44",
+        "hash": "9f24244a",
+        "encoded": "#%20Apply%20(this%20will%20create%20namespaces,%20service%20accounts,%20IRSA%20roles,%20and%20install%20ALB%20controller)",
+        "prevChunkIds": []
+      },
+      "160": {
+        "chunkId": "db4e44",
+        "hash": "45e1cb02",
+        "encoded": "terraform%20apply%20%5C",
+        "prevChunkIds": []
+      },
+      "161": {
+        "chunkId": "db4e44",
+        "hash": "7bce1bc8",
+        "encoded": "-var%20cluster_name=meracommerce-dev%20%5C",
+        "prevChunkIds": []
+      },
+      "162": {
+        "chunkId": "db4e44",
+        "hash": "ab42cb73",
+        "encoded": "-var%20namespace=customer-ns%20%5C",
+        "prevChunkIds": []
+      },
+      "163": {
+        "chunkId": "db4e44",
+        "hash": "5318bc21",
+        "encoded": "-var%20service_account=customer-sa%20%5C",
+        "prevChunkIds": []
+      },
+      "164": {
+        "chunkId": "db4e44",
+        "hash": "adf122c5",
+        "encoded": "-var-file=meracommerce-dev.tfvars%20%5C",
+        "prevChunkIds": []
+      },
+      "165": {
+        "chunkId": "db4e44",
+        "hash": "6a69ec29",
+        "encoded": "-auto-approve",
+        "prevChunkIds": []
+      },
+      "166": {
+        "chunkId": "db4e44",
+        "hash": "849c0d36",
+        "encoded": "%60%60%60",
+        "prevChunkIds": []
+      },
+      "168": {
+        "chunkId": "db4e44",
+        "hash": "241d3806",
+        "encoded": "####%20Step%201.4:%20Verify%20Infrastructure",
+        "prevChunkIds": []
+      },
+      "170": {
+        "chunkId": "db4e44",
+        "hash": "1a1bc718",
+        "encoded": "%60%60%60bash",
+        "prevChunkIds": []
+      },
+      "171": {
+        "chunkId": "db4e44",
+        "hash": "23866cc9",
+        "encoded": "#%20Update%20kubeconfig",
+        "prevChunkIds": []
+      },
+      "172": {
+        "chunkId": "db4e44",
+        "hash": "2079e92a",
+        "encoded": "aws%20eks%20update-kubeconfig%20--name%20meracommerce-dev%20--region%20us-east-1",
+        "prevChunkIds": []
+      },
+      "174": {
+        "chunkId": "db4e44",
+        "hash": "55d17939",
+        "encoded": "#%20Check%20namespaces",
+        "prevChunkIds": []
+      },
+      "175": {
+        "chunkId": "db4e44",
+        "hash": "2da5b282",
+        "encoded": "kubectl%20get%20namespaces%20%7C%20grep%20-E%20%22order%7Ccatalog%7Ccustomer%22",
+        "prevChunkIds": []
+      },
+      "177": {
+        "chunkId": "db4e44",
+        "hash": "63cd187a",
+        "encoded": "#%20Expected%20output:",
+        "prevChunkIds": []
+      },
+      "178": {
+        "chunkId": "db4e44",
+        "hash": "4615c7eb",
+        "encoded": "order-service-ns%20%20%20%20%20%20Active%20%20%201m",
+        "prevChunkIds": []
+      },
+      "179": {
+        "chunkId": "db4e44",
+        "hash": "9f9990d8",
+        "encoded": "catalog-service-ns%20%20%20%20Active%20%20%201m",
+        "prevChunkIds": []
+      },
+      "180": {
+        "chunkId": "db4e44",
+        "hash": "71493564",
+        "encoded": "customer-service-ns%20%20%20Active%20%20%201m",
+        "prevChunkIds": []
+      },
+      "182": {
+        "chunkId": "db4e44",
+        "hash": "1943d03f",
+        "encoded": "#%20Check%20service%20accounts",
+        "prevChunkIds": []
+      },
+      "183": {
+        "chunkId": "db4e44",
+        "hash": "68c79999",
+        "encoded": "kubectl%20get%20sa%20-n%20order-service-ns",
+        "prevChunkIds": []
+      },
+      "184": {
+        "chunkId": "db4e44",
+        "hash": "c7e099ca",
+        "encoded": "kubectl%20get%20sa%20-n%20catalog-service-ns",
+        "prevChunkIds": []
+      },
+      "185": {
+        "chunkId": "db4e44",
+        "hash": "0d814a94",
+        "encoded": "kubectl%20get%20sa%20-n%20customer-service-ns",
+        "prevChunkIds": []
+      },
+      "187": {
+        "chunkId": "db4e44",
+        "hash": "8fa33715",
+        "encoded": "#%20Check%20AWS%20Load%20Balancer%20Controller",
+        "prevChunkIds": []
+      },
+      "188": {
+        "chunkId": "db4e44",
+        "hash": "c4ebb902",
+        "encoded": "kubectl%20get%20deployment%20-n%20kube-system%20aws-load-balancer-controller",
+        "prevChunkIds": []
+      },
+      "190": {
+        "chunkId": "db4e44",
+        "hash": "b850df85",
+        "encoded": "#%20Get%20Terraform%20outputs",
+        "prevChunkIds": []
+      },
+      "191": {
+        "chunkId": "db4e44",
+        "hash": "031e7504",
+        "encoded": "terraform%20output",
+        "prevChunkIds": []
+      },
+      "192": {
+        "chunkId": "db4e44",
+        "hash": "82aa2141",
+        "encoded": "%60%60%60",
+        "prevChunkIds": []
+      },
+      "194": {
+        "chunkId": "db4e44",
+        "hash": "8b011fb6",
+        "encoded": "**Expected%20Terraform%20Outputs:**",
+        "prevChunkIds": []
+      },
+      "195": {
+        "chunkId": "db4e44",
+        "hash": "81ea67b1",
+        "encoded": "%60%60%60",
+        "prevChunkIds": []
+      },
+      "196": {
+        "chunkId": "db4e44",
+        "hash": "e90a7628",
+        "encoded": "cluster_name%20=%20%22meracommerce-dev%22",
+        "prevChunkIds": []
+      },
+      "197": {
+        "chunkId": "db4e44",
+        "hash": "f8548683",
+        "encoded": "order_service_namespace%20=%20%22order-service-ns%22",
+        "prevChunkIds": []
+      },
+      "198": {
+        "chunkId": "db4e44",
+        "hash": "dee54cf1",
+        "encoded": "order_service_sa%20=%20%22order-sa%22",
+        "prevChunkIds": []
+      },
+      "199": {
+        "chunkId": "db4e44",
+        "hash": "647838a2",
+        "encoded": "order_service_irsa_role_arn%20=%20%22arn:aws:iam::ACCOUNT:role/meracommerce-dev-order-service-irsa%22",
+        "prevChunkIds": []
+      },
+      "200": {
+        "chunkId": "db4e44",
+        "hash": "7fd5dc40",
+        "encoded": "catalog_service_namespace%20=%20%22catalog-service-ns%22",
+        "prevChunkIds": []
+      },
+      "201": {
+        "chunkId": "db4e44",
+        "hash": "f892ab2e",
+        "encoded": "...",
+        "prevChunkIds": []
+      },
+      "202": {
+        "chunkId": "db4e44",
+        "hash": "f28d6184",
+        "encoded": "configure_kubectl%20=%20%22aws%20eks%20update-kubeconfig%20--region%20us-east-1%20--name%20meracommerce-dev%22",
+        "prevChunkIds": []
+      },
+      "203": {
+        "chunkId": "db4e44",
+        "hash": "230d5995",
+        "encoded": "%60%60%60",
+        "prevChunkIds": []
+      },
+      "205": {
+        "chunkId": "db4e44",
+        "hash": "e880a2da",
+        "encoded": "---",
+        "prevChunkIds": []
+      },
+      "207": {
+        "chunkId": "db4e44",
+        "hash": "41da8d11",
+        "encoded": "###%20Phase%202:%20Application%20Deployment",
+        "prevChunkIds": []
+      },
+      "209": {
+        "chunkId": "db4e44",
+        "hash": "cad6d628",
+        "encoded": "####%20Step%202.1:%20Prepare%20Microservice%20Code",
+        "prevChunkIds": []
+      },
+      "211": {
+        "chunkId": "db4e44",
+        "hash": "fd1d911f",
+        "encoded": "For%20each%20microservice%20repository:",
+        "prevChunkIds": []
+      },
+      "213": {
+        "chunkId": "db4e44",
+        "hash": "600bdddf",
+        "encoded": "1.%20**Add%20Dockerfile**%20(example%20for%20Spring%20Boot):",
+        "prevChunkIds": []
+      },
+      "215": {
+        "chunkId": "db4e44",
+        "hash": "ad2401ec",
+        "encoded": "%60%60%60dockerfile",
+        "prevChunkIds": []
+      },
+      "216": {
+        "chunkId": "db4e44",
+        "hash": "6e346372",
+        "encoded": "FROM%20eclipse-temurin:17-jre-alpine",
+        "prevChunkIds": []
+      },
+      "217": {
+        "chunkId": "db4e44",
+        "hash": "5b340ccf",
+        "encoded": "WORKDIR%20/app",
+        "prevChunkIds": []
+      },
+      "218": {
+        "chunkId": "db4e44",
+        "hash": "d0b68ae2",
+        "encoded": "COPY%20target/*.jar%20app.jar",
+        "prevChunkIds": []
+      },
+      "219": {
+        "chunkId": "db4e44",
+        "hash": "f023128a",
+        "encoded": "EXPOSE%208080",
+        "prevChunkIds": []
+      },
+      "220": {
+        "chunkId": "db4e44",
+        "hash": "af5d7a66",
+        "encoded": "ENTRYPOINT%20%5B%22java%22,%20%22-jar%22,%20%22app.jar%22%5D",
+        "prevChunkIds": []
+      },
+      "221": {
+        "chunkId": "db4e44",
+        "hash": "a4646b1d",
+        "encoded": "%60%60%60",
+        "prevChunkIds": []
+      },
+      "223": {
+        "chunkId": "db4e44",
+        "hash": "4f08cb4d",
+        "encoded": "2.%20**Update%20%60application.yml%60**%20to%20use%20environment%20variables:",
+        "prevChunkIds": []
+      },
+      "225": {
+        "chunkId": "db4e44",
+        "hash": "5ce3444f",
+        "encoded": "%60%60%60yaml",
+        "prevChunkIds": []
+      },
+      "226": {
+        "chunkId": "db4e44",
+        "hash": "849ac49e",
+        "encoded": "spring:",
+        "prevChunkIds": []
+      },
+      "227": {
+        "chunkId": "db4e44",
+        "hash": "175cc8a4",
+        "encoded": "application:",
+        "prevChunkIds": []
+      },
+      "228": {
+        "chunkId": "db4e44",
+        "hash": "674493d1",
+        "encoded": "name:%20$%7BAPPLICATION_NAME:order-service%7D",
+        "prevChunkIds": []
+      },
+      "229": {
+        "chunkId": "db4e44",
+        "hash": "830dae38",
+        "encoded": "profiles:",
+        "prevChunkIds": []
+      },
+      "230": {
+        "chunkId": "db4e44",
+        "hash": "e5f4ebe4",
+        "encoded": "active:%20$%7BSPRING_PROFILES_ACTIVE:prod%7D",
+        "prevChunkIds": []
+      },
+      "232": {
+        "chunkId": "db4e44",
+        "hash": "ccd7baec",
+        "encoded": "server:",
+        "prevChunkIds": []
+      },
+      "233": {
+        "chunkId": "db4e44",
+        "hash": "dfd503c5",
+        "encoded": "port:%20$%7BSERVER_PORT:8080%7D",
+        "prevChunkIds": []
+      },
+      "235": {
+        "chunkId": "db4e44",
+        "hash": "525f13bf",
+        "encoded": "management:",
+        "prevChunkIds": []
+      },
+      "236": {
+        "chunkId": "db4e44",
+        "hash": "a73b1fb0",
+        "encoded": "endpoints:",
+        "prevChunkIds": []
+      },
+      "237": {
+        "chunkId": "db4e44",
+        "hash": "6b9ea29e",
+        "encoded": "web:",
+        "prevChunkIds": []
+      },
+      "238": {
+        "chunkId": "db4e44",
+        "hash": "c8a07b0e",
+        "encoded": "exposure:",
+        "prevChunkIds": []
+      },
+      "239": {
+        "chunkId": "db4e44",
+        "hash": "76b50c7b",
+        "encoded": "include:%20health,info,metrics",
+        "prevChunkIds": []
+      },
+      "240": {
+        "chunkId": "db4e44",
+        "hash": "686940ef",
+        "encoded": "endpoint:",
+        "prevChunkIds": []
+      },
+      "241": {
+        "chunkId": "db4e44",
+        "hash": "b66d0dad",
+        "encoded": "health:",
+        "prevChunkIds": []
+      },
+      "242": {
+        "chunkId": "db4e44",
+        "hash": "0e27a5c8",
+        "encoded": "probes:",
+        "prevChunkIds": []
+      },
+      "243": {
+        "chunkId": "db4e44",
+        "hash": "7eb21fa0",
+        "encoded": "enabled:%20true",
+        "prevChunkIds": []
+      },
+      "244": {
+        "chunkId": "db4e44",
+        "hash": "e1dee982",
+        "encoded": "show-details:%20always",
+        "prevChunkIds": []
+      },
+      "245": {
+        "chunkId": "db4e44",
+        "hash": "a2a3c0f4",
+        "encoded": "%60%60%60",
+        "prevChunkIds": []
+      },
+      "247": {
+        "chunkId": "db4e44",
+        "hash": "6ed748b3",
+        "encoded": "3.%20**Copy%20Kubernetes%20manifests**%20to%20your%20service%20repo:",
+        "prevChunkIds": []
+      },
+      "249": {
+        "chunkId": "db4e44",
+        "hash": "d5562f48",
+        "encoded": "%60%60%60bash",
+        "prevChunkIds": []
+      },
+      "250": {
+        "chunkId": "db4e44",
+        "hash": "aa92b1f9",
+        "encoded": "#%20In%20order-service%20repository",
+        "prevChunkIds": []
+      },
+      "251": {
+        "chunkId": "db4e44",
+        "hash": "91b464c3",
+        "encoded": "mkdir%20-p%20k8s",
+        "prevChunkIds": []
+      },
+      "252": {
+        "chunkId": "db4e44",
+        "hash": "c7bca1f0",
+        "encoded": "cp%20/path/to/infraeks/k8s-manifests/order-service/deployment.yaml%20k8s/",
+        "prevChunkIds": []
+      },
+      "254": {
+        "chunkId": "db4e44",
+        "hash": "e4394388",
+        "encoded": "#%20In%20catalog-service%20repository",
+        "prevChunkIds": []
+      },
+      "255": {
+        "chunkId": "db4e44",
+        "hash": "5babc23b",
+        "encoded": "mkdir%20-p%20k8s",
+        "prevChunkIds": []
+      },
+      "256": {
+        "chunkId": "db4e44",
+        "hash": "20e672d8",
+        "encoded": "cp%20/path/to/infraeks/k8s-manifests/catalog-service/deployment.yaml%20k8s/",
+        "prevChunkIds": []
+      },
+      "257": {
+        "chunkId": "db4e44",
+        "hash": "98388c3c",
+        "encoded": "%60%60%60",
+        "prevChunkIds": []
+      },
+      "259": {
+        "chunkId": "db4e44",
+        "hash": "77a72656",
+        "encoded": "4.%20**Copy%20Jenkinsfile**:",
+        "prevChunkIds": []
+      },
+      "261": {
+        "chunkId": "db4e44",
+        "hash": "ad5b85b8",
+        "encoded": "%60%60%60bash",
+        "prevChunkIds": []
+      },
+      "262": {
+        "chunkId": "db4e44",
+        "hash": "99704907",
+        "encoded": "#%20In%20order-service%20repository",
+        "prevChunkIds": []
+      },
+      "263": {
+        "chunkId": "db4e44",
+        "hash": "5000127b",
+        "encoded": "cp%20/path/to/infraeks/jenkins-pipelines/Jenkinsfile-order-service%20Jenkinsfile",
+        "prevChunkIds": []
+      },
+      "265": {
+        "chunkId": "db4e44",
+        "hash": "705585c7",
+        "encoded": "#%20In%20catalog-service%20repository",
+        "prevChunkIds": []
+      },
+      "266": {
+        "chunkId": "db4e44",
+        "hash": "d724eba1",
+        "encoded": "cp%20/path/to/infraeks/jenkins-pipelines/Jenkinsfile-catalog-service%20Jenkinsfile",
+        "prevChunkIds": []
+      },
+      "267": {
+        "chunkId": "db4e44",
+        "hash": "93d36adb",
+        "encoded": "%60%60%60",
+        "prevChunkIds": []
+      },
+      "269": {
+        "chunkId": "db4e44",
+        "hash": "e24461ba",
+        "encoded": "####%20Step%202.2:%20Setup%20Jenkins%20Jobs",
+        "prevChunkIds": []
+      },
+      "271": {
+        "chunkId": "db4e44",
+        "hash": "2c385212",
+        "encoded": "For%20each%20microservice:",
+        "prevChunkIds": []
+      },
+      "273": {
+        "chunkId": "db4e44",
+        "hash": "774ed47c",
+        "encoded": "1.%20**Create%20new%20Pipeline%20job**%20in%20Jenkins",
+        "prevChunkIds": []
+      },
+      "274": {
+        "chunkId": "db4e44",
+        "hash": "e8df036d",
+        "encoded": "-%20Name:%20%60order-service-deployment%60",
+        "prevChunkIds": []
+      },
+      "275": {
+        "chunkId": "db4e44",
+        "hash": "e08addd3",
+        "encoded": "-%20Type:%20Pipeline",
+        "prevChunkIds": []
+      },
+      "276": {
+        "chunkId": "db4e44",
+        "hash": "9ef36a43",
+        "encoded": "-%20Pipeline%20definition:%20Pipeline%20script%20from%20SCM",
+        "prevChunkIds": []
+      },
+      "277": {
+        "chunkId": "db4e44",
+        "hash": "569c0ee1",
+        "encoded": "-%20SCM:%20Git",
+        "prevChunkIds": []
+      },
+      "278": {
+        "chunkId": "db4e44",
+        "hash": "35c0363d",
+        "encoded": "-%20Repository%20URL:%20Your%20service%20Git%20URL",
+        "prevChunkIds": []
+      },
+      "279": {
+        "chunkId": "db4e44",
+        "hash": "63e302a1",
+        "encoded": "-%20Script%20Path:%20%60Jenkinsfile%60",
+        "prevChunkIds": []
+      },
+      "281": {
+        "chunkId": "db4e44",
+        "hash": "bee1199f",
+        "encoded": "2.%20**Configure%20AWS%20Account%20ID**",
+        "prevChunkIds": []
+      },
+      "282": {
+        "chunkId": "db4e44",
+        "hash": "f4bdcc3d",
+        "encoded": "-%20In%20Jenkinsfile,%20set%20%60AWS_ACCOUNT_ID%60%20environment%20variable",
+        "prevChunkIds": []
+      },
+      "283": {
+        "chunkId": "db4e44",
+        "hash": "5cd884c0",
+        "encoded": "-%20Or%20configure%20in%20Jenkins%20global%20properties",
+        "prevChunkIds": []
+      },
+      "285": {
+        "chunkId": "db4e44",
+        "hash": "fce36a07",
+        "encoded": "####%20Step%202.3:%20Deploy%20Order%20Service",
+        "prevChunkIds": []
+      },
+      "287": {
+        "chunkId": "db4e44",
+        "hash": "93aca0f6",
+        "encoded": "1.%20**Trigger%20Jenkins%20job**%20for%20%60order-service-deployment%60",
+        "prevChunkIds": []
+      },
+      "288": {
+        "chunkId": "db4e44",
+        "hash": "4476008b",
+        "encoded": "2.%20**Monitor%20deployment**:",
+        "prevChunkIds": []
+      },
+      "290": {
+        "chunkId": "db4e44",
+        "hash": "e506d277",
+        "encoded": "%60%60%60bash",
+        "prevChunkIds": []
+      },
+      "291": {
+        "chunkId": "db4e44",
+        "hash": "a506c23b",
+        "encoded": "#%20Watch%20deployment",
+        "prevChunkIds": []
+      },
+      "292": {
+        "chunkId": "db4e44",
+        "hash": "31a83ccf",
+        "encoded": "kubectl%20get%20pods%20-n%20order-service-ns%20-w",
+        "prevChunkIds": []
+      },
+      "294": {
+        "chunkId": "db4e44",
+        "hash": "1613885c",
+        "encoded": "#%20Check%20logs",
+        "prevChunkIds": []
+      },
+      "295": {
+        "chunkId": "db4e44",
+        "hash": "b8b13a2b",
+        "encoded": "kubectl%20logs%20-f%20deployment/order-service%20-n%20order-service-ns",
+        "prevChunkIds": []
+      },
+      "297": {
+        "chunkId": "db4e44",
+        "hash": "25650fd4",
+        "encoded": "#%20Verify%20service",
+        "prevChunkIds": []
+      },
+      "298": {
+        "chunkId": "db4e44",
+        "hash": "1eb5ca5e",
+        "encoded": "kubectl%20get%20svc%20-n%20order-service-ns",
+        "prevChunkIds": []
+      },
+      "299": {
+        "chunkId": "db4e44",
+        "hash": "cb14ac99",
+        "encoded": "%60%60%60",
+        "prevChunkIds": []
+      },
+      "301": {
+        "chunkId": "db4e44",
+        "hash": "494de5bf",
+        "encoded": "####%20Step%202.4:%20Deploy%20Catalog%20Service",
+        "prevChunkIds": []
+      },
+      "303": {
+        "chunkId": "db4e44",
+        "hash": "f4a4269a",
+        "encoded": "Repeat%20Step%202.3%20for%20catalog%20service.",
+        "prevChunkIds": []
+      },
+      "305": {
+        "chunkId": "db4e44",
+        "hash": "629e7c33",
+        "encoded": "####%20Step%202.5:%20Deploy%20Customer%20Service",
+        "prevChunkIds": []
+      },
+      "307": {
+        "chunkId": "db4e44",
+        "hash": "d382db66",
+        "encoded": "Repeat%20Step%202.3%20for%20customer%20service.",
+        "prevChunkIds": []
+      },
+      "309": {
+        "chunkId": "db4e44",
+        "hash": "f90c3f1f",
+        "encoded": "---",
+        "prevChunkIds": []
+      },
+      "311": {
+        "chunkId": "db4e44",
+        "hash": "710c7f1f",
+        "encoded": "###%20Phase%203:%20Ingress%20Configuration",
+        "prevChunkIds": []
+      },
+      "313": {
+        "chunkId": "db4e44",
+        "hash": "70365dbe",
+        "encoded": "####%20Step%203.1:%20Update%20Ingress%20with%20Your%20Domain",
+        "prevChunkIds": []
+      },
+      "315": {
+        "chunkId": "db4e44",
+        "hash": "5f6abc7a",
+        "encoded": "Edit%20%60k8s-manifests/ingress.yaml%60:",
+        "prevChunkIds": []
+      },
+      "317": {
+        "chunkId": "db4e44",
+        "hash": "0f59d931",
+        "encoded": "%60%60%60yaml",
+        "prevChunkIds": []
+      },
+      "318": {
+        "chunkId": "db4e44",
+        "hash": "b7178645",
+        "encoded": "spec:",
+        "prevChunkIds": []
+      },
+      "319": {
+        "chunkId": "db4e44",
+        "hash": "8de0b1ca",
+        "encoded": "rules:",
+        "prevChunkIds": []
+      },
+      "320": {
+        "chunkId": "db4e44",
+        "hash": "e33721c9",
+        "encoded": "-%20host:%20api.yourdomain.com%20%20#%20Replace%20with%20your%20actual%20domain",
+        "prevChunkIds": []
+      },
+      "321": {
+        "chunkId": "db4e44",
+        "hash": "1df35e71",
+        "encoded": "%60%60%60",
+        "prevChunkIds": []
+      },
+      "323": {
+        "chunkId": "db4e44",
+        "hash": "cc0a96ce",
+        "encoded": "####%20Step%203.2:%20Apply%20Ingress",
+        "prevChunkIds": []
+      },
+      "325": {
+        "chunkId": "db4e44",
+        "hash": "29fe5880",
+        "encoded": "%60%60%60bash",
+        "prevChunkIds": []
+      },
+      "326": {
+        "chunkId": "db4e44",
+        "hash": "f1e5fd37",
+        "encoded": "kubectl%20apply%20-f%20k8s-manifests/ingress.yaml",
+        "prevChunkIds": []
+      },
+      "327": {
+        "chunkId": "db4e44",
+        "hash": "7b00a5f8",
+        "encoded": "%60%60%60",
+        "prevChunkIds": []
+      },
+      "329": {
+        "chunkId": "db4e44",
+        "hash": "cc0fa4fa",
+        "encoded": "####%20Step%203.3:%20Get%20Load%20Balancer%20DNS",
+        "prevChunkIds": []
+      },
+      "331": {
+        "chunkId": "db4e44",
+        "hash": "eaa6eee4",
+        "encoded": "%60%60%60bash",
+        "prevChunkIds": []
+      },
+      "332": {
+        "chunkId": "db4e44",
+        "hash": "8469da5d",
+        "encoded": "#%20Get%20ALB%20DNS%20name",
+        "prevChunkIds": []
+      },
+      "333": {
+        "chunkId": "db4e44",
+        "hash": "f826d15e",
+        "encoded": "kubectl%20get%20ingress%20microservices-ingress%20-o%20jsonpath='%7B.status.loadBalancer.ingress%5B0%5D.hostname%7D'",
+        "prevChunkIds": []
+      },
+      "335": {
+        "chunkId": "db4e44",
+        "hash": "bef6d2fd",
+        "encoded": "#%20Output%20example:",
+        "prevChunkIds": []
+      },
+      "336": {
+        "chunkId": "db4e44",
+        "hash": "35fcd927",
+        "encoded": "k8s-default-microser-abc123-1234567890.us-east-1.elb.amazonaws.com",
+        "prevChunkIds": []
+      },
+      "337": {
+        "chunkId": "db4e44",
+        "hash": "f0811a27",
+        "encoded": "%60%60%60",
+        "prevChunkIds": []
+      },
+      "339": {
+        "chunkId": "db4e44",
+        "hash": "b26f509b",
+        "encoded": "####%20Step%203.4:%20Configure%20DNS%20(Route53)",
+        "prevChunkIds": []
+      },
+      "341": {
+        "chunkId": "db4e44",
+        "hash": "59781f0d",
+        "encoded": "1.%20Go%20to%20Route53",
+        "prevChunkIds": []
+      },
+      "342": {
+        "chunkId": "db4e44",
+        "hash": "9f64f99d",
+        "encoded": "2.%20Create%20CNAME%20record:",
+        "prevChunkIds": []
+      },
+      "343": {
+        "chunkId": "db4e44",
+        "hash": "816ab4f2",
+        "encoded": "-%20Name:%20%60api.yourdomain.com%60",
+        "prevChunkIds": []
+      },
+      "344": {
+        "chunkId": "db4e44",
+        "hash": "2e2a2700",
+        "encoded": "-%20Type:%20CNAME",
+        "prevChunkIds": []
+      },
+      "345": {
+        "chunkId": "db4e44",
+        "hash": "649e4220",
+        "encoded": "-%20Value:%20ALB%20DNS%20from%20Step%203.3",
+        "prevChunkIds": []
+      },
+      "347": {
+        "chunkId": "db4e44",
+        "hash": "6a3bf561",
+        "encoded": "####%20Step%203.5:%20Test%20Endpoints",
+        "prevChunkIds": []
+      },
+      "349": {
+        "chunkId": "db4e44",
+        "hash": "d53536c9",
+        "encoded": "%60%60%60bash",
+        "prevChunkIds": []
+      },
+      "350": {
+        "chunkId": "db4e44",
+        "hash": "8f677198",
+        "encoded": "#%20Test%20order%20service",
+        "prevChunkIds": []
+      },
+      "351": {
+        "chunkId": "db4e44",
+        "hash": "16229add",
+        "encoded": "curl%20http://api.yourdomain.com/api/orders/health",
+        "prevChunkIds": []
+      },
+      "353": {
+        "chunkId": "db4e44",
+        "hash": "ff8407ee",
+        "encoded": "#%20Test%20catalog%20service",
+        "prevChunkIds": []
+      },
+      "354": {
+        "chunkId": "db4e44",
+        "hash": "55e196c8",
+        "encoded": "curl%20http://api.yourdomain.com/api/catalog/health",
+        "prevChunkIds": []
+      },
+      "356": {
+        "chunkId": "db4e44",
+        "hash": "dbacb3d9",
+        "encoded": "#%20Test%20customer%20service",
+        "prevChunkIds": []
+      },
+      "357": {
+        "chunkId": "db4e44",
+        "hash": "1dae840c",
+        "encoded": "curl%20http://api.yourdomain.com/api/customers/health",
+        "prevChunkIds": []
+      },
+      "358": {
+        "chunkId": "db4e44",
+        "hash": "7b658b97",
+        "encoded": "%60%60%60",
+        "prevChunkIds": []
+      },
+      "360": {
+        "chunkId": "db4e44",
+        "hash": "d47a1988",
+        "encoded": "---",
+        "prevChunkIds": []
+      },
+      "362": {
+        "chunkId": "db4e44",
+        "hash": "8ba2fd91",
+        "encoded": "###%20Phase%204:%20Verification%20&%20Testing",
+        "prevChunkIds": []
+      },
+      "364": {
+        "chunkId": "db4e44",
+        "hash": "c52b6872",
+        "encoded": "####%20Step%204.1:%20Check%20All%20Resources",
+        "prevChunkIds": []
+      },
+      "366": {
+        "chunkId": "db4e44",
+        "hash": "b24d5d76",
+        "encoded": "%60%60%60bash",
+        "prevChunkIds": []
+      },
+      "367": {
+        "chunkId": "db4e44",
+        "hash": "7a21ff2c",
+        "encoded": "#%20All%20namespaces",
+        "prevChunkIds": []
+      },
+      "368": {
+        "chunkId": "db4e44",
+        "hash": "3abefb2f",
+        "encoded": "kubectl%20get%20ns%20%7C%20grep%20-E%20%22order%7Ccatalog%7Ccustomer%22",
+        "prevChunkIds": []
+      },
+      "370": {
+        "chunkId": "db4e44",
+        "hash": "8e67f9e0",
+        "encoded": "#%20All%20pods",
+        "prevChunkIds": []
+      },
+      "371": {
+        "chunkId": "db4e44",
+        "hash": "99d6c1ee",
+        "encoded": "kubectl%20get%20pods%20--all-namespaces%20%7C%20grep%20-E%20%22order%7Ccatalog%7Ccustomer%22",
+        "prevChunkIds": []
+      },
+      "373": {
+        "chunkId": "db4e44",
+        "hash": "f9fa6c7c",
+        "encoded": "#%20All%20services",
+        "prevChunkIds": []
+      },
+      "374": {
+        "chunkId": "db4e44",
+        "hash": "0b5faf7c",
+        "encoded": "kubectl%20get%20svc%20--all-namespaces%20%7C%20grep%20-E%20%22order%7Ccatalog%7Ccustomer%22",
+        "prevChunkIds": []
+      },
+      "376": {
+        "chunkId": "db4e44",
+        "hash": "873750b8",
+        "encoded": "#%20Network%20policies",
+        "prevChunkIds": []
+      },
+      "377": {
+        "chunkId": "db4e44",
+        "hash": "67fc54a3",
+        "encoded": "kubectl%20get%20networkpolicy%20-n%20order-service-ns",
+        "prevChunkIds": []
+      },
+      "378": {
+        "chunkId": "db4e44",
+        "hash": "cfe890e3",
+        "encoded": "kubectl%20get%20networkpolicy%20-n%20catalog-service-ns",
+        "prevChunkIds": []
+      },
+      "379": {
+        "chunkId": "db4e44",
+        "hash": "8ea617c7",
+        "encoded": "kubectl%20get%20networkpolicy%20-n%20customer-service-ns",
+        "prevChunkIds": []
+      },
+      "381": {
+        "chunkId": "db4e44",
+        "hash": "4e654eaa",
+        "encoded": "#%20Resource%20quotas",
+        "prevChunkIds": []
+      },
+      "382": {
+        "chunkId": "db4e44",
+        "hash": "cff2ba52",
+        "encoded": "kubectl%20get%20resourcequota%20-n%20order-service-ns",
+        "prevChunkIds": []
+      },
+      "383": {
+        "chunkId": "db4e44",
+        "hash": "65d39c7a",
+        "encoded": "%60%60%60",
+        "prevChunkIds": []
+      },
+      "385": {
+        "chunkId": "db4e44",
+        "hash": "fe1fc979",
+        "encoded": "####%20Step%204.2:%20Test%20Inter-Service%20Communication",
+        "prevChunkIds": []
+      },
+      "387": {
+        "chunkId": "db4e44",
+        "hash": "2d007c13",
+        "encoded": "%60%60%60bash",
+        "prevChunkIds": []
+      },
+      "388": {
+        "chunkId": "db4e44",
+        "hash": "8d50d0cf",
+        "encoded": "#%20From%20order-service%20pod,%20test%20catalog-service%20connectivity",
+        "prevChunkIds": []
+      },
+      "389": {
+        "chunkId": "db4e44",
+        "hash": "f617366b",
+        "encoded": "kubectl%20exec%20-n%20order-service-ns%20deployment/order-service%20--%20%5C",
+        "prevChunkIds": []
+      },
+      "390": {
+        "chunkId": "db4e44",
+        "hash": "413b9ba9",
+        "encoded": "curl%20-s%20http://catalog-service.catalog-service-ns.svc.cluster.local:8080/actuator/health",
+        "prevChunkIds": []
+      },
+      "392": {
+        "chunkId": "db4e44",
+        "hash": "a7113a63",
+        "encoded": "#%20Expected:%20%7B%22status%22:%22UP%22%7D",
+        "prevChunkIds": []
+      },
+      "393": {
+        "chunkId": "db4e44",
+        "hash": "65b86e00",
+        "encoded": "%60%60%60",
+        "prevChunkIds": []
+      },
+      "395": {
+        "chunkId": "db4e44",
+        "hash": "2236f09c",
+        "encoded": "####%20Step%204.3:%20Check%20IAM%20Roles",
+        "prevChunkIds": []
+      },
+      "397": {
+        "chunkId": "db4e44",
+        "hash": "64eb7ee6",
+        "encoded": "%60%60%60bash",
+        "prevChunkIds": []
+      },
+      "398": {
+        "chunkId": "db4e44",
+        "hash": "77596d05",
+        "encoded": "#%20Get%20service%20account%20annotations",
+        "prevChunkIds": []
+      },
+      "399": {
+        "chunkId": "db4e44",
+        "hash": "922e0c93",
+        "encoded": "kubectl%20get%20sa%20order-sa%20-n%20order-service-ns%20-o%20yaml%20%7C%20grep%20eks.amazonaws.com/role-arn",
+        "prevChunkIds": []
+      },
+      "401": {
+        "chunkId": "db4e44",
+        "hash": "268dc2c9",
+        "encoded": "#%20Verify%20IAM%20role%20exists",
+        "prevChunkIds": []
+      },
+      "402": {
+        "chunkId": "db4e44",
+        "hash": "b8cd5415",
+        "encoded": "aws%20iam%20get-role%20--role-name%20meracommerce-dev-order-service-irsa",
+        "prevChunkIds": []
+      },
+      "403": {
+        "chunkId": "db4e44",
+        "hash": "74c153a4",
+        "encoded": "%60%60%60",
+        "prevChunkIds": []
+      },
+      "405": {
+        "chunkId": "db4e44",
+        "hash": "4de9a7d7",
+        "encoded": "---",
+        "prevChunkIds": []
+      },
+      "407": {
+        "chunkId": "db4e44",
+        "hash": "14e8d817",
+        "encoded": "##%20Network%20Policy%20Details",
+        "prevChunkIds": []
+      },
+      "409": {
+        "chunkId": "db4e44",
+        "hash": "cfd601fc",
+        "encoded": "###%20Order%20Service%20Network%20Policy",
+        "prevChunkIds": []
+      },
+      "411": {
+        "chunkId": "db4e44",
+        "hash": "1ccc40bb",
+        "encoded": "**Ingress:**",
+        "prevChunkIds": []
+      },
+      "412": {
+        "chunkId": "db4e44",
+        "hash": "d9f9d9bd",
+        "encoded": "-%20%E2%9C%85%20From%20%60ingress-nginx%60%20namespace%20on%20port%208080",
+        "prevChunkIds": []
+      },
+      "414": {
+        "chunkId": "db4e44",
+        "hash": "91930b9f",
+        "encoded": "**Egress:**",
+        "prevChunkIds": []
+      },
+      "415": {
+        "chunkId": "db4e44",
+        "hash": "af8bb690",
+        "encoded": "-%20%E2%9C%85%20To%20%60kube-system%60%20namespace%20(DNS)%20on%20UDP%20port%2053",
+        "prevChunkIds": []
+      },
+      "416": {
+        "chunkId": "db4e44",
+        "hash": "7f46427a",
+        "encoded": "-%20%E2%9C%85%20To%20%60catalog-service-ns%60%20on%20TCP%20port%208080",
+        "prevChunkIds": []
+      },
+      "417": {
+        "chunkId": "db4e44",
+        "hash": "26f695df",
+        "encoded": "-%20%E2%9C%85%20To%20%60customer-service-ns%60%20on%20TCP%20port%208080",
+        "prevChunkIds": []
+      },
+      "418": {
+        "chunkId": "db4e44",
+        "hash": "ae1aed46",
+        "encoded": "-%20%E2%9C%85%20To%20internet%20(AWS%20services)%20on%20TCP%20port%20443",
+        "prevChunkIds": []
+      },
+      "420": {
+        "chunkId": "db4e44",
+        "hash": "166eb549",
+        "encoded": "###%20Catalog%20Service%20Network%20Policy",
+        "prevChunkIds": []
+      },
+      "422": {
+        "chunkId": "db4e44",
+        "hash": "d7a59d3a",
+        "encoded": "**Ingress:**",
+        "prevChunkIds": []
+      },
+      "423": {
+        "chunkId": "db4e44",
+        "hash": "95f9782e",
+        "encoded": "-%20%E2%9C%85%20From%20%60ingress-nginx%60%20namespace%20on%20port%208080",
+        "prevChunkIds": []
+      },
+      "424": {
+        "chunkId": "db4e44",
+        "hash": "fd619a1c",
+        "encoded": "-%20%E2%9C%85%20From%20%60order-service-ns%60%20on%20TCP%20port%208080",
+        "prevChunkIds": []
+      },
+      "426": {
+        "chunkId": "db4e44",
+        "hash": "399770e4",
+        "encoded": "**Egress:**",
+        "prevChunkIds": []
+      },
+      "427": {
+        "chunkId": "db4e44",
+        "hash": "494ec8d1",
+        "encoded": "-%20%E2%9C%85%20To%20%60kube-system%60%20namespace%20(DNS)",
+        "prevChunkIds": []
+      },
+      "428": {
+        "chunkId": "db4e44",
+        "hash": "55cd01c0",
+        "encoded": "-%20%E2%9C%85%20To%20internet%20(AWS%20services)",
+        "prevChunkIds": []
+      },
+      "430": {
+        "chunkId": "db4e44",
+        "hash": "d198dfed",
+        "encoded": "###%20Customer%20Service%20Network%20Policy",
+        "prevChunkIds": []
+      },
+      "432": {
+        "chunkId": "db4e44",
+        "hash": "52981ce7",
+        "encoded": "Similar%20to%20Catalog%20Service.",
+        "prevChunkIds": []
+      },
+      "434": {
+        "chunkId": "db4e44",
+        "hash": "94e12372",
+        "encoded": "---",
+        "prevChunkIds": []
+      },
+      "436": {
+        "chunkId": "db4e44",
+        "hash": "d0e071c4",
+        "encoded": "##%20Troubleshooting",
+        "prevChunkIds": []
+      },
+      "438": {
+        "chunkId": "db4e44",
+        "hash": "559b86ca",
+        "encoded": "###%20Issue:%20Pods%20not%20starting",
+        "prevChunkIds": []
+      },
+      "440": {
+        "chunkId": "db4e44",
+        "hash": "e1aa99ba",
+        "encoded": "%60%60%60bash",
+        "prevChunkIds": []
+      },
+      "441": {
+        "chunkId": "db4e44",
+        "hash": "ec194008",
+        "encoded": "#%20Check%20pod%20events",
+        "prevChunkIds": []
+      },
+      "442": {
+        "chunkId": "db4e44",
+        "hash": "1aa3e738",
+        "encoded": "kubectl%20describe%20pod%20%3Cpod-name%3E%20-n%20%3Cnamespace%3E",
+        "prevChunkIds": []
+      },
+      "444": {
+        "chunkId": "db4e44",
+        "hash": "0d5e9601",
+        "encoded": "#%20Check%20logs",
+        "prevChunkIds": []
+      },
+      "445": {
+        "chunkId": "db4e44",
+        "hash": "189a190e",
+        "encoded": "kubectl%20logs%20%3Cpod-name%3E%20-n%20%3Cnamespace%3E",
+        "prevChunkIds": []
+      },
+      "447": {
+        "chunkId": "db4e44",
+        "hash": "3ec216c4",
+        "encoded": "#%20Common%20issues:",
+        "prevChunkIds": []
+      },
+      "448": {
+        "chunkId": "db4e44",
+        "hash": "0afde5af",
+        "encoded": "#%201.%20Image%20pull%20errors%20-%20check%20ECR%20permissions",
+        "prevChunkIds": []
+      },
+      "449": {
+        "chunkId": "db4e44",
+        "hash": "d8c0beb2",
+        "encoded": "#%202.%20ConfigMap/Secret%20not%20found%20-%20create%20them%20first",
+        "prevChunkIds": []
+      },
+      "450": {
+        "chunkId": "db4e44",
+        "hash": "cfb961dc",
+        "encoded": "#%203.%20Resource%20limits%20-%20adjust%20in%20deployment.yaml",
+        "prevChunkIds": []
+      },
+      "451": {
+        "chunkId": "db4e44",
+        "hash": "6e65c57f",
+        "encoded": "%60%60%60",
+        "prevChunkIds": []
+      },
+      "453": {
+        "chunkId": "db4e44",
+        "hash": "87dcc96f",
+        "encoded": "###%20Issue:%20Service%20not%20accessible",
+        "prevChunkIds": []
+      },
+      "455": {
+        "chunkId": "db4e44",
+        "hash": "423e23ab",
+        "encoded": "%60%60%60bash",
+        "prevChunkIds": []
+      },
+      "456": {
+        "chunkId": "db4e44",
+        "hash": "a5aff472",
+        "encoded": "#%20Check%20service%20endpoints",
+        "prevChunkIds": []
+      },
+      "457": {
+        "chunkId": "db4e44",
+        "hash": "41be8047",
+        "encoded": "kubectl%20get%20endpoints%20%3Cservice-name%3E%20-n%20%3Cnamespace%3E",
+        "prevChunkIds": []
+      },
+      "459": {
+        "chunkId": "db4e44",
+        "hash": "95099618",
+        "encoded": "#%20Test%20from%20another%20pod",
+        "prevChunkIds": []
+      },
+      "460": {
+        "chunkId": "db4e44",
+        "hash": "6b73b59a",
+        "encoded": "kubectl%20run%20curl-test%20--image=curlimages/curl%20--rm%20-it%20--%20%5C",
+        "prevChunkIds": []
+      },
+      "461": {
+        "chunkId": "db4e44",
+        "hash": "85baad34",
+        "encoded": "curl%20http://%3Cservice-name%3E.%3Cnamespace%3E.svc.cluster.local:8080/actuator/health",
+        "prevChunkIds": []
+      },
+      "462": {
+        "chunkId": "db4e44",
+        "hash": "c0aedd76",
+        "encoded": "%60%60%60",
+        "prevChunkIds": []
+      },
+      "464": {
+        "chunkId": "db4e44",
+        "hash": "7701eeaa",
+        "encoded": "###%20Issue:%20ALB%20not%20created",
+        "prevChunkIds": []
+      },
+      "466": {
+        "chunkId": "db4e44",
+        "hash": "af04f59f",
+        "encoded": "%60%60%60bash",
+        "prevChunkIds": []
+      },
+      "467": {
+        "chunkId": "db4e44",
+        "hash": "240c624d",
+        "encoded": "#%20Check%20ALB%20controller%20logs",
+        "prevChunkIds": []
+      },
+      "468": {
+        "chunkId": "db4e44",
+        "hash": "1c94132c",
+        "encoded": "kubectl%20logs%20-n%20kube-system%20deployment/aws-load-balancer-controller",
+        "prevChunkIds": []
+      },
+      "470": {
+        "chunkId": "db4e44",
+        "hash": "b67d1501",
+        "encoded": "#%20Check%20ingress%20status",
+        "prevChunkIds": []
+      },
+      "471": {
+        "chunkId": "db4e44",
+        "hash": "e780aa3f",
+        "encoded": "kubectl%20describe%20ingress%20microservices-ingress",
+        "prevChunkIds": []
+      },
+      "473": {
+        "chunkId": "db4e44",
+        "hash": "1ba0d4e5",
+        "encoded": "#%20Common%20issues:",
+        "prevChunkIds": []
+      },
+      "474": {
+        "chunkId": "db4e44",
+        "hash": "1345014b",
+        "encoded": "#%201.%20IAM%20permissions%20-%20check%20controller%20IAM%20role",
+        "prevChunkIds": []
+      },
+      "475": {
+        "chunkId": "db4e44",
+        "hash": "c2bc26f9",
+        "encoded": "#%202.%20Subnet%20tags%20-%20ensure%20subnets%20have%20proper%20tags",
+        "prevChunkIds": []
+      },
+      "476": {
+        "chunkId": "db4e44",
+        "hash": "bb09b192",
+        "encoded": "#%203.%20Security%20groups%20-%20check%20VPC%20security%20groups",
+        "prevChunkIds": []
+      },
+      "477": {
+        "chunkId": "db4e44",
+        "hash": "c59a9f00",
+        "encoded": "%60%60%60",
+        "prevChunkIds": []
+      },
+      "479": {
+        "chunkId": "db4e44",
+        "hash": "51389923",
+        "encoded": "###%20Issue:%20Network%20policy%20blocking%20traffic",
+        "prevChunkIds": []
+      },
+      "481": {
+        "chunkId": "db4e44",
+        "hash": "78fed0e2",
+        "encoded": "%60%60%60bash",
+        "prevChunkIds": []
+      },
+      "482": {
+        "chunkId": "db4e44",
+        "hash": "74ffe939",
+        "encoded": "#%20Temporarily%20disable%20network%20policy",
+        "prevChunkIds": []
+      },
+      "483": {
+        "chunkId": "db4e44",
+        "hash": "2210f97a",
+        "encoded": "kubectl%20delete%20networkpolicy%20%3Cpolicy-name%3E%20-n%20%3Cnamespace%3E",
+        "prevChunkIds": []
+      },
+      "485": {
+        "chunkId": "db4e44",
+        "hash": "be2175ad",
+        "encoded": "#%20Test%20connectivity",
+        "prevChunkIds": []
+      },
+      "486": {
+        "chunkId": "db4e44",
+        "hash": "3547fc0c",
+        "encoded": "#%20Then%20re-enable%20and%20adjust%20rules",
+        "prevChunkIds": []
+      },
+      "487": {
+        "chunkId": "db4e44",
+        "hash": "b2f7b5fb",
+        "encoded": "%60%60%60",
+        "prevChunkIds": []
+      },
+      "489": {
+        "chunkId": "db4e44",
+        "hash": "64498567",
+        "encoded": "---",
+        "prevChunkIds": []
+      },
+      "491": {
+        "chunkId": "db4e44",
+        "hash": "eec65125",
+        "encoded": "##%20Next%20Steps%20&%20Enhancements",
+        "prevChunkIds": []
+      },
+      "493": {
+        "chunkId": "db4e44",
+        "hash": "f09e8e45",
+        "encoded": "###%20Security",
+        "prevChunkIds": []
+      },
+      "494": {
+        "chunkId": "db4e44",
+        "hash": "e480f692",
+        "encoded": "-%20%5B%20%5D%20Enable%20SSL/TLS%20(add%20ACM%20certificate%20to%20ingress)",
+        "prevChunkIds": []
+      },
+      "495": {
+        "chunkId": "db4e44",
+        "hash": "4379087d",
+        "encoded": "-%20%5B%20%5D%20Implement%20External%20Secrets%20Operator%20for%20secret%20management",
+        "prevChunkIds": []
+      },
+      "496": {
+        "chunkId": "db4e44",
+        "hash": "7dc85190",
+        "encoded": "-%20%5B%20%5D%20Add%20WAF%20rules%20to%20ALB",
+        "prevChunkIds": []
+      },
+      "497": {
+        "chunkId": "db4e44",
+        "hash": "5ebde686",
+        "encoded": "-%20%5B%20%5D%20Enable%20Pod%20Security%20Standards",
+        "prevChunkIds": []
+      },
+      "499": {
+        "chunkId": "db4e44",
+        "hash": "eb24f852",
+        "encoded": "###%20Monitoring",
+        "prevChunkIds": []
+      },
+      "500": {
+        "chunkId": "db4e44",
+        "hash": "1c28fc84",
+        "encoded": "-%20%5B%20%5D%20Install%20Prometheus%20&%20Grafana",
+        "prevChunkIds": []
+      },
+      "501": {
+        "chunkId": "db4e44",
+        "hash": "f84f152f",
+        "encoded": "-%20%5B%20%5D%20Configure%20CloudWatch%20Container%20Insights",
+        "prevChunkIds": []
+      },
+      "502": {
+        "chunkId": "db4e44",
+        "hash": "4fa3b0f0",
+        "encoded": "-%20%5B%20%5D%20Setup%20alerts%20for%20pod%20failures",
+        "prevChunkIds": []
+      },
+      "503": {
+        "chunkId": "db4e44",
+        "hash": "23d10652",
+        "encoded": "-%20%5B%20%5D%20Add%20custom%20metrics",
+        "prevChunkIds": []
+      },
+      "505": {
+        "chunkId": "db4e44",
+        "hash": "1e4dbde4",
+        "encoded": "###%20Scaling",
+        "prevChunkIds": []
+      },
+      "506": {
+        "chunkId": "db4e44",
+        "hash": "ca958618",
+        "encoded": "-%20%5B%20%5D%20Configure%20Horizontal%20Pod%20Autoscaler%20(HPA)",
+        "prevChunkIds": []
+      },
+      "507": {
+        "chunkId": "db4e44",
+        "hash": "1360dd39",
+        "encoded": "-%20%5B%20%5D%20Install%20Cluster%20Autoscaler",
+        "prevChunkIds": []
+      },
+      "508": {
+        "chunkId": "db4e44",
+        "hash": "abe4982c",
+        "encoded": "-%20%5B%20%5D%20Add%20PodDisruptionBudgets",
+        "prevChunkIds": []
+      },
+      "510": {
+        "chunkId": "db4e44",
+        "hash": "0646f9d4",
+        "encoded": "###%20CI/CD",
+        "prevChunkIds": []
+      },
+      "511": {
+        "chunkId": "db4e44",
+        "hash": "8fcb7e8a",
+        "encoded": "-%20%5B%20%5D%20Implement%20blue-green%20deployments",
+        "prevChunkIds": []
+      },
+      "512": {
+        "chunkId": "db4e44",
+        "hash": "fc84ad7f",
+        "encoded": "-%20%5B%20%5D%20Add%20canary%20deployments",
+        "prevChunkIds": []
+      },
+      "513": {
+        "chunkId": "db4e44",
+        "hash": "3a319491",
+        "encoded": "-%20%5B%20%5D%20Setup%20ArgoCD%20for%20GitOps",
+        "prevChunkIds": []
+      },
+      "514": {
+        "chunkId": "db4e44",
+        "hash": "e7e5d205",
+        "encoded": "-%20%5B%20%5D%20Add%20automated%20rollback",
+        "prevChunkIds": []
+      },
+      "516": {
+        "chunkId": "db4e44",
+        "hash": "800d44ce",
+        "encoded": "---",
+        "prevChunkIds": []
+      },
+      "518": {
+        "chunkId": "db4e44",
+        "hash": "a202bb6e",
+        "encoded": "##%20Summary",
+        "prevChunkIds": []
+      },
+      "520": {
+        "chunkId": "db4e44",
+        "hash": "9e2cd78e",
+        "encoded": "%E2%9C%85%20**What%20You%20Now%20Have:**",
+        "prevChunkIds": []
+      },
+      "522": {
+        "chunkId": "db4e44",
+        "hash": "af3084f1",
+        "encoded": "1.%20**Single%20EKS%20Cluster**%20running%203%20isolated%20microservices",
+        "prevChunkIds": []
+      },
+      "523": {
+        "chunkId": "db4e44",
+        "hash": "6f4ff8b0",
+        "encoded": "2.%20**Separate%20Namespaces**%20for%20each%20service%20with%20network%20isolation",
+        "prevChunkIds": []
+      },
+      "524": {
+        "chunkId": "db4e44",
+        "hash": "d8d4c1eb",
+        "encoded": "3.%20**IRSA**%20for%20secure%20AWS%20resource%20access%20per%20service",
+        "prevChunkIds": []
+      },
+      "525": {
+        "chunkId": "db4e44",
+        "hash": "dad84e8f",
+        "encoded": "4.%20**AWS%20Load%20Balancer**%20for%20external%20traffic%20routing",
+        "prevChunkIds": []
+      },
+      "526": {
+        "chunkId": "db4e44",
+        "hash": "fb955356",
+        "encoded": "5.%20**Network%20Policies**%20controlling%20inter-service%20communication",
+        "prevChunkIds": []
+      },
+      "527": {
+        "chunkId": "db4e44",
+        "hash": "80983b56",
+        "encoded": "6.%20**Resource%20Quotas**%20preventing%20resource%20exhaustion",
+        "prevChunkIds": []
+      },
+      "528": {
+        "chunkId": "db4e44",
+        "hash": "bcd59987",
+        "encoded": "7.%20**CI/CD%20Pipelines**%20for%20independent%20deployments",
+        "prevChunkIds": []
+      },
+      "530": {
+        "chunkId": "db4e44",
+        "hash": "6bf48784",
+        "encoded": "%E2%9C%85%20**Each%20Microservice%20Has:**",
+        "prevChunkIds": []
+      },
+      "531": {
+        "chunkId": "db4e44",
+        "hash": "ef60bf41",
+        "encoded": "-%20Dedicated%20namespace",
+        "prevChunkIds": []
+      },
+      "532": {
+        "chunkId": "db4e44",
+        "hash": "61694190",
+        "encoded": "-%20Service%20account%20with%20IAM%20role",
+        "prevChunkIds": []
+      },
+      "533": {
+        "chunkId": "db4e44",
+        "hash": "fc771174",
+        "encoded": "-%20Network%20policies%20(ingress/egress)",
+        "prevChunkIds": []
+      },
+      "534": {
+        "chunkId": "db4e44",
+        "hash": "4f20705e",
+        "encoded": "-%20Resource%20limits",
+        "prevChunkIds": []
+      },
+      "535": {
+        "chunkId": "db4e44",
+        "hash": "55577c01",
+        "encoded": "-%20Health%20checks",
+        "prevChunkIds": []
+      },
+      "536": {
+        "chunkId": "db4e44",
+        "hash": "38d30684",
+        "encoded": "-%20Independent%20deployment%20pipeline",
+        "prevChunkIds": []
+      },
+      "538": {
+        "chunkId": "db4e44",
+        "hash": "aa125b65",
+        "encoded": "**You%20can%20now%20deploy%20each%20microservice%20independently%20from%20its%20own%20CI/CD%20pipeline!**",
+        "prevChunkIds": []
+      },
+      "540": {
+        "chunkId": "db4e44",
+        "hash": "6b5520f2",
+        "encoded": "---",
+        "prevChunkIds": []
+      },
+      "542": {
+        "chunkId": "db4e44",
+        "hash": "b0c3d041",
+        "encoded": "**Questions%20or%20Issues?**%20Refer%20to:",
+        "prevChunkIds": []
+      },
+      "543": {
+        "chunkId": "db4e44",
+        "hash": "c9ccc638",
+        "encoded": "-%20%5BMICROSERVICES_DEPLOYMENT_ARCHITECTURE.md%5D(MICROSERVICES_DEPLOYMENT_ARCHITECTURE.md)",
+        "prevChunkIds": []
+      },
+      "544": {
+        "chunkId": "db4e44",
+        "hash": "e0f52000",
+        "encoded": "-%20%5BEKS_NODE_GROUP_TROUBLESHOOTING.md%5D(EKS_NODE_GROUP_TROUBLESHOOTING.md)",
+        "prevChunkIds": []
+      }
+    }
+  }
+}

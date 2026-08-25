@@ -1,0 +1,108 @@
+# Shared Ingress for all microservices
+# This creates an Application Load Balancer (ALB) that routes traffic to all services
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: microservices-ingress
+  namespace: default
+  annotations:
+    # AWS Load Balancer Controller annotations
+    kubernetes.io/ingress.class: alb
+    alb.ingress.kubernetes.io/scheme: internet-facing
+    alb.ingress.kubernetes.io/target-type: ip
+    alb.ingress.kubernetes.io/listen-ports: '[{"HTTP": 80}, {"HTTPS": 443}]'
+    # SSL redirect (uncomment when you have SSL certificate)
+    # alb.ingress.kubernetes.io/ssl-redirect: '443'
+    # alb.ingress.kubernetes.io/certificate-arn: arn:aws:acm:us-east-1:ACCOUNT_ID:certificate/CERT_ID
+    
+    # Health check configuration
+    alb.ingress.kubernetes.io/healthcheck-path: /actuator/health
+    alb.ingress.kubernetes.io/healthcheck-interval-seconds: '15'
+    alb.ingress.kubernetes.io/healthcheck-timeout-seconds: '5'
+    alb.ingress.kubernetes.io/healthy-threshold-count: '2'
+    alb.ingress.kubernetes.io/unhealthy-threshold-count: '2'
+    
+    # Load balancer attributes
+    alb.ingress.kubernetes.io/load-balancer-attributes: |
+      idle_timeout.timeout_seconds=60,
+      deletion_protection.enabled=false,
+      http2.enabled=true
+    
+    # Tags for the ALB
+    alb.ingress.kubernetes.io/tags: |
+      Environment=dev,
+      Project=meracommerce,
+      ManagedBy=kubernetes
+spec:
+  rules:
+  - host: api.meracommerce.example.com  # Replace with your domain
+    http:
+      paths:
+      # Order Service routes
+      - path: /api/orders
+        pathType: Prefix
+        backend:
+          service:
+            name: order-service
+            port:
+              number: 8080
+      
+      # Catalog Service routes
+      - path: /api/catalog
+        pathType: Prefix
+        backend:
+          service:
+            name: catalog-service
+            port:
+              number: 8080
+      
+      - path: /api/products
+        pathType: Prefix
+        backend:
+          service:
+            name: catalog-service
+            port:
+              number: 8080
+      
+      # Customer Service routes
+      - path: /api/customers
+        pathType: Prefix
+        backend:
+          service:
+            name: customer-service
+            port:
+              number: 8080
+      
+      - path: /api/users
+        pathType: Prefix
+        backend:
+          service:
+            name: customer-service
+            port:
+              number: 8080
+
+---
+# Alternative: Separate Ingress per service (if you prefer isolation)
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: order-service-ingress
+  namespace: order-service-ns
+  annotations:
+    kubernetes.io/ingress.class: alb
+    alb.ingress.kubernetes.io/scheme: internet-facing
+    alb.ingress.kubernetes.io/target-type: ip
+    alb.ingress.kubernetes.io/healthcheck-path: /actuator/health
+    alb.ingress.kubernetes.io/tags: Service=order-service
+spec:
+  rules:
+  - host: orders.meracommerce.example.com
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: order-service
+            port:
+              number: 8080

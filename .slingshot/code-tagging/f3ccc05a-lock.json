@@ -1,0 +1,1746 @@
+{
+  "terraform\\modules\\microservices\\main.tf": {
+    "filename": "main.tf",
+    "path": "terraform\\modules\\microservices\\main.tf",
+    "version": "1.2",
+    "contextFile": "f3ccc05a-context.json",
+    "chunks": {
+      "d6f005": {
+        "user": "Prabal Singh",
+        "model": "gpt-4.1",
+        "timestamp": 1787652202,
+        "platform": "VisualStudioCode",
+        "product": "AIPP",
+        "productVersion": "3.2.0",
+        "source": "agent",
+        "type": "agentWriteTool",
+        "extraContext": {
+          "promptMessage": "4b1a040d"
+        },
+        "hash": "27fd938d",
+        "messageId": "system_dfb916b0-a06b-11f1-ac80-9da5cdc456f8",
+        "codeBlockId": null,
+        "isActive": true,
+        "hoverData": "\n### Slingshot Generated Code\n\n- **user**: Prabal Singh\n- **model**: gpt-4.1\n- **timestamp**: 8/25/2026, 3:33:22 PM\n- **source**: agent\n- **type**: agentWriteTool\n"
+      }
+    },
+    "lines": {
+      "0": {
+        "chunkId": "d6f005",
+        "hash": "1121933a",
+        "encoded": "#%20Microservices%20Module%20-%20Creates%20namespace,%20service%20account,%20and%20RBAC%20for%20each%20microservice",
+        "prevChunkIds": []
+      },
+      "2": {
+        "chunkId": "d6f005",
+        "hash": "ddf92ef6",
+        "encoded": "resource%20%22kubernetes_namespace%22%20%22microservice%22%20%7B",
+        "prevChunkIds": []
+      },
+      "3": {
+        "chunkId": "d6f005",
+        "hash": "42ec1a3e",
+        "encoded": "metadata%20%7B",
+        "prevChunkIds": []
+      },
+      "4": {
+        "chunkId": "d6f005",
+        "hash": "12975f50",
+        "encoded": "name%20=%20var.namespace",
+        "prevChunkIds": []
+      },
+      "5": {
+        "chunkId": "d6f005",
+        "hash": "98320db7",
+        "encoded": "labels%20=%20%7B",
+        "prevChunkIds": []
+      },
+      "6": {
+        "chunkId": "d6f005",
+        "hash": "9b695577",
+        "encoded": "name%20%20%20%20%20%20%20%20=%20var.namespace",
+        "prevChunkIds": []
+      },
+      "7": {
+        "chunkId": "d6f005",
+        "hash": "a5986c09",
+        "encoded": "environment%20=%20var.environment",
+        "prevChunkIds": []
+      },
+      "8": {
+        "chunkId": "d6f005",
+        "hash": "13641d77",
+        "encoded": "managed-by%20%20=%20%22terraform%22",
+        "prevChunkIds": []
+      },
+      "9": {
+        "chunkId": "d6f005",
+        "hash": "c1b631c9",
+        "encoded": "service%20%20%20%20%20=%20var.service_name",
+        "prevChunkIds": []
+      },
+      "10": {
+        "chunkId": "d6f005",
+        "hash": "c2f1edd6",
+        "encoded": "%7D",
+        "prevChunkIds": []
+      },
+      "11": {
+        "chunkId": "d6f005",
+        "hash": "e9a9f96c",
+        "encoded": "%7D",
+        "prevChunkIds": []
+      },
+      "12": {
+        "chunkId": "d6f005",
+        "hash": "6a3f2143",
+        "encoded": "%7D",
+        "prevChunkIds": []
+      },
+      "14": {
+        "chunkId": "d6f005",
+        "hash": "b437ca65",
+        "encoded": "#%20Service%20Account%20with%20IRSA%20annotation",
+        "prevChunkIds": []
+      },
+      "15": {
+        "chunkId": "d6f005",
+        "hash": "ab0c3672",
+        "encoded": "resource%20%22kubernetes_service_account%22%20%22microservice%22%20%7B",
+        "prevChunkIds": []
+      },
+      "16": {
+        "chunkId": "d6f005",
+        "hash": "8c7000b8",
+        "encoded": "metadata%20%7B",
+        "prevChunkIds": []
+      },
+      "17": {
+        "chunkId": "d6f005",
+        "hash": "4ae95d3b",
+        "encoded": "name%20%20%20%20%20%20=%20var.service_account_name",
+        "prevChunkIds": []
+      },
+      "18": {
+        "chunkId": "d6f005",
+        "hash": "c88ce1e5",
+        "encoded": "namespace%20=%20kubernetes_namespace.microservice.metadata%5B0%5D.name",
+        "prevChunkIds": []
+      },
+      "19": {
+        "chunkId": "d6f005",
+        "hash": "d669ae9f",
+        "encoded": "annotations%20=%20%7B",
+        "prevChunkIds": []
+      },
+      "20": {
+        "chunkId": "d6f005",
+        "hash": "fd2d1101",
+        "encoded": "%22eks.amazonaws.com/role-arn%22%20=%20aws_iam_role.microservice_irsa.arn",
+        "prevChunkIds": []
+      },
+      "21": {
+        "chunkId": "d6f005",
+        "hash": "4b5cc20d",
+        "encoded": "%7D",
+        "prevChunkIds": []
+      },
+      "22": {
+        "chunkId": "d6f005",
+        "hash": "39dfae34",
+        "encoded": "labels%20=%20%7B",
+        "prevChunkIds": []
+      },
+      "23": {
+        "chunkId": "d6f005",
+        "hash": "dd17429d",
+        "encoded": "%22app.kubernetes.io/name%22%20%20%20%20%20%20%20=%20var.service_name",
+        "prevChunkIds": []
+      },
+      "24": {
+        "chunkId": "d6f005",
+        "hash": "4c2f79a7",
+        "encoded": "%22app.kubernetes.io/managed-by%22%20=%20%22terraform%22",
+        "prevChunkIds": []
+      },
+      "25": {
+        "chunkId": "d6f005",
+        "hash": "840004ae",
+        "encoded": "%7D",
+        "prevChunkIds": []
+      },
+      "26": {
+        "chunkId": "d6f005",
+        "hash": "e256b81a",
+        "encoded": "%7D",
+        "prevChunkIds": []
+      },
+      "27": {
+        "chunkId": "d6f005",
+        "hash": "a7947416",
+        "encoded": "%7D",
+        "prevChunkIds": []
+      },
+      "29": {
+        "chunkId": "d6f005",
+        "hash": "354099d5",
+        "encoded": "#%20IAM%20Role%20for%20IRSA%20(IAM%20Roles%20for%20Service%20Accounts)",
+        "prevChunkIds": []
+      },
+      "30": {
+        "chunkId": "d6f005",
+        "hash": "8c675c5c",
+        "encoded": "data%20%22aws_caller_identity%22%20%22current%22%20%7B%7D",
+        "prevChunkIds": []
+      },
+      "32": {
+        "chunkId": "d6f005",
+        "hash": "02fa0d87",
+        "encoded": "data%20%22aws_iam_policy_document%22%20%22microservice_assume_role%22%20%7B",
+        "prevChunkIds": []
+      },
+      "33": {
+        "chunkId": "d6f005",
+        "hash": "e793e7ae",
+        "encoded": "statement%20%7B",
+        "prevChunkIds": []
+      },
+      "34": {
+        "chunkId": "d6f005",
+        "hash": "462df1e6",
+        "encoded": "effect%20=%20%22Allow%22",
+        "prevChunkIds": []
+      },
+      "35": {
+        "chunkId": "d6f005",
+        "hash": "64578adf",
+        "encoded": "principals%20%7B",
+        "prevChunkIds": []
+      },
+      "36": {
+        "chunkId": "d6f005",
+        "hash": "30731ef1",
+        "encoded": "type%20%20%20%20%20%20%20%20=%20%22Federated%22",
+        "prevChunkIds": []
+      },
+      "37": {
+        "chunkId": "d6f005",
+        "hash": "76cd7941",
+        "encoded": "identifiers%20=%20%5B%22arn:aws:iam::$%7Bdata.aws_caller_identity.current.account_id%7D:oidc-provider/$%7Bvar.oidc_provider%7D%22%5D",
+        "prevChunkIds": []
+      },
+      "38": {
+        "chunkId": "d6f005",
+        "hash": "1b754c76",
+        "encoded": "%7D",
+        "prevChunkIds": []
+      },
+      "39": {
+        "chunkId": "d6f005",
+        "hash": "a2639939",
+        "encoded": "actions%20=%20%5B%22sts:AssumeRoleWithWebIdentity%22%5D",
+        "prevChunkIds": []
+      },
+      "40": {
+        "chunkId": "d6f005",
+        "hash": "7bcdbe0b",
+        "encoded": "condition%20%7B",
+        "prevChunkIds": []
+      },
+      "41": {
+        "chunkId": "d6f005",
+        "hash": "d6441fda",
+        "encoded": "test%20%20%20%20%20=%20%22StringEquals%22",
+        "prevChunkIds": []
+      },
+      "42": {
+        "chunkId": "d6f005",
+        "hash": "73f908f4",
+        "encoded": "variable%20=%20%22$%7Bvar.oidc_provider%7D:sub%22",
+        "prevChunkIds": []
+      },
+      "43": {
+        "chunkId": "d6f005",
+        "hash": "1f7a4521",
+        "encoded": "values%20%20%20=%20%5B%22system:serviceaccount:$%7Bvar.namespace%7D:$%7Bvar.service_account_name%7D%22%5D",
+        "prevChunkIds": []
+      },
+      "44": {
+        "chunkId": "d6f005",
+        "hash": "5046e502",
+        "encoded": "%7D",
+        "prevChunkIds": []
+      },
+      "45": {
+        "chunkId": "d6f005",
+        "hash": "b519283c",
+        "encoded": "condition%20%7B",
+        "prevChunkIds": []
+      },
+      "46": {
+        "chunkId": "d6f005",
+        "hash": "d018c062",
+        "encoded": "test%20%20%20%20%20=%20%22StringEquals%22",
+        "prevChunkIds": []
+      },
+      "47": {
+        "chunkId": "d6f005",
+        "hash": "87dedbac",
+        "encoded": "variable%20=%20%22$%7Bvar.oidc_provider%7D:aud%22",
+        "prevChunkIds": []
+      },
+      "48": {
+        "chunkId": "d6f005",
+        "hash": "594c3426",
+        "encoded": "values%20%20%20=%20%5B%22sts.amazonaws.com%22%5D",
+        "prevChunkIds": []
+      },
+      "49": {
+        "chunkId": "d6f005",
+        "hash": "0b4804f7",
+        "encoded": "%7D",
+        "prevChunkIds": []
+      },
+      "50": {
+        "chunkId": "d6f005",
+        "hash": "6a5bdc1a",
+        "encoded": "%7D",
+        "prevChunkIds": []
+      },
+      "51": {
+        "chunkId": "d6f005",
+        "hash": "38b604dc",
+        "encoded": "%7D",
+        "prevChunkIds": []
+      },
+      "53": {
+        "chunkId": "d6f005",
+        "hash": "60d114ef",
+        "encoded": "resource%20%22aws_iam_role%22%20%22microservice_irsa%22%20%7B",
+        "prevChunkIds": []
+      },
+      "54": {
+        "chunkId": "d6f005",
+        "hash": "ecb15884",
+        "encoded": "name%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20=%20%22$%7Bvar.cluster_name%7D-$%7Bvar.service_name%7D-irsa%22",
+        "prevChunkIds": []
+      },
+      "55": {
+        "chunkId": "d6f005",
+        "hash": "95952b0d",
+        "encoded": "assume_role_policy%20=%20data.aws_iam_policy_document.microservice_assume_role.json",
+        "prevChunkIds": []
+      },
+      "57": {
+        "chunkId": "d6f005",
+        "hash": "ec6d65a7",
+        "encoded": "tags%20=%20%7B",
+        "prevChunkIds": []
+      },
+      "58": {
+        "chunkId": "d6f005",
+        "hash": "6a662071",
+        "encoded": "Name%20%20%20%20%20%20%20%20=%20%22$%7Bvar.cluster_name%7D-$%7Bvar.service_name%7D-irsa%22",
+        "prevChunkIds": []
+      },
+      "59": {
+        "chunkId": "d6f005",
+        "hash": "0b80c6b7",
+        "encoded": "Service%20%20%20%20%20=%20var.service_name",
+        "prevChunkIds": []
+      },
+      "60": {
+        "chunkId": "d6f005",
+        "hash": "e4f4413c",
+        "encoded": "Environment%20=%20var.environment",
+        "prevChunkIds": []
+      },
+      "61": {
+        "chunkId": "d6f005",
+        "hash": "e10037f6",
+        "encoded": "ManagedBy%20%20%20=%20%22Terraform%22",
+        "prevChunkIds": []
+      },
+      "62": {
+        "chunkId": "d6f005",
+        "hash": "646a8e84",
+        "encoded": "%7D",
+        "prevChunkIds": []
+      },
+      "63": {
+        "chunkId": "d6f005",
+        "hash": "78db855a",
+        "encoded": "%7D",
+        "prevChunkIds": []
+      },
+      "65": {
+        "chunkId": "d6f005",
+        "hash": "81d794ca",
+        "encoded": "#%20IAM%20Policy%20for%20microservice%20-%20customizable%20per%20service",
+        "prevChunkIds": []
+      },
+      "66": {
+        "chunkId": "d6f005",
+        "hash": "53ea0ef2",
+        "encoded": "data%20%22aws_iam_policy_document%22%20%22microservice_policy%22%20%7B",
+        "prevChunkIds": []
+      },
+      "67": {
+        "chunkId": "d6f005",
+        "hash": "b08e1985",
+        "encoded": "#%20S3%20Access%20(if%20needed)",
+        "prevChunkIds": []
+      },
+      "68": {
+        "chunkId": "d6f005",
+        "hash": "1bc6052d",
+        "encoded": "dynamic%20%22statement%22%20%7B",
+        "prevChunkIds": []
+      },
+      "69": {
+        "chunkId": "d6f005",
+        "hash": "8407aa1c",
+        "encoded": "for_each%20=%20var.s3_buckets",
+        "prevChunkIds": []
+      },
+      "70": {
+        "chunkId": "d6f005",
+        "hash": "1d6a8fc9",
+        "encoded": "content%20%7B",
+        "prevChunkIds": []
+      },
+      "71": {
+        "chunkId": "d6f005",
+        "hash": "5a2e03cc",
+        "encoded": "effect%20=%20%22Allow%22",
+        "prevChunkIds": []
+      },
+      "72": {
+        "chunkId": "d6f005",
+        "hash": "892d2161",
+        "encoded": "actions%20=%20%5B",
+        "prevChunkIds": []
+      },
+      "73": {
+        "chunkId": "d6f005",
+        "hash": "729d6e4a",
+        "encoded": "%22s3:GetObject%22,",
+        "prevChunkIds": []
+      },
+      "74": {
+        "chunkId": "d6f005",
+        "hash": "d3ea134d",
+        "encoded": "%22s3:PutObject%22,",
+        "prevChunkIds": []
+      },
+      "75": {
+        "chunkId": "d6f005",
+        "hash": "5634b8fd",
+        "encoded": "%22s3:ListBucket%22",
+        "prevChunkIds": []
+      },
+      "76": {
+        "chunkId": "d6f005",
+        "hash": "bd323320",
+        "encoded": "%5D",
+        "prevChunkIds": []
+      },
+      "77": {
+        "chunkId": "d6f005",
+        "hash": "02a8ce31",
+        "encoded": "resources%20=%20%5B",
+        "prevChunkIds": []
+      },
+      "78": {
+        "chunkId": "d6f005",
+        "hash": "0298612d",
+        "encoded": "%22arn:aws:s3:::$%7Bstatement.value%7D%22,",
+        "prevChunkIds": []
+      },
+      "79": {
+        "chunkId": "d6f005",
+        "hash": "2471b00d",
+        "encoded": "%22arn:aws:s3:::$%7Bstatement.value%7D/*%22",
+        "prevChunkIds": []
+      },
+      "80": {
+        "chunkId": "d6f005",
+        "hash": "69c148ec",
+        "encoded": "%5D",
+        "prevChunkIds": []
+      },
+      "81": {
+        "chunkId": "d6f005",
+        "hash": "d6938858",
+        "encoded": "%7D",
+        "prevChunkIds": []
+      },
+      "82": {
+        "chunkId": "d6f005",
+        "hash": "74977a35",
+        "encoded": "%7D",
+        "prevChunkIds": []
+      },
+      "84": {
+        "chunkId": "d6f005",
+        "hash": "11fa414b",
+        "encoded": "#%20DynamoDB%20Access%20(if%20needed)",
+        "prevChunkIds": []
+      },
+      "85": {
+        "chunkId": "d6f005",
+        "hash": "5a75d01d",
+        "encoded": "dynamic%20%22statement%22%20%7B",
+        "prevChunkIds": []
+      },
+      "86": {
+        "chunkId": "d6f005",
+        "hash": "4de23f0b",
+        "encoded": "for_each%20=%20var.dynamodb_tables",
+        "prevChunkIds": []
+      },
+      "87": {
+        "chunkId": "d6f005",
+        "hash": "e023fe96",
+        "encoded": "content%20%7B",
+        "prevChunkIds": []
+      },
+      "88": {
+        "chunkId": "d6f005",
+        "hash": "bf3faeb9",
+        "encoded": "effect%20=%20%22Allow%22",
+        "prevChunkIds": []
+      },
+      "89": {
+        "chunkId": "d6f005",
+        "hash": "a78aa1d6",
+        "encoded": "actions%20=%20%5B",
+        "prevChunkIds": []
+      },
+      "90": {
+        "chunkId": "d6f005",
+        "hash": "85ab8c0b",
+        "encoded": "%22dynamodb:GetItem%22,",
+        "prevChunkIds": []
+      },
+      "91": {
+        "chunkId": "d6f005",
+        "hash": "32ec6723",
+        "encoded": "%22dynamodb:PutItem%22,",
+        "prevChunkIds": []
+      },
+      "92": {
+        "chunkId": "d6f005",
+        "hash": "6512cab4",
+        "encoded": "%22dynamodb:UpdateItem%22,",
+        "prevChunkIds": []
+      },
+      "93": {
+        "chunkId": "d6f005",
+        "hash": "1d58c318",
+        "encoded": "%22dynamodb:DeleteItem%22,",
+        "prevChunkIds": []
+      },
+      "94": {
+        "chunkId": "d6f005",
+        "hash": "74522250",
+        "encoded": "%22dynamodb:Query%22,",
+        "prevChunkIds": []
+      },
+      "95": {
+        "chunkId": "d6f005",
+        "hash": "6dac8c6c",
+        "encoded": "%22dynamodb:Scan%22",
+        "prevChunkIds": []
+      },
+      "96": {
+        "chunkId": "d6f005",
+        "hash": "68e1cdcb",
+        "encoded": "%5D",
+        "prevChunkIds": []
+      },
+      "97": {
+        "chunkId": "d6f005",
+        "hash": "8a5d1c35",
+        "encoded": "resources%20=%20%5B",
+        "prevChunkIds": []
+      },
+      "98": {
+        "chunkId": "d6f005",
+        "hash": "e82e17bf",
+        "encoded": "%22arn:aws:dynamodb:$%7Bvar.aws_region%7D:$%7Bdata.aws_caller_identity.current.account_id%7D:table/$%7Bstatement.value%7D%22",
+        "prevChunkIds": []
+      },
+      "99": {
+        "chunkId": "d6f005",
+        "hash": "f428575a",
+        "encoded": "%5D",
+        "prevChunkIds": []
+      },
+      "100": {
+        "chunkId": "d6f005",
+        "hash": "020d2fe1",
+        "encoded": "%7D",
+        "prevChunkIds": []
+      },
+      "101": {
+        "chunkId": "d6f005",
+        "hash": "6bf91891",
+        "encoded": "%7D",
+        "prevChunkIds": []
+      },
+      "103": {
+        "chunkId": "d6f005",
+        "hash": "a50c1e72",
+        "encoded": "#%20SQS%20Access%20(if%20needed)",
+        "prevChunkIds": []
+      },
+      "104": {
+        "chunkId": "d6f005",
+        "hash": "b119a48b",
+        "encoded": "dynamic%20%22statement%22%20%7B",
+        "prevChunkIds": []
+      },
+      "105": {
+        "chunkId": "d6f005",
+        "hash": "877cb816",
+        "encoded": "for_each%20=%20var.sqs_queues",
+        "prevChunkIds": []
+      },
+      "106": {
+        "chunkId": "d6f005",
+        "hash": "5112b9eb",
+        "encoded": "content%20%7B",
+        "prevChunkIds": []
+      },
+      "107": {
+        "chunkId": "d6f005",
+        "hash": "3c70b0c5",
+        "encoded": "effect%20=%20%22Allow%22",
+        "prevChunkIds": []
+      },
+      "108": {
+        "chunkId": "d6f005",
+        "hash": "88fa0bae",
+        "encoded": "actions%20=%20%5B",
+        "prevChunkIds": []
+      },
+      "109": {
+        "chunkId": "d6f005",
+        "hash": "70856d0a",
+        "encoded": "%22sqs:SendMessage%22,",
+        "prevChunkIds": []
+      },
+      "110": {
+        "chunkId": "d6f005",
+        "hash": "25740ba6",
+        "encoded": "%22sqs:ReceiveMessage%22,",
+        "prevChunkIds": []
+      },
+      "111": {
+        "chunkId": "d6f005",
+        "hash": "a0c79218",
+        "encoded": "%22sqs:DeleteMessage%22,",
+        "prevChunkIds": []
+      },
+      "112": {
+        "chunkId": "d6f005",
+        "hash": "7ab62980",
+        "encoded": "%22sqs:GetQueueAttributes%22",
+        "prevChunkIds": []
+      },
+      "113": {
+        "chunkId": "d6f005",
+        "hash": "54e8fb1e",
+        "encoded": "%5D",
+        "prevChunkIds": []
+      },
+      "114": {
+        "chunkId": "d6f005",
+        "hash": "07774670",
+        "encoded": "resources%20=%20%5B",
+        "prevChunkIds": []
+      },
+      "115": {
+        "chunkId": "d6f005",
+        "hash": "190fbc08",
+        "encoded": "%22arn:aws:sqs:$%7Bvar.aws_region%7D:$%7Bdata.aws_caller_identity.current.account_id%7D:$%7Bstatement.value%7D%22",
+        "prevChunkIds": []
+      },
+      "116": {
+        "chunkId": "d6f005",
+        "hash": "2b89f431",
+        "encoded": "%5D",
+        "prevChunkIds": []
+      },
+      "117": {
+        "chunkId": "d6f005",
+        "hash": "056477bc",
+        "encoded": "%7D",
+        "prevChunkIds": []
+      },
+      "118": {
+        "chunkId": "d6f005",
+        "hash": "715028b0",
+        "encoded": "%7D",
+        "prevChunkIds": []
+      },
+      "120": {
+        "chunkId": "d6f005",
+        "hash": "06aa86be",
+        "encoded": "#%20Secrets%20Manager%20Access%20(if%20needed)",
+        "prevChunkIds": []
+      },
+      "121": {
+        "chunkId": "d6f005",
+        "hash": "50e2681a",
+        "encoded": "dynamic%20%22statement%22%20%7B",
+        "prevChunkIds": []
+      },
+      "122": {
+        "chunkId": "d6f005",
+        "hash": "b64d0b06",
+        "encoded": "for_each%20=%20var.secrets_manager_arns",
+        "prevChunkIds": []
+      },
+      "123": {
+        "chunkId": "d6f005",
+        "hash": "d99c0118",
+        "encoded": "content%20%7B",
+        "prevChunkIds": []
+      },
+      "124": {
+        "chunkId": "d6f005",
+        "hash": "718be486",
+        "encoded": "effect%20=%20%22Allow%22",
+        "prevChunkIds": []
+      },
+      "125": {
+        "chunkId": "d6f005",
+        "hash": "4987abe1",
+        "encoded": "actions%20=%20%5B",
+        "prevChunkIds": []
+      },
+      "126": {
+        "chunkId": "d6f005",
+        "hash": "49267b88",
+        "encoded": "%22secretsmanager:GetSecretValue%22,",
+        "prevChunkIds": []
+      },
+      "127": {
+        "chunkId": "d6f005",
+        "hash": "050ce986",
+        "encoded": "%22secretsmanager:DescribeSecret%22",
+        "prevChunkIds": []
+      },
+      "128": {
+        "chunkId": "d6f005",
+        "hash": "d880ae00",
+        "encoded": "%5D",
+        "prevChunkIds": []
+      },
+      "129": {
+        "chunkId": "d6f005",
+        "hash": "02425cab",
+        "encoded": "resources%20=%20%5Bstatement.value%5D",
+        "prevChunkIds": []
+      },
+      "130": {
+        "chunkId": "d6f005",
+        "hash": "14fa0baa",
+        "encoded": "%7D",
+        "prevChunkIds": []
+      },
+      "131": {
+        "chunkId": "d6f005",
+        "hash": "c1055582",
+        "encoded": "%7D",
+        "prevChunkIds": []
+      },
+      "133": {
+        "chunkId": "d6f005",
+        "hash": "c6ccf34e",
+        "encoded": "#%20CloudWatch%20Logs",
+        "prevChunkIds": []
+      },
+      "134": {
+        "chunkId": "d6f005",
+        "hash": "5db5360e",
+        "encoded": "statement%20%7B",
+        "prevChunkIds": []
+      },
+      "135": {
+        "chunkId": "d6f005",
+        "hash": "874503ce",
+        "encoded": "effect%20=%20%22Allow%22",
+        "prevChunkIds": []
+      },
+      "136": {
+        "chunkId": "d6f005",
+        "hash": "4b79dbbc",
+        "encoded": "actions%20=%20%5B",
+        "prevChunkIds": []
+      },
+      "137": {
+        "chunkId": "d6f005",
+        "hash": "d57c82a8",
+        "encoded": "%22logs:CreateLogGroup%22,",
+        "prevChunkIds": []
+      },
+      "138": {
+        "chunkId": "d6f005",
+        "hash": "e99a80a7",
+        "encoded": "%22logs:CreateLogStream%22,",
+        "prevChunkIds": []
+      },
+      "139": {
+        "chunkId": "d6f005",
+        "hash": "2014baeb",
+        "encoded": "%22logs:PutLogEvents%22,",
+        "prevChunkIds": []
+      },
+      "140": {
+        "chunkId": "d6f005",
+        "hash": "3afb7824",
+        "encoded": "%22logs:DescribeLogStreams%22",
+        "prevChunkIds": []
+      },
+      "141": {
+        "chunkId": "d6f005",
+        "hash": "8d350798",
+        "encoded": "%5D",
+        "prevChunkIds": []
+      },
+      "142": {
+        "chunkId": "d6f005",
+        "hash": "96e6e8aa",
+        "encoded": "resources%20=%20%5B%22arn:aws:logs:$%7Bvar.aws_region%7D:$%7Bdata.aws_caller_identity.current.account_id%7D:log-group:/aws/eks/$%7Bvar.cluster_name%7D/$%7Bvar.service_name%7D:*%22%5D",
+        "prevChunkIds": []
+      },
+      "143": {
+        "chunkId": "d6f005",
+        "hash": "52c5d6be",
+        "encoded": "%7D",
+        "prevChunkIds": []
+      },
+      "144": {
+        "chunkId": "d6f005",
+        "hash": "546cf1de",
+        "encoded": "%7D",
+        "prevChunkIds": []
+      },
+      "146": {
+        "chunkId": "d6f005",
+        "hash": "633b3d77",
+        "encoded": "resource%20%22aws_iam_role_policy%22%20%22microservice_policy%22%20%7B",
+        "prevChunkIds": []
+      },
+      "147": {
+        "chunkId": "d6f005",
+        "hash": "12aaa01e",
+        "encoded": "name%20%20%20=%20%22$%7Bvar.service_name%7D-policy%22",
+        "prevChunkIds": []
+      },
+      "148": {
+        "chunkId": "d6f005",
+        "hash": "95dc089f",
+        "encoded": "role%20%20%20=%20aws_iam_role.microservice_irsa.id",
+        "prevChunkIds": []
+      },
+      "149": {
+        "chunkId": "d6f005",
+        "hash": "d90a9912",
+        "encoded": "policy%20=%20data.aws_iam_policy_document.microservice_policy.json",
+        "prevChunkIds": []
+      },
+      "150": {
+        "chunkId": "d6f005",
+        "hash": "e584d451",
+        "encoded": "%7D",
+        "prevChunkIds": []
+      },
+      "152": {
+        "chunkId": "d6f005",
+        "hash": "9725e2c2",
+        "encoded": "#%20RBAC%20-%20Role%20for%20namespace-scoped%20permissions",
+        "prevChunkIds": []
+      },
+      "153": {
+        "chunkId": "d6f005",
+        "hash": "12b72807",
+        "encoded": "resource%20%22kubernetes_role%22%20%22microservice%22%20%7B",
+        "prevChunkIds": []
+      },
+      "154": {
+        "chunkId": "d6f005",
+        "hash": "da0b50f3",
+        "encoded": "metadata%20%7B",
+        "prevChunkIds": []
+      },
+      "155": {
+        "chunkId": "d6f005",
+        "hash": "9b42b4ee",
+        "encoded": "name%20%20%20%20%20%20=%20%22$%7Bvar.service_name%7D-role%22",
+        "prevChunkIds": []
+      },
+      "156": {
+        "chunkId": "d6f005",
+        "hash": "318adbbc",
+        "encoded": "namespace%20=%20kubernetes_namespace.microservice.metadata%5B0%5D.name",
+        "prevChunkIds": []
+      },
+      "157": {
+        "chunkId": "d6f005",
+        "hash": "d8893271",
+        "encoded": "%7D",
+        "prevChunkIds": []
+      },
+      "159": {
+        "chunkId": "d6f005",
+        "hash": "0474d7d1",
+        "encoded": "rule%20%7B",
+        "prevChunkIds": []
+      },
+      "160": {
+        "chunkId": "d6f005",
+        "hash": "8b84c653",
+        "encoded": "api_groups%20=%20%5B%22%22%5D",
+        "prevChunkIds": []
+      },
+      "161": {
+        "chunkId": "d6f005",
+        "hash": "7bc3f090",
+        "encoded": "resources%20%20=%20%5B%22pods%22,%20%22services%22,%20%22configmaps%22,%20%22secrets%22%5D",
+        "prevChunkIds": []
+      },
+      "162": {
+        "chunkId": "d6f005",
+        "hash": "74ce2ca0",
+        "encoded": "verbs%20%20%20%20%20%20=%20%5B%22get%22,%20%22list%22,%20%22watch%22%5D",
+        "prevChunkIds": []
+      },
+      "163": {
+        "chunkId": "d6f005",
+        "hash": "b205e858",
+        "encoded": "%7D",
+        "prevChunkIds": []
+      },
+      "165": {
+        "chunkId": "d6f005",
+        "hash": "6337858f",
+        "encoded": "rule%20%7B",
+        "prevChunkIds": []
+      },
+      "166": {
+        "chunkId": "d6f005",
+        "hash": "e791c3df",
+        "encoded": "api_groups%20=%20%5B%22apps%22%5D",
+        "prevChunkIds": []
+      },
+      "167": {
+        "chunkId": "d6f005",
+        "hash": "6d4e59c7",
+        "encoded": "resources%20%20=%20%5B%22deployments%22,%20%22replicasets%22%5D",
+        "prevChunkIds": []
+      },
+      "168": {
+        "chunkId": "d6f005",
+        "hash": "98116011",
+        "encoded": "verbs%20%20%20%20%20%20=%20%5B%22get%22,%20%22list%22,%20%22watch%22%5D",
+        "prevChunkIds": []
+      },
+      "169": {
+        "chunkId": "d6f005",
+        "hash": "4a829956",
+        "encoded": "%7D",
+        "prevChunkIds": []
+      },
+      "171": {
+        "chunkId": "d6f005",
+        "hash": "bda8cb40",
+        "encoded": "rule%20%7B",
+        "prevChunkIds": []
+      },
+      "172": {
+        "chunkId": "d6f005",
+        "hash": "d114fe52",
+        "encoded": "api_groups%20=%20%5B%22%22%5D",
+        "prevChunkIds": []
+      },
+      "173": {
+        "chunkId": "d6f005",
+        "hash": "4e850922",
+        "encoded": "resources%20%20=%20%5B%22pods/log%22%5D",
+        "prevChunkIds": []
+      },
+      "174": {
+        "chunkId": "d6f005",
+        "hash": "e037b0bc",
+        "encoded": "verbs%20%20%20%20%20%20=%20%5B%22get%22,%20%22list%22%5D",
+        "prevChunkIds": []
+      },
+      "175": {
+        "chunkId": "d6f005",
+        "hash": "cc7af933",
+        "encoded": "%7D",
+        "prevChunkIds": []
+      },
+      "176": {
+        "chunkId": "d6f005",
+        "hash": "9a3fe29c",
+        "encoded": "%7D",
+        "prevChunkIds": []
+      },
+      "178": {
+        "chunkId": "d6f005",
+        "hash": "1e97a249",
+        "encoded": "#%20RBAC%20-%20RoleBinding",
+        "prevChunkIds": []
+      },
+      "179": {
+        "chunkId": "d6f005",
+        "hash": "97e9aeaa",
+        "encoded": "resource%20%22kubernetes_role_binding%22%20%22microservice%22%20%7B",
+        "prevChunkIds": []
+      },
+      "180": {
+        "chunkId": "d6f005",
+        "hash": "57dba164",
+        "encoded": "metadata%20%7B",
+        "prevChunkIds": []
+      },
+      "181": {
+        "chunkId": "d6f005",
+        "hash": "e628ea64",
+        "encoded": "name%20%20%20%20%20%20=%20%22$%7Bvar.service_name%7D-rolebinding%22",
+        "prevChunkIds": []
+      },
+      "182": {
+        "chunkId": "d6f005",
+        "hash": "cd59ec0d",
+        "encoded": "namespace%20=%20kubernetes_namespace.microservice.metadata%5B0%5D.name",
+        "prevChunkIds": []
+      },
+      "183": {
+        "chunkId": "d6f005",
+        "hash": "98787a28",
+        "encoded": "%7D",
+        "prevChunkIds": []
+      },
+      "185": {
+        "chunkId": "d6f005",
+        "hash": "45186239",
+        "encoded": "role_ref%20%7B",
+        "prevChunkIds": []
+      },
+      "186": {
+        "chunkId": "d6f005",
+        "hash": "4ecf91ea",
+        "encoded": "api_group%20=%20%22rbac.authorization.k8s.io%22",
+        "prevChunkIds": []
+      },
+      "187": {
+        "chunkId": "d6f005",
+        "hash": "9f335be8",
+        "encoded": "kind%20%20%20%20%20%20=%20%22Role%22",
+        "prevChunkIds": []
+      },
+      "188": {
+        "chunkId": "d6f005",
+        "hash": "0495ba62",
+        "encoded": "name%20%20%20%20%20%20=%20kubernetes_role.microservice.metadata%5B0%5D.name",
+        "prevChunkIds": []
+      },
+      "189": {
+        "chunkId": "d6f005",
+        "hash": "00c06a24",
+        "encoded": "%7D",
+        "prevChunkIds": []
+      },
+      "191": {
+        "chunkId": "d6f005",
+        "hash": "115d9d7e",
+        "encoded": "subject%20%7B",
+        "prevChunkIds": []
+      },
+      "192": {
+        "chunkId": "d6f005",
+        "hash": "37bef796",
+        "encoded": "kind%20%20%20%20%20%20=%20%22ServiceAccount%22",
+        "prevChunkIds": []
+      },
+      "193": {
+        "chunkId": "d6f005",
+        "hash": "eccc79b0",
+        "encoded": "name%20%20%20%20%20%20=%20kubernetes_service_account.microservice.metadata%5B0%5D.name",
+        "prevChunkIds": []
+      },
+      "194": {
+        "chunkId": "d6f005",
+        "hash": "8474c484",
+        "encoded": "namespace%20=%20kubernetes_namespace.microservice.metadata%5B0%5D.name",
+        "prevChunkIds": []
+      },
+      "195": {
+        "chunkId": "d6f005",
+        "hash": "ca78192d",
+        "encoded": "%7D",
+        "prevChunkIds": []
+      },
+      "196": {
+        "chunkId": "d6f005",
+        "hash": "990329ab",
+        "encoded": "%7D",
+        "prevChunkIds": []
+      },
+      "198": {
+        "chunkId": "d6f005",
+        "hash": "0534c925",
+        "encoded": "#%20Network%20Policy%20for%20microservice",
+        "prevChunkIds": []
+      },
+      "199": {
+        "chunkId": "d6f005",
+        "hash": "84027f3b",
+        "encoded": "resource%20%22kubernetes_network_policy%22%20%22microservice%22%20%7B",
+        "prevChunkIds": []
+      },
+      "200": {
+        "chunkId": "d6f005",
+        "hash": "c622f619",
+        "encoded": "count%20=%20var.enable_network_policy%20?%201%20:%200",
+        "prevChunkIds": []
+      },
+      "202": {
+        "chunkId": "d6f005",
+        "hash": "845bfbb7",
+        "encoded": "metadata%20%7B",
+        "prevChunkIds": []
+      },
+      "203": {
+        "chunkId": "d6f005",
+        "hash": "ffb6a27f",
+        "encoded": "name%20%20%20%20%20%20=%20%22$%7Bvar.service_name%7D-netpol%22",
+        "prevChunkIds": []
+      },
+      "204": {
+        "chunkId": "d6f005",
+        "hash": "12b9e317",
+        "encoded": "namespace%20=%20kubernetes_namespace.microservice.metadata%5B0%5D.name",
+        "prevChunkIds": []
+      },
+      "205": {
+        "chunkId": "d6f005",
+        "hash": "699b62c2",
+        "encoded": "%7D",
+        "prevChunkIds": []
+      },
+      "207": {
+        "chunkId": "d6f005",
+        "hash": "965ef336",
+        "encoded": "spec%20%7B",
+        "prevChunkIds": []
+      },
+      "208": {
+        "chunkId": "d6f005",
+        "hash": "44622b64",
+        "encoded": "pod_selector%20%7B",
+        "prevChunkIds": []
+      },
+      "209": {
+        "chunkId": "d6f005",
+        "hash": "c333044d",
+        "encoded": "match_labels%20=%20%7B",
+        "prevChunkIds": []
+      },
+      "210": {
+        "chunkId": "d6f005",
+        "hash": "fd13c5c5",
+        "encoded": "app%20=%20var.service_name",
+        "prevChunkIds": []
+      },
+      "211": {
+        "chunkId": "d6f005",
+        "hash": "ae0130b5",
+        "encoded": "%7D",
+        "prevChunkIds": []
+      },
+      "212": {
+        "chunkId": "d6f005",
+        "hash": "8e01390a",
+        "encoded": "%7D",
+        "prevChunkIds": []
+      },
+      "214": {
+        "chunkId": "d6f005",
+        "hash": "929c18a8",
+        "encoded": "policy_types%20=%20%5B%22Ingress%22,%20%22Egress%22%5D",
+        "prevChunkIds": []
+      },
+      "216": {
+        "chunkId": "d6f005",
+        "hash": "ca56d425",
+        "encoded": "#%20Ingress%20rules",
+        "prevChunkIds": []
+      },
+      "217": {
+        "chunkId": "d6f005",
+        "hash": "2a67e005",
+        "encoded": "dynamic%20%22ingress%22%20%7B",
+        "prevChunkIds": []
+      },
+      "218": {
+        "chunkId": "d6f005",
+        "hash": "4493ed5a",
+        "encoded": "for_each%20=%20var.ingress_rules",
+        "prevChunkIds": []
+      },
+      "219": {
+        "chunkId": "d6f005",
+        "hash": "3dbe5a87",
+        "encoded": "content%20%7B",
+        "prevChunkIds": []
+      },
+      "220": {
+        "chunkId": "d6f005",
+        "hash": "8cc2ed2f",
+        "encoded": "from%20%7B",
+        "prevChunkIds": []
+      },
+      "221": {
+        "chunkId": "d6f005",
+        "hash": "51307601",
+        "encoded": "namespace_selector%20%7B",
+        "prevChunkIds": []
+      },
+      "222": {
+        "chunkId": "d6f005",
+        "hash": "3d95b709",
+        "encoded": "match_labels%20=%20ingress.value.namespace_labels",
+        "prevChunkIds": []
+      },
+      "223": {
+        "chunkId": "d6f005",
+        "hash": "75bbcadd",
+        "encoded": "%7D",
+        "prevChunkIds": []
+      },
+      "224": {
+        "chunkId": "d6f005",
+        "hash": "4bec1b99",
+        "encoded": "%7D",
+        "prevChunkIds": []
+      },
+      "225": {
+        "chunkId": "d6f005",
+        "hash": "76146f2e",
+        "encoded": "ports%20%7B",
+        "prevChunkIds": []
+      },
+      "226": {
+        "chunkId": "d6f005",
+        "hash": "2916743d",
+        "encoded": "protocol%20=%20ingress.value.protocol",
+        "prevChunkIds": []
+      },
+      "227": {
+        "chunkId": "d6f005",
+        "hash": "973f662d",
+        "encoded": "port%20%20%20%20%20=%20ingress.value.port",
+        "prevChunkIds": []
+      },
+      "228": {
+        "chunkId": "d6f005",
+        "hash": "6993302a",
+        "encoded": "%7D",
+        "prevChunkIds": []
+      },
+      "229": {
+        "chunkId": "d6f005",
+        "hash": "85a5304b",
+        "encoded": "%7D",
+        "prevChunkIds": []
+      },
+      "230": {
+        "chunkId": "d6f005",
+        "hash": "6f19d2d6",
+        "encoded": "%7D",
+        "prevChunkIds": []
+      },
+      "232": {
+        "chunkId": "d6f005",
+        "hash": "11c87d6d",
+        "encoded": "#%20Egress%20-%20Allow%20DNS",
+        "prevChunkIds": []
+      },
+      "233": {
+        "chunkId": "d6f005",
+        "hash": "e18e38f2",
+        "encoded": "egress%20%7B",
+        "prevChunkIds": []
+      },
+      "234": {
+        "chunkId": "d6f005",
+        "hash": "e885fafb",
+        "encoded": "to%20%7B",
+        "prevChunkIds": []
+      },
+      "235": {
+        "chunkId": "d6f005",
+        "hash": "08e7afc0",
+        "encoded": "namespace_selector%20%7B",
+        "prevChunkIds": []
+      },
+      "236": {
+        "chunkId": "d6f005",
+        "hash": "efd7c096",
+        "encoded": "match_labels%20=%20%7B",
+        "prevChunkIds": []
+      },
+      "237": {
+        "chunkId": "d6f005",
+        "hash": "cb1ee767",
+        "encoded": "name%20=%20%22kube-system%22",
+        "prevChunkIds": []
+      },
+      "238": {
+        "chunkId": "d6f005",
+        "hash": "eed3c15e",
+        "encoded": "%7D",
+        "prevChunkIds": []
+      },
+      "239": {
+        "chunkId": "d6f005",
+        "hash": "f6a01e4c",
+        "encoded": "%7D",
+        "prevChunkIds": []
+      },
+      "240": {
+        "chunkId": "d6f005",
+        "hash": "b7fe04d4",
+        "encoded": "%7D",
+        "prevChunkIds": []
+      },
+      "241": {
+        "chunkId": "d6f005",
+        "hash": "a5811bb7",
+        "encoded": "ports%20%7B",
+        "prevChunkIds": []
+      },
+      "242": {
+        "chunkId": "d6f005",
+        "hash": "f27ff23d",
+        "encoded": "protocol%20=%20%22UDP%22",
+        "prevChunkIds": []
+      },
+      "243": {
+        "chunkId": "d6f005",
+        "hash": "29a24285",
+        "encoded": "port%20%20%20%20%20=%2053",
+        "prevChunkIds": []
+      },
+      "244": {
+        "chunkId": "d6f005",
+        "hash": "1f1b2746",
+        "encoded": "%7D",
+        "prevChunkIds": []
+      },
+      "245": {
+        "chunkId": "d6f005",
+        "hash": "71b20a14",
+        "encoded": "%7D",
+        "prevChunkIds": []
+      },
+      "247": {
+        "chunkId": "d6f005",
+        "hash": "62363285",
+        "encoded": "#%20Egress%20-%20Allow%20HTTPS%20(for%20AWS%20services)",
+        "prevChunkIds": []
+      },
+      "248": {
+        "chunkId": "d6f005",
+        "hash": "e030e60c",
+        "encoded": "egress%20%7B",
+        "prevChunkIds": []
+      },
+      "249": {
+        "chunkId": "d6f005",
+        "hash": "480041b0",
+        "encoded": "to%20%7B",
+        "prevChunkIds": []
+      },
+      "250": {
+        "chunkId": "d6f005",
+        "hash": "ecb82500",
+        "encoded": "pod_selector%20%7B%7D",
+        "prevChunkIds": []
+      },
+      "251": {
+        "chunkId": "d6f005",
+        "hash": "69fb85ba",
+        "encoded": "%7D",
+        "prevChunkIds": []
+      },
+      "252": {
+        "chunkId": "d6f005",
+        "hash": "d3b138db",
+        "encoded": "ports%20%7B",
+        "prevChunkIds": []
+      },
+      "253": {
+        "chunkId": "d6f005",
+        "hash": "f02d96e2",
+        "encoded": "protocol%20=%20%22TCP%22",
+        "prevChunkIds": []
+      },
+      "254": {
+        "chunkId": "d6f005",
+        "hash": "f267fb19",
+        "encoded": "port%20%20%20%20%20=%20443",
+        "prevChunkIds": []
+      },
+      "255": {
+        "chunkId": "d6f005",
+        "hash": "108356aa",
+        "encoded": "%7D",
+        "prevChunkIds": []
+      },
+      "256": {
+        "chunkId": "d6f005",
+        "hash": "9cd32fde",
+        "encoded": "%7D",
+        "prevChunkIds": []
+      },
+      "258": {
+        "chunkId": "d6f005",
+        "hash": "cc8b1079",
+        "encoded": "#%20Custom%20egress%20rules",
+        "prevChunkIds": []
+      },
+      "259": {
+        "chunkId": "d6f005",
+        "hash": "c87c3286",
+        "encoded": "dynamic%20%22egress%22%20%7B",
+        "prevChunkIds": []
+      },
+      "260": {
+        "chunkId": "d6f005",
+        "hash": "ad8ea1d7",
+        "encoded": "for_each%20=%20var.egress_rules",
+        "prevChunkIds": []
+      },
+      "261": {
+        "chunkId": "d6f005",
+        "hash": "6735a19c",
+        "encoded": "content%20%7B",
+        "prevChunkIds": []
+      },
+      "262": {
+        "chunkId": "d6f005",
+        "hash": "2bc6b93d",
+        "encoded": "to%20%7B",
+        "prevChunkIds": []
+      },
+      "263": {
+        "chunkId": "d6f005",
+        "hash": "58e7e8ed",
+        "encoded": "namespace_selector%20%7B",
+        "prevChunkIds": []
+      },
+      "264": {
+        "chunkId": "d6f005",
+        "hash": "eb8d3e09",
+        "encoded": "match_labels%20=%20egress.value.namespace_labels",
+        "prevChunkIds": []
+      },
+      "265": {
+        "chunkId": "d6f005",
+        "hash": "2b3722a1",
+        "encoded": "%7D",
+        "prevChunkIds": []
+      },
+      "266": {
+        "chunkId": "d6f005",
+        "hash": "f9e5f5b0",
+        "encoded": "%7D",
+        "prevChunkIds": []
+      },
+      "267": {
+        "chunkId": "d6f005",
+        "hash": "66a8523d",
+        "encoded": "ports%20%7B",
+        "prevChunkIds": []
+      },
+      "268": {
+        "chunkId": "d6f005",
+        "hash": "4cf7e328",
+        "encoded": "protocol%20=%20egress.value.protocol",
+        "prevChunkIds": []
+      },
+      "269": {
+        "chunkId": "d6f005",
+        "hash": "821e9719",
+        "encoded": "port%20%20%20%20%20=%20egress.value.port",
+        "prevChunkIds": []
+      },
+      "270": {
+        "chunkId": "d6f005",
+        "hash": "7357472c",
+        "encoded": "%7D",
+        "prevChunkIds": []
+      },
+      "271": {
+        "chunkId": "d6f005",
+        "hash": "d63e4bb6",
+        "encoded": "%7D",
+        "prevChunkIds": []
+      },
+      "272": {
+        "chunkId": "d6f005",
+        "hash": "e457dc27",
+        "encoded": "%7D",
+        "prevChunkIds": []
+      },
+      "273": {
+        "chunkId": "d6f005",
+        "hash": "3222a662",
+        "encoded": "%7D",
+        "prevChunkIds": []
+      },
+      "274": {
+        "chunkId": "d6f005",
+        "hash": "2eb2d005",
+        "encoded": "%7D",
+        "prevChunkIds": []
+      },
+      "276": {
+        "chunkId": "d6f005",
+        "hash": "1fc930ff",
+        "encoded": "#%20Resource%20Quota%20(optional)",
+        "prevChunkIds": []
+      },
+      "277": {
+        "chunkId": "d6f005",
+        "hash": "4bd0df5b",
+        "encoded": "resource%20%22kubernetes_resource_quota%22%20%22microservice%22%20%7B",
+        "prevChunkIds": []
+      },
+      "278": {
+        "chunkId": "d6f005",
+        "hash": "92babbc4",
+        "encoded": "count%20=%20var.enable_resource_quota%20?%201%20:%200",
+        "prevChunkIds": []
+      },
+      "280": {
+        "chunkId": "d6f005",
+        "hash": "7ef8d2c1",
+        "encoded": "metadata%20%7B",
+        "prevChunkIds": []
+      },
+      "281": {
+        "chunkId": "d6f005",
+        "hash": "86bb4c30",
+        "encoded": "name%20%20%20%20%20%20=%20%22$%7Bvar.service_name%7D-quota%22",
+        "prevChunkIds": []
+      },
+      "282": {
+        "chunkId": "d6f005",
+        "hash": "91e3011f",
+        "encoded": "namespace%20=%20kubernetes_namespace.microservice.metadata%5B0%5D.name",
+        "prevChunkIds": []
+      },
+      "283": {
+        "chunkId": "d6f005",
+        "hash": "36d31997",
+        "encoded": "%7D",
+        "prevChunkIds": []
+      },
+      "285": {
+        "chunkId": "d6f005",
+        "hash": "7a6b66f9",
+        "encoded": "spec%20%7B",
+        "prevChunkIds": []
+      },
+      "286": {
+        "chunkId": "d6f005",
+        "hash": "404426c0",
+        "encoded": "hard%20=%20%7B",
+        "prevChunkIds": []
+      },
+      "287": {
+        "chunkId": "d6f005",
+        "hash": "e0fc2efd",
+        "encoded": "%22requests.cpu%22%20%20%20%20=%20var.resource_quota.requests_cpu",
+        "prevChunkIds": []
+      },
+      "288": {
+        "chunkId": "d6f005",
+        "hash": "39427c24",
+        "encoded": "%22requests.memory%22%20=%20var.resource_quota.requests_memory",
+        "prevChunkIds": []
+      },
+      "289": {
+        "chunkId": "d6f005",
+        "hash": "daa46a82",
+        "encoded": "%22limits.cpu%22%20%20%20%20%20%20=%20var.resource_quota.limits_cpu",
+        "prevChunkIds": []
+      },
+      "290": {
+        "chunkId": "d6f005",
+        "hash": "1b05d1a6",
+        "encoded": "%22limits.memory%22%20%20%20=%20var.resource_quota.limits_memory",
+        "prevChunkIds": []
+      },
+      "291": {
+        "chunkId": "d6f005",
+        "hash": "37243787",
+        "encoded": "%22pods%22%20%20%20%20%20%20%20%20%20%20%20%20=%20var.resource_quota.pods",
+        "prevChunkIds": []
+      },
+      "292": {
+        "chunkId": "d6f005",
+        "hash": "8a2145e7",
+        "encoded": "%7D",
+        "prevChunkIds": []
+      },
+      "293": {
+        "chunkId": "d6f005",
+        "hash": "70d6c9f9",
+        "encoded": "%7D",
+        "prevChunkIds": []
+      },
+      "294": {
+        "chunkId": "d6f005",
+        "hash": "d71f86cc",
+        "encoded": "%7D",
+        "prevChunkIds": []
+      },
+      "296": {
+        "chunkId": "d6f005",
+        "hash": "cf4c8d7e",
+        "encoded": "#%20Limit%20Range%20(optional)",
+        "prevChunkIds": []
+      },
+      "297": {
+        "chunkId": "d6f005",
+        "hash": "a5126392",
+        "encoded": "resource%20%22kubernetes_limit_range%22%20%22microservice%22%20%7B",
+        "prevChunkIds": []
+      },
+      "298": {
+        "chunkId": "d6f005",
+        "hash": "8c8c6765",
+        "encoded": "count%20=%20var.enable_limit_range%20?%201%20:%200",
+        "prevChunkIds": []
+      },
+      "300": {
+        "chunkId": "d6f005",
+        "hash": "9e42075b",
+        "encoded": "metadata%20%7B",
+        "prevChunkIds": []
+      },
+      "301": {
+        "chunkId": "d6f005",
+        "hash": "678ee401",
+        "encoded": "name%20%20%20%20%20%20=%20%22$%7Bvar.service_name%7D-limit-range%22",
+        "prevChunkIds": []
+      },
+      "302": {
+        "chunkId": "d6f005",
+        "hash": "bead8797",
+        "encoded": "namespace%20=%20kubernetes_namespace.microservice.metadata%5B0%5D.name",
+        "prevChunkIds": []
+      },
+      "303": {
+        "chunkId": "d6f005",
+        "hash": "ca7d8d23",
+        "encoded": "%7D",
+        "prevChunkIds": []
+      },
+      "305": {
+        "chunkId": "d6f005",
+        "hash": "24290680",
+        "encoded": "spec%20%7B",
+        "prevChunkIds": []
+      },
+      "306": {
+        "chunkId": "d6f005",
+        "hash": "ee241c79",
+        "encoded": "limit%20%7B",
+        "prevChunkIds": []
+      },
+      "307": {
+        "chunkId": "d6f005",
+        "hash": "22c75b22",
+        "encoded": "type%20=%20%22Container%22",
+        "prevChunkIds": []
+      },
+      "308": {
+        "chunkId": "d6f005",
+        "hash": "eb11c8bd",
+        "encoded": "default%20=%20%7B",
+        "prevChunkIds": []
+      },
+      "309": {
+        "chunkId": "d6f005",
+        "hash": "cb1024b5",
+        "encoded": "cpu%20%20%20%20=%20var.limit_range.default_cpu",
+        "prevChunkIds": []
+      },
+      "310": {
+        "chunkId": "d6f005",
+        "hash": "320fd7eb",
+        "encoded": "memory%20=%20var.limit_range.default_memory",
+        "prevChunkIds": []
+      },
+      "311": {
+        "chunkId": "d6f005",
+        "hash": "972a0b71",
+        "encoded": "%7D",
+        "prevChunkIds": []
+      },
+      "312": {
+        "chunkId": "d6f005",
+        "hash": "a77c4b4f",
+        "encoded": "default_request%20=%20%7B",
+        "prevChunkIds": []
+      },
+      "313": {
+        "chunkId": "d6f005",
+        "hash": "d624a370",
+        "encoded": "cpu%20%20%20%20=%20var.limit_range.default_request_cpu",
+        "prevChunkIds": []
+      },
+      "314": {
+        "chunkId": "d6f005",
+        "hash": "36069eb7",
+        "encoded": "memory%20=%20var.limit_range.default_request_memory",
+        "prevChunkIds": []
+      },
+      "315": {
+        "chunkId": "d6f005",
+        "hash": "3811d658",
+        "encoded": "%7D",
+        "prevChunkIds": []
+      },
+      "316": {
+        "chunkId": "d6f005",
+        "hash": "a8bd9b49",
+        "encoded": "%7D",
+        "prevChunkIds": []
+      },
+      "317": {
+        "chunkId": "d6f005",
+        "hash": "7daf7dab",
+        "encoded": "%7D",
+        "prevChunkIds": []
+      },
+      "318": {
+        "chunkId": "d6f005",
+        "hash": "8a6ff4be",
+        "encoded": "%7D",
+        "prevChunkIds": []
+      }
+    }
+  }
+}

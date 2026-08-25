@@ -1,0 +1,198 @@
+{
+  "terraform\\modules\\eks\\outputs.tf": {
+    "filename": "outputs.tf",
+    "path": "terraform\\modules\\eks\\outputs.tf",
+    "version": "1.2",
+    "contextFile": "d22dcbfa-context.json",
+    "chunks": {
+      "ce91a0": {
+        "user": "Prabal Singh",
+        "model": "gpt-4.1",
+        "timestamp": 1787652334,
+        "platform": "VisualStudioCode",
+        "product": "AIPP",
+        "productVersion": "3.2.0",
+        "source": "agent",
+        "type": "agentEditTool",
+        "extraContext": {
+          "promptMessage": "4b1a040d"
+        },
+        "hash": "2ddd291d",
+        "messageId": "system_dfb916b0-a06b-11f1-ac80-9da5cdc456f8",
+        "codeBlockId": null,
+        "isActive": true,
+        "hoverData": "\n### Slingshot Generated Code\n\n- **user**: Prabal Singh\n- **model**: gpt-4.1\n- **timestamp**: 8/25/2026, 3:35:34 PM\n- **source**: agent\n- **type**: agentEditTool\n"
+      }
+    },
+    "lines": {
+      "0": {
+        "chunkId": "ce91a0",
+        "hash": "5ce41541",
+        "encoded": "output%20%22cluster_name%22%20%7B",
+        "prevChunkIds": []
+      },
+      "1": {
+        "chunkId": "ce91a0",
+        "hash": "6b5e3616",
+        "encoded": "description%20=%20%22Name%20of%20the%20EKS%20cluster%22",
+        "prevChunkIds": []
+      },
+      "2": {
+        "chunkId": "ce91a0",
+        "hash": "35079afe",
+        "encoded": "value%20%20%20%20%20%20%20=%20module.eks.cluster_name",
+        "prevChunkIds": []
+      },
+      "3": {
+        "chunkId": "ce91a0",
+        "hash": "973e69d4",
+        "encoded": "%7D",
+        "prevChunkIds": []
+      },
+      "5": {
+        "chunkId": "ce91a0",
+        "hash": "0557c0c9",
+        "encoded": "output%20%22cluster_endpoint%22%20%7B",
+        "prevChunkIds": []
+      },
+      "6": {
+        "chunkId": "ce91a0",
+        "hash": "eb941a64",
+        "encoded": "description%20=%20%22Endpoint%20for%20EKS%20control%20plane%22",
+        "prevChunkIds": []
+      },
+      "7": {
+        "chunkId": "ce91a0",
+        "hash": "de902fb7",
+        "encoded": "value%20%20%20%20%20%20%20=%20module.eks.cluster_endpoint",
+        "prevChunkIds": []
+      },
+      "8": {
+        "chunkId": "ce91a0",
+        "hash": "1c082ee4",
+        "encoded": "%7D",
+        "prevChunkIds": []
+      },
+      "10": {
+        "chunkId": "ce91a0",
+        "hash": "d75c1831",
+        "encoded": "output%20%22cluster_ca%22%20%7B",
+        "prevChunkIds": []
+      },
+      "11": {
+        "chunkId": "ce91a0",
+        "hash": "4fa4889a",
+        "encoded": "description%20=%20%22Certificate%20authority%20data%20for%20the%20cluster%22",
+        "prevChunkIds": []
+      },
+      "12": {
+        "chunkId": "ce91a0",
+        "hash": "918e052d",
+        "encoded": "value%20%20%20%20%20%20%20=%20module.eks.cluster_certificate_authority_data",
+        "prevChunkIds": []
+      },
+      "13": {
+        "chunkId": "ce91a0",
+        "hash": "e683dcf7",
+        "encoded": "%7D",
+        "prevChunkIds": []
+      },
+      "15": {
+        "chunkId": "ce91a0",
+        "hash": "9bb22d27",
+        "encoded": "output%20%22cluster_security_group_id%22%20%7B",
+        "prevChunkIds": []
+      },
+      "16": {
+        "chunkId": "ce91a0",
+        "hash": "6f0d0ef6",
+        "encoded": "description%20=%20%22Security%20group%20ID%20attached%20to%20the%20EKS%20cluster%22",
+        "prevChunkIds": []
+      },
+      "17": {
+        "chunkId": "ce91a0",
+        "hash": "1a1e3f33",
+        "encoded": "value%20%20%20%20%20%20%20=%20module.eks.cluster_security_group_id",
+        "prevChunkIds": []
+      },
+      "18": {
+        "chunkId": "ce91a0",
+        "hash": "ee20bc2a",
+        "encoded": "%7D",
+        "prevChunkIds": []
+      },
+      "20": {
+        "chunkId": "ce91a0",
+        "hash": "895e46e7",
+        "encoded": "output%20%22cluster_iam_role_arn%22%20%7B",
+        "prevChunkIds": []
+      },
+      "21": {
+        "chunkId": "ce91a0",
+        "hash": "ba9f6e1a",
+        "encoded": "description%20=%20%22IAM%20role%20ARN%20of%20the%20EKS%20cluster%22",
+        "prevChunkIds": []
+      },
+      "22": {
+        "chunkId": "ce91a0",
+        "hash": "b0ad29e7",
+        "encoded": "value%20%20%20%20%20%20%20=%20module.eks.cluster_iam_role_arn",
+        "prevChunkIds": []
+      },
+      "23": {
+        "chunkId": "ce91a0",
+        "hash": "7b3531ab",
+        "encoded": "%7D",
+        "prevChunkIds": []
+      },
+      "25": {
+        "chunkId": "ce91a0",
+        "hash": "6a4ce6ca",
+        "encoded": "output%20%22cluster_oidc_issuer_url%22%20%7B",
+        "prevChunkIds": []
+      },
+      "26": {
+        "chunkId": "ce91a0",
+        "hash": "74dd7ce1",
+        "encoded": "description%20=%20%22The%20URL%20on%20the%20EKS%20cluster%20OIDC%20Issuer%22",
+        "prevChunkIds": []
+      },
+      "27": {
+        "chunkId": "ce91a0",
+        "hash": "dcfb247c",
+        "encoded": "value%20%20%20%20%20%20%20=%20module.eks.cluster_oidc_issuer_url",
+        "prevChunkIds": []
+      },
+      "28": {
+        "chunkId": "ce91a0",
+        "hash": "46b23985",
+        "encoded": "%7D",
+        "prevChunkIds": []
+      },
+      "30": {
+        "chunkId": "ce91a0",
+        "hash": "af58c34f",
+        "encoded": "output%20%22oidc_provider_arn%22%20%7B",
+        "prevChunkIds": []
+      },
+      "31": {
+        "chunkId": "ce91a0",
+        "hash": "3d1e3f83",
+        "encoded": "description%20=%20%22ARN%20of%20the%20OIDC%20Provider%20for%20EKS%22",
+        "prevChunkIds": []
+      },
+      "32": {
+        "chunkId": "ce91a0",
+        "hash": "c4d97e9c",
+        "encoded": "value%20%20%20%20%20%20%20=%20module.eks.oidc_provider_arn",
+        "prevChunkIds": []
+      },
+      "33": {
+        "chunkId": "ce91a0",
+        "hash": "0e2c0edc",
+        "encoded": "%7D",
+        "prevChunkIds": []
+      }
+    }
+  }
+}

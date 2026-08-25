@@ -1,0 +1,408 @@
+{
+  "jenkins-pipelines\\Jenkinsfile-catalog-service": {
+    "filename": "Jenkinsfile-catalog-service",
+    "path": "jenkins-pipelines\\Jenkinsfile-catalog-service",
+    "version": "1.2",
+    "contextFile": "996123f8-context.json",
+    "chunks": {
+      "9ef7de": {
+        "user": "Prabal Singh",
+        "model": "gpt-4.1",
+        "timestamp": 1787652679,
+        "platform": "VisualStudioCode",
+        "product": "AIPP",
+        "productVersion": "3.2.0",
+        "source": "agent",
+        "type": "agentWriteTool",
+        "extraContext": {
+          "promptMessage": "4b1a040d"
+        },
+        "hash": "9bcf0263",
+        "messageId": "system_dfb916b0-a06b-11f1-ac80-9da5cdc456f8",
+        "codeBlockId": null,
+        "isActive": true,
+        "hoverData": "\n### Slingshot Generated Code\n\n- **user**: Prabal Singh\n- **model**: gpt-4.1\n- **timestamp**: 8/25/2026, 3:41:19 PM\n- **source**: agent\n- **type**: agentWriteTool\n"
+      }
+    },
+    "lines": {
+      "0": {
+        "chunkId": "9ef7de",
+        "hash": "c3b1cd55",
+        "encoded": "//%20Jenkins%20Pipeline%20for%20Catalog%20Service",
+        "prevChunkIds": []
+      },
+      "1": {
+        "chunkId": "9ef7de",
+        "hash": "79499f85",
+        "encoded": "pipeline%20%7B",
+        "prevChunkIds": []
+      },
+      "2": {
+        "chunkId": "9ef7de",
+        "hash": "73bbd4dc",
+        "encoded": "agent%20any",
+        "prevChunkIds": []
+      },
+      "4": {
+        "chunkId": "9ef7de",
+        "hash": "df542925",
+        "encoded": "parameters%20%7B",
+        "prevChunkIds": []
+      },
+      "5": {
+        "chunkId": "9ef7de",
+        "hash": "7eea9a8c",
+        "encoded": "string(name:%20'IMAGE_TAG',%20defaultValue:%20'latest')",
+        "prevChunkIds": []
+      },
+      "6": {
+        "chunkId": "9ef7de",
+        "hash": "2645970c",
+        "encoded": "string(name:%20'CLUSTER_NAME',%20defaultValue:%20'meracommerce-dev')",
+        "prevChunkIds": []
+      },
+      "7": {
+        "chunkId": "9ef7de",
+        "hash": "2743760b",
+        "encoded": "string(name:%20'AWS_REGION',%20defaultValue:%20'us-east-1')",
+        "prevChunkIds": []
+      },
+      "8": {
+        "chunkId": "9ef7de",
+        "hash": "de38bffd",
+        "encoded": "string(name:%20'NAMESPACE',%20defaultValue:%20'catalog-service-ns')",
+        "prevChunkIds": []
+      },
+      "9": {
+        "chunkId": "9ef7de",
+        "hash": "da9621b8",
+        "encoded": "string(name:%20'ECR_REPOSITORY',%20defaultValue:%20'catalog-service')",
+        "prevChunkIds": []
+      },
+      "10": {
+        "chunkId": "9ef7de",
+        "hash": "c2f1edd6",
+        "encoded": "%7D",
+        "prevChunkIds": []
+      },
+      "12": {
+        "chunkId": "9ef7de",
+        "hash": "2442dcd5",
+        "encoded": "environment%20%7B",
+        "prevChunkIds": []
+      },
+      "13": {
+        "chunkId": "9ef7de",
+        "hash": "8d8cb75d",
+        "encoded": "AWS_DEFAULT_REGION%20=%20%22$%7Bparams.AWS_REGION%7D%22",
+        "prevChunkIds": []
+      },
+      "14": {
+        "chunkId": "9ef7de",
+        "hash": "3d0f3c7b",
+        "encoded": "SERVICE_NAME%20=%20%22catalog-service%22",
+        "prevChunkIds": []
+      },
+      "15": {
+        "chunkId": "9ef7de",
+        "hash": "acccaff7",
+        "encoded": "ECR_REGISTRY%20=%20%22$%7BAWS_ACCOUNT_ID%7D.dkr.ecr.$%7Bparams.AWS_REGION%7D.amazonaws.com%22",
+        "prevChunkIds": []
+      },
+      "16": {
+        "chunkId": "9ef7de",
+        "hash": "0a373349",
+        "encoded": "%7D",
+        "prevChunkIds": []
+      },
+      "18": {
+        "chunkId": "9ef7de",
+        "hash": "96c4df99",
+        "encoded": "stages%20%7B",
+        "prevChunkIds": []
+      },
+      "19": {
+        "chunkId": "9ef7de",
+        "hash": "2cedb333",
+        "encoded": "stage('Checkout')%20%7B",
+        "prevChunkIds": []
+      },
+      "20": {
+        "chunkId": "9ef7de",
+        "hash": "cf9e6ee1",
+        "encoded": "steps%20%7B",
+        "prevChunkIds": []
+      },
+      "21": {
+        "chunkId": "9ef7de",
+        "hash": "4fe22376",
+        "encoded": "checkout%20scm",
+        "prevChunkIds": []
+      },
+      "22": {
+        "chunkId": "9ef7de",
+        "hash": "4c3814eb",
+        "encoded": "%7D",
+        "prevChunkIds": []
+      },
+      "23": {
+        "chunkId": "9ef7de",
+        "hash": "7b3531ab",
+        "encoded": "%7D",
+        "prevChunkIds": []
+      },
+      "25": {
+        "chunkId": "9ef7de",
+        "hash": "8135f1e9",
+        "encoded": "stage('Build%20&%20Test')%20%7B",
+        "prevChunkIds": []
+      },
+      "26": {
+        "chunkId": "9ef7de",
+        "hash": "d1d413fa",
+        "encoded": "steps%20%7B",
+        "prevChunkIds": []
+      },
+      "27": {
+        "chunkId": "9ef7de",
+        "hash": "bcc7f204",
+        "encoded": "sh%20'mvn%20clean%20package'",
+        "prevChunkIds": []
+      },
+      "28": {
+        "chunkId": "9ef7de",
+        "hash": "46b23985",
+        "encoded": "%7D",
+        "prevChunkIds": []
+      },
+      "29": {
+        "chunkId": "9ef7de",
+        "hash": "7721e417",
+        "encoded": "%7D",
+        "prevChunkIds": []
+      },
+      "31": {
+        "chunkId": "9ef7de",
+        "hash": "dc6ae2be",
+        "encoded": "stage('Build%20&%20Push%20Docker%20Image')%20%7B",
+        "prevChunkIds": []
+      },
+      "32": {
+        "chunkId": "9ef7de",
+        "hash": "f2d69f4e",
+        "encoded": "steps%20%7B",
+        "prevChunkIds": []
+      },
+      "33": {
+        "chunkId": "9ef7de",
+        "hash": "ed24cea9",
+        "encoded": "withCredentials(%5B%5B",
+        "prevChunkIds": []
+      },
+      "34": {
+        "chunkId": "9ef7de",
+        "hash": "216973f0",
+        "encoded": "$class:%20'AmazonWebServicesCredentialsBinding',",
+        "prevChunkIds": []
+      },
+      "35": {
+        "chunkId": "9ef7de",
+        "hash": "820050c4",
+        "encoded": "credentialsId:%20'jenkins-user',",
+        "prevChunkIds": []
+      },
+      "36": {
+        "chunkId": "9ef7de",
+        "hash": "3a3cbe0c",
+        "encoded": "accessKeyVariable:%20'AWS_ACCESS_KEY_ID',",
+        "prevChunkIds": []
+      },
+      "37": {
+        "chunkId": "9ef7de",
+        "hash": "035e6f23",
+        "encoded": "secretKeyVariable:%20'AWS_SECRET_ACCESS_KEY'",
+        "prevChunkIds": []
+      },
+      "38": {
+        "chunkId": "9ef7de",
+        "hash": "734b07dc",
+        "encoded": "%5D%5D)%20%7B",
+        "prevChunkIds": []
+      },
+      "39": {
+        "chunkId": "9ef7de",
+        "hash": "de35ff83",
+        "encoded": "sh%20'''",
+        "prevChunkIds": []
+      },
+      "40": {
+        "chunkId": "9ef7de",
+        "hash": "32fae7fd",
+        "encoded": "aws%20ecr%20get-login-password%20--region%20$%7BAWS_REGION%7D%20%7C%20docker%20login%20--username%20AWS%20--password-stdin%20$%7BECR_REGISTRY%7D",
+        "prevChunkIds": []
+      },
+      "41": {
+        "chunkId": "9ef7de",
+        "hash": "a91282de",
+        "encoded": "docker%20build%20-t%20$%7BSERVICE_NAME%7D:$%7BIMAGE_TAG%7D%20.",
+        "prevChunkIds": []
+      },
+      "42": {
+        "chunkId": "9ef7de",
+        "hash": "a755fbd2",
+        "encoded": "docker%20tag%20$%7BSERVICE_NAME%7D:$%7BIMAGE_TAG%7D%20$%7BECR_REGISTRY%7D/$%7BECR_REPOSITORY%7D:$%7BIMAGE_TAG%7D",
+        "prevChunkIds": []
+      },
+      "43": {
+        "chunkId": "9ef7de",
+        "hash": "14d96c22",
+        "encoded": "docker%20push%20$%7BECR_REGISTRY%7D/$%7BECR_REPOSITORY%7D:$%7BIMAGE_TAG%7D",
+        "prevChunkIds": []
+      },
+      "44": {
+        "chunkId": "9ef7de",
+        "hash": "fc2d3381",
+        "encoded": "'''",
+        "prevChunkIds": []
+      },
+      "45": {
+        "chunkId": "9ef7de",
+        "hash": "8b687a61",
+        "encoded": "%7D",
+        "prevChunkIds": []
+      },
+      "46": {
+        "chunkId": "9ef7de",
+        "hash": "f9b2449c",
+        "encoded": "%7D",
+        "prevChunkIds": []
+      },
+      "47": {
+        "chunkId": "9ef7de",
+        "hash": "57c5213d",
+        "encoded": "%7D",
+        "prevChunkIds": []
+      },
+      "49": {
+        "chunkId": "9ef7de",
+        "hash": "e9e8bbc6",
+        "encoded": "stage('Deploy%20to%20EKS')%20%7B",
+        "prevChunkIds": []
+      },
+      "50": {
+        "chunkId": "9ef7de",
+        "hash": "c25d931a",
+        "encoded": "steps%20%7B",
+        "prevChunkIds": []
+      },
+      "51": {
+        "chunkId": "9ef7de",
+        "hash": "2c69e5b4",
+        "encoded": "withCredentials(%5B%5B",
+        "prevChunkIds": []
+      },
+      "52": {
+        "chunkId": "9ef7de",
+        "hash": "2bd49f75",
+        "encoded": "$class:%20'AmazonWebServicesCredentialsBinding',",
+        "prevChunkIds": []
+      },
+      "53": {
+        "chunkId": "9ef7de",
+        "hash": "8ce1c3ea",
+        "encoded": "credentialsId:%20'jenkins-user',",
+        "prevChunkIds": []
+      },
+      "54": {
+        "chunkId": "9ef7de",
+        "hash": "edd4b886",
+        "encoded": "accessKeyVariable:%20'AWS_ACCESS_KEY_ID',",
+        "prevChunkIds": []
+      },
+      "55": {
+        "chunkId": "9ef7de",
+        "hash": "3d8e63db",
+        "encoded": "secretKeyVariable:%20'AWS_SECRET_ACCESS_KEY'",
+        "prevChunkIds": []
+      },
+      "56": {
+        "chunkId": "9ef7de",
+        "hash": "c044af42",
+        "encoded": "%5D%5D)%20%7B",
+        "prevChunkIds": []
+      },
+      "57": {
+        "chunkId": "9ef7de",
+        "hash": "7bbdeb71",
+        "encoded": "sh%20'''",
+        "prevChunkIds": []
+      },
+      "58": {
+        "chunkId": "9ef7de",
+        "hash": "eaf4a0ca",
+        "encoded": "aws%20eks%20update-kubeconfig%20--name%20$%7BCLUSTER_NAME%7D%20--region%20$%7BAWS_REGION%7D",
+        "prevChunkIds": []
+      },
+      "59": {
+        "chunkId": "9ef7de",
+        "hash": "25358518",
+        "encoded": "export%20ECR_REGISTRY=$%7BECR_REGISTRY%7D",
+        "prevChunkIds": []
+      },
+      "60": {
+        "chunkId": "9ef7de",
+        "hash": "582358de",
+        "encoded": "export%20IMAGE_TAG=$%7BIMAGE_TAG%7D",
+        "prevChunkIds": []
+      },
+      "61": {
+        "chunkId": "9ef7de",
+        "hash": "b4d5308d",
+        "encoded": "envsubst%20%3C%20k8s-manifests/catalog-service/deployment.yaml%20%7C%20kubectl%20apply%20-f%20-",
+        "prevChunkIds": []
+      },
+      "62": {
+        "chunkId": "9ef7de",
+        "hash": "91404f68",
+        "encoded": "kubectl%20rollout%20status%20deployment/catalog-service%20-n%20$%7BNAMESPACE%7D%20--timeout=5m",
+        "prevChunkIds": []
+      },
+      "63": {
+        "chunkId": "9ef7de",
+        "hash": "c9a7e631",
+        "encoded": "'''",
+        "prevChunkIds": []
+      },
+      "64": {
+        "chunkId": "9ef7de",
+        "hash": "48dc6fe2",
+        "encoded": "%7D",
+        "prevChunkIds": []
+      },
+      "65": {
+        "chunkId": "9ef7de",
+        "hash": "912d88e4",
+        "encoded": "%7D",
+        "prevChunkIds": []
+      },
+      "66": {
+        "chunkId": "9ef7de",
+        "hash": "f706ff69",
+        "encoded": "%7D",
+        "prevChunkIds": []
+      },
+      "67": {
+        "chunkId": "9ef7de",
+        "hash": "bf862585",
+        "encoded": "%7D",
+        "prevChunkIds": []
+      },
+      "68": {
+        "chunkId": "9ef7de",
+        "hash": "e4d82fa4",
+        "encoded": "%7D",
+        "prevChunkIds": []
+      }
+    }
+  }
+}

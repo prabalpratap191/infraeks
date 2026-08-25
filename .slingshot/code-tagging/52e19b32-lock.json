@@ -1,0 +1,1248 @@
+{
+  "jenkins-pipelines\\Jenkinsfile-order-service": {
+    "filename": "Jenkinsfile-order-service",
+    "path": "jenkins-pipelines\\Jenkinsfile-order-service",
+    "version": "1.2",
+    "contextFile": "52e19b32-context.json",
+    "chunks": {
+      "af02b8": {
+        "user": "Prabal Singh",
+        "model": "gpt-4.1",
+        "timestamp": 1787652678,
+        "platform": "VisualStudioCode",
+        "product": "AIPP",
+        "productVersion": "3.2.0",
+        "source": "agent",
+        "type": "agentWriteTool",
+        "extraContext": {
+          "promptMessage": "4b1a040d"
+        },
+        "hash": "d3f769c1",
+        "messageId": "system_dfb916b0-a06b-11f1-ac80-9da5cdc456f8",
+        "codeBlockId": null,
+        "isActive": true,
+        "hoverData": "\n### Slingshot Generated Code\n\n- **user**: Prabal Singh\n- **model**: gpt-4.1\n- **timestamp**: 8/25/2026, 3:41:18 PM\n- **source**: agent\n- **type**: agentWriteTool\n"
+      }
+    },
+    "lines": {
+      "0": {
+        "chunkId": "af02b8",
+        "hash": "afdec691",
+        "encoded": "//%20Jenkins%20Pipeline%20for%20Order%20Service",
+        "prevChunkIds": []
+      },
+      "1": {
+        "chunkId": "af02b8",
+        "hash": "453e5b41",
+        "encoded": "//%20This%20pipeline%20builds,%20tests,%20containerizes,%20and%20deploys%20the%20Order%20Service%20to%20EKS",
+        "prevChunkIds": []
+      },
+      "3": {
+        "chunkId": "af02b8",
+        "hash": "4cf9b783",
+        "encoded": "pipeline%20%7B",
+        "prevChunkIds": []
+      },
+      "4": {
+        "chunkId": "af02b8",
+        "hash": "314a0c83",
+        "encoded": "agent%20any",
+        "prevChunkIds": []
+      },
+      "6": {
+        "chunkId": "af02b8",
+        "hash": "1b2ec6cd",
+        "encoded": "parameters%20%7B",
+        "prevChunkIds": []
+      },
+      "7": {
+        "chunkId": "af02b8",
+        "hash": "52a2d758",
+        "encoded": "string(",
+        "prevChunkIds": []
+      },
+      "8": {
+        "chunkId": "af02b8",
+        "hash": "75110188",
+        "encoded": "name:%20'IMAGE_TAG',",
+        "prevChunkIds": []
+      },
+      "9": {
+        "chunkId": "af02b8",
+        "hash": "66d83fcf",
+        "encoded": "defaultValue:%20'latest',",
+        "prevChunkIds": []
+      },
+      "10": {
+        "chunkId": "af02b8",
+        "hash": "f4871374",
+        "encoded": "description:%20'Docker%20image%20tag'",
+        "prevChunkIds": []
+      },
+      "11": {
+        "chunkId": "af02b8",
+        "hash": "395c59e2",
+        "encoded": ")",
+        "prevChunkIds": []
+      },
+      "12": {
+        "chunkId": "af02b8",
+        "hash": "4b5eb833",
+        "encoded": "string(",
+        "prevChunkIds": []
+      },
+      "13": {
+        "chunkId": "af02b8",
+        "hash": "ada1de71",
+        "encoded": "name:%20'CLUSTER_NAME',",
+        "prevChunkIds": []
+      },
+      "14": {
+        "chunkId": "af02b8",
+        "hash": "3386f6f2",
+        "encoded": "defaultValue:%20'meracommerce-dev',",
+        "prevChunkIds": []
+      },
+      "15": {
+        "chunkId": "af02b8",
+        "hash": "61bc883c",
+        "encoded": "description:%20'EKS%20cluster%20name'",
+        "prevChunkIds": []
+      },
+      "16": {
+        "chunkId": "af02b8",
+        "hash": "ef2d8a73",
+        "encoded": ")",
+        "prevChunkIds": []
+      },
+      "17": {
+        "chunkId": "af02b8",
+        "hash": "a5fd61fb",
+        "encoded": "string(",
+        "prevChunkIds": []
+      },
+      "18": {
+        "chunkId": "af02b8",
+        "hash": "a3477af3",
+        "encoded": "name:%20'AWS_REGION',",
+        "prevChunkIds": []
+      },
+      "19": {
+        "chunkId": "af02b8",
+        "hash": "429dfb76",
+        "encoded": "defaultValue:%20'us-east-1',",
+        "prevChunkIds": []
+      },
+      "20": {
+        "chunkId": "af02b8",
+        "hash": "58587604",
+        "encoded": "description:%20'AWS%20region'",
+        "prevChunkIds": []
+      },
+      "21": {
+        "chunkId": "af02b8",
+        "hash": "f10aaf3b",
+        "encoded": ")",
+        "prevChunkIds": []
+      },
+      "22": {
+        "chunkId": "af02b8",
+        "hash": "8dce4527",
+        "encoded": "string(",
+        "prevChunkIds": []
+      },
+      "23": {
+        "chunkId": "af02b8",
+        "hash": "6bdd7238",
+        "encoded": "name:%20'NAMESPACE',",
+        "prevChunkIds": []
+      },
+      "24": {
+        "chunkId": "af02b8",
+        "hash": "1703d5ed",
+        "encoded": "defaultValue:%20'order-service-ns',",
+        "prevChunkIds": []
+      },
+      "25": {
+        "chunkId": "af02b8",
+        "hash": "35117bc9",
+        "encoded": "description:%20'Kubernetes%20namespace'",
+        "prevChunkIds": []
+      },
+      "26": {
+        "chunkId": "af02b8",
+        "hash": "a8c600e6",
+        "encoded": ")",
+        "prevChunkIds": []
+      },
+      "27": {
+        "chunkId": "af02b8",
+        "hash": "46f16fa0",
+        "encoded": "string(",
+        "prevChunkIds": []
+      },
+      "28": {
+        "chunkId": "af02b8",
+        "hash": "445458c0",
+        "encoded": "name:%20'ECR_REPOSITORY',",
+        "prevChunkIds": []
+      },
+      "29": {
+        "chunkId": "af02b8",
+        "hash": "92a6f421",
+        "encoded": "defaultValue:%20'order-service',",
+        "prevChunkIds": []
+      },
+      "30": {
+        "chunkId": "af02b8",
+        "hash": "2e068b9f",
+        "encoded": "description:%20'ECR%20repository%20name'",
+        "prevChunkIds": []
+      },
+      "31": {
+        "chunkId": "af02b8",
+        "hash": "c3399f39",
+        "encoded": ")",
+        "prevChunkIds": []
+      },
+      "32": {
+        "chunkId": "af02b8",
+        "hash": "699fd80f",
+        "encoded": "%7D",
+        "prevChunkIds": []
+      },
+      "34": {
+        "chunkId": "af02b8",
+        "hash": "e27b2de4",
+        "encoded": "environment%20%7B",
+        "prevChunkIds": []
+      },
+      "35": {
+        "chunkId": "af02b8",
+        "hash": "679c3bc4",
+        "encoded": "AWS_DEFAULT_REGION%20=%20%22$%7Bparams.AWS_REGION%7D%22",
+        "prevChunkIds": []
+      },
+      "36": {
+        "chunkId": "af02b8",
+        "hash": "40bbb354",
+        "encoded": "SERVICE_NAME%20=%20%22order-service%22",
+        "prevChunkIds": []
+      },
+      "37": {
+        "chunkId": "af02b8",
+        "hash": "bdbc862f",
+        "encoded": "ECR_REGISTRY%20=%20%22$%7BAWS_ACCOUNT_ID%7D.dkr.ecr.$%7Bparams.AWS_REGION%7D.amazonaws.com%22",
+        "prevChunkIds": []
+      },
+      "38": {
+        "chunkId": "af02b8",
+        "hash": "1b754c76",
+        "encoded": "%7D",
+        "prevChunkIds": []
+      },
+      "40": {
+        "chunkId": "af02b8",
+        "hash": "8132c052",
+        "encoded": "stages%20%7B",
+        "prevChunkIds": []
+      },
+      "41": {
+        "chunkId": "af02b8",
+        "hash": "29a6150d",
+        "encoded": "stage('Checkout')%20%7B",
+        "prevChunkIds": []
+      },
+      "42": {
+        "chunkId": "af02b8",
+        "hash": "3a536cd7",
+        "encoded": "steps%20%7B",
+        "prevChunkIds": []
+      },
+      "43": {
+        "chunkId": "af02b8",
+        "hash": "b6e01570",
+        "encoded": "checkout%20scm",
+        "prevChunkIds": []
+      },
+      "44": {
+        "chunkId": "af02b8",
+        "hash": "5046e502",
+        "encoded": "%7D",
+        "prevChunkIds": []
+      },
+      "45": {
+        "chunkId": "af02b8",
+        "hash": "8b687a61",
+        "encoded": "%7D",
+        "prevChunkIds": []
+      },
+      "47": {
+        "chunkId": "af02b8",
+        "hash": "02aca2c3",
+        "encoded": "stage('Build%20&%20Test')%20%7B",
+        "prevChunkIds": []
+      },
+      "48": {
+        "chunkId": "af02b8",
+        "hash": "66bc0fbb",
+        "encoded": "steps%20%7B",
+        "prevChunkIds": []
+      },
+      "49": {
+        "chunkId": "af02b8",
+        "hash": "8fcb785c",
+        "encoded": "script%20%7B",
+        "prevChunkIds": []
+      },
+      "50": {
+        "chunkId": "af02b8",
+        "hash": "f561cec3",
+        "encoded": "echo%20%22Building%20$%7BSERVICE_NAME%7D...%22",
+        "prevChunkIds": []
+      },
+      "51": {
+        "chunkId": "af02b8",
+        "hash": "62f2a627",
+        "encoded": "sh%20'''",
+        "prevChunkIds": []
+      },
+      "52": {
+        "chunkId": "af02b8",
+        "hash": "8496d1c0",
+        "encoded": "#%20Build%20Java%20application",
+        "prevChunkIds": []
+      },
+      "53": {
+        "chunkId": "af02b8",
+        "hash": "5493be15",
+        "encoded": "mvn%20clean%20package%20-DskipTests",
+        "prevChunkIds": []
+      },
+      "55": {
+        "chunkId": "af02b8",
+        "hash": "29648f4c",
+        "encoded": "#%20Run%20unit%20tests",
+        "prevChunkIds": []
+      },
+      "56": {
+        "chunkId": "af02b8",
+        "hash": "f96d8d4c",
+        "encoded": "mvn%20test",
+        "prevChunkIds": []
+      },
+      "58": {
+        "chunkId": "af02b8",
+        "hash": "731bf41b",
+        "encoded": "#%20Run%20integration%20tests%20(optional)",
+        "prevChunkIds": []
+      },
+      "59": {
+        "chunkId": "af02b8",
+        "hash": "741122ef",
+        "encoded": "#%20mvn%20verify",
+        "prevChunkIds": []
+      },
+      "60": {
+        "chunkId": "af02b8",
+        "hash": "25d02515",
+        "encoded": "'''",
+        "prevChunkIds": []
+      },
+      "61": {
+        "chunkId": "af02b8",
+        "hash": "92368879",
+        "encoded": "%7D",
+        "prevChunkIds": []
+      },
+      "62": {
+        "chunkId": "af02b8",
+        "hash": "646a8e84",
+        "encoded": "%7D",
+        "prevChunkIds": []
+      },
+      "63": {
+        "chunkId": "af02b8",
+        "hash": "78db855a",
+        "encoded": "%7D",
+        "prevChunkIds": []
+      },
+      "65": {
+        "chunkId": "af02b8",
+        "hash": "ef8a95b9",
+        "encoded": "stage('Code%20Quality%20&%20Security%20Scan')%20%7B",
+        "prevChunkIds": []
+      },
+      "66": {
+        "chunkId": "af02b8",
+        "hash": "189164f4",
+        "encoded": "parallel%20%7B",
+        "prevChunkIds": []
+      },
+      "67": {
+        "chunkId": "af02b8",
+        "hash": "f3d36159",
+        "encoded": "stage('SonarQube%20Analysis')%20%7B",
+        "prevChunkIds": []
+      },
+      "68": {
+        "chunkId": "af02b8",
+        "hash": "606d66e4",
+        "encoded": "steps%20%7B",
+        "prevChunkIds": []
+      },
+      "69": {
+        "chunkId": "af02b8",
+        "hash": "9a355674",
+        "encoded": "script%20%7B",
+        "prevChunkIds": []
+      },
+      "70": {
+        "chunkId": "af02b8",
+        "hash": "8b796344",
+        "encoded": "echo%20%22Running%20SonarQube%20analysis...%22",
+        "prevChunkIds": []
+      },
+      "71": {
+        "chunkId": "af02b8",
+        "hash": "883d155f",
+        "encoded": "//%20Uncomment%20if%20SonarQube%20is%20configured",
+        "prevChunkIds": []
+      },
+      "72": {
+        "chunkId": "af02b8",
+        "hash": "5e10a987",
+        "encoded": "//%20sh%20'mvn%20sonar:sonar'",
+        "prevChunkIds": []
+      },
+      "73": {
+        "chunkId": "af02b8",
+        "hash": "3654c6d8",
+        "encoded": "%7D",
+        "prevChunkIds": []
+      },
+      "74": {
+        "chunkId": "af02b8",
+        "hash": "6387e751",
+        "encoded": "%7D",
+        "prevChunkIds": []
+      },
+      "75": {
+        "chunkId": "af02b8",
+        "hash": "5250e31e",
+        "encoded": "%7D",
+        "prevChunkIds": []
+      },
+      "77": {
+        "chunkId": "af02b8",
+        "hash": "f043348f",
+        "encoded": "stage('Dependency%20Check')%20%7B",
+        "prevChunkIds": []
+      },
+      "78": {
+        "chunkId": "af02b8",
+        "hash": "436a0ba2",
+        "encoded": "steps%20%7B",
+        "prevChunkIds": []
+      },
+      "79": {
+        "chunkId": "af02b8",
+        "hash": "7ac3895e",
+        "encoded": "script%20%7B",
+        "prevChunkIds": []
+      },
+      "80": {
+        "chunkId": "af02b8",
+        "hash": "843ac719",
+        "encoded": "echo%20%22Checking%20for%20vulnerable%20dependencies...%22",
+        "prevChunkIds": []
+      },
+      "81": {
+        "chunkId": "af02b8",
+        "hash": "6962afd9",
+        "encoded": "//%20sh%20'mvn%20dependency-check:check'",
+        "prevChunkIds": []
+      },
+      "82": {
+        "chunkId": "af02b8",
+        "hash": "74977a35",
+        "encoded": "%7D",
+        "prevChunkIds": []
+      },
+      "83": {
+        "chunkId": "af02b8",
+        "hash": "e4b921c6",
+        "encoded": "%7D",
+        "prevChunkIds": []
+      },
+      "84": {
+        "chunkId": "af02b8",
+        "hash": "d7cd7257",
+        "encoded": "%7D",
+        "prevChunkIds": []
+      },
+      "85": {
+        "chunkId": "af02b8",
+        "hash": "7bb00016",
+        "encoded": "%7D",
+        "prevChunkIds": []
+      },
+      "86": {
+        "chunkId": "af02b8",
+        "hash": "9c0e6ebc",
+        "encoded": "%7D",
+        "prevChunkIds": []
+      },
+      "88": {
+        "chunkId": "af02b8",
+        "hash": "612cf880",
+        "encoded": "stage('Build%20&%20Push%20Docker%20Image')%20%7B",
+        "prevChunkIds": []
+      },
+      "89": {
+        "chunkId": "af02b8",
+        "hash": "e0b87ca1",
+        "encoded": "steps%20%7B",
+        "prevChunkIds": []
+      },
+      "90": {
+        "chunkId": "af02b8",
+        "hash": "3a934493",
+        "encoded": "withCredentials(%5B%5B",
+        "prevChunkIds": []
+      },
+      "91": {
+        "chunkId": "af02b8",
+        "hash": "4d86c874",
+        "encoded": "$class:%20'AmazonWebServicesCredentialsBinding',",
+        "prevChunkIds": []
+      },
+      "92": {
+        "chunkId": "af02b8",
+        "hash": "7880943c",
+        "encoded": "credentialsId:%20'jenkins-user',",
+        "prevChunkIds": []
+      },
+      "93": {
+        "chunkId": "af02b8",
+        "hash": "6f769070",
+        "encoded": "accessKeyVariable:%20'AWS_ACCESS_KEY_ID',",
+        "prevChunkIds": []
+      },
+      "94": {
+        "chunkId": "af02b8",
+        "hash": "107d7121",
+        "encoded": "secretKeyVariable:%20'AWS_SECRET_ACCESS_KEY'",
+        "prevChunkIds": []
+      },
+      "95": {
+        "chunkId": "af02b8",
+        "hash": "c10fc98b",
+        "encoded": "%5D%5D)%20%7B",
+        "prevChunkIds": []
+      },
+      "96": {
+        "chunkId": "af02b8",
+        "hash": "4c9bb2f6",
+        "encoded": "script%20%7B",
+        "prevChunkIds": []
+      },
+      "97": {
+        "chunkId": "af02b8",
+        "hash": "2917d2ea",
+        "encoded": "sh%20'''",
+        "prevChunkIds": []
+      },
+      "98": {
+        "chunkId": "af02b8",
+        "hash": "52336fd1",
+        "encoded": "#%20Login%20to%20ECR",
+        "prevChunkIds": []
+      },
+      "99": {
+        "chunkId": "af02b8",
+        "hash": "540c039f",
+        "encoded": "aws%20ecr%20get-login-password%20--region%20$%7BAWS_REGION%7D%20%7C%20%5C",
+        "prevChunkIds": []
+      },
+      "100": {
+        "chunkId": "af02b8",
+        "hash": "75822780",
+        "encoded": "docker%20login%20--username%20AWS%20--password-stdin%20$%7BECR_REGISTRY%7D",
+        "prevChunkIds": []
+      },
+      "102": {
+        "chunkId": "af02b8",
+        "hash": "116c8f79",
+        "encoded": "#%20Build%20Docker%20image",
+        "prevChunkIds": []
+      },
+      "103": {
+        "chunkId": "af02b8",
+        "hash": "9ce2b144",
+        "encoded": "docker%20build%20-t%20$%7BSERVICE_NAME%7D:$%7BIMAGE_TAG%7D%20.",
+        "prevChunkIds": []
+      },
+      "105": {
+        "chunkId": "af02b8",
+        "hash": "17d6345e",
+        "encoded": "#%20Tag%20image%20for%20ECR",
+        "prevChunkIds": []
+      },
+      "106": {
+        "chunkId": "af02b8",
+        "hash": "eb9d8a1f",
+        "encoded": "docker%20tag%20$%7BSERVICE_NAME%7D:$%7BIMAGE_TAG%7D%20%5C",
+        "prevChunkIds": []
+      },
+      "107": {
+        "chunkId": "af02b8",
+        "hash": "6fe076af",
+        "encoded": "$%7BECR_REGISTRY%7D/$%7BECR_REPOSITORY%7D:$%7BIMAGE_TAG%7D",
+        "prevChunkIds": []
+      },
+      "109": {
+        "chunkId": "af02b8",
+        "hash": "50e1ec07",
+        "encoded": "docker%20tag%20$%7BSERVICE_NAME%7D:$%7BIMAGE_TAG%7D%20%5C",
+        "prevChunkIds": []
+      },
+      "110": {
+        "chunkId": "af02b8",
+        "hash": "5fbc8021",
+        "encoded": "$%7BECR_REGISTRY%7D/$%7BECR_REPOSITORY%7D:latest",
+        "prevChunkIds": []
+      },
+      "112": {
+        "chunkId": "af02b8",
+        "hash": "a7ee1cb4",
+        "encoded": "#%20Push%20to%20ECR",
+        "prevChunkIds": []
+      },
+      "113": {
+        "chunkId": "af02b8",
+        "hash": "14a41a7b",
+        "encoded": "docker%20push%20$%7BECR_REGISTRY%7D/$%7BECR_REPOSITORY%7D:$%7BIMAGE_TAG%7D",
+        "prevChunkIds": []
+      },
+      "114": {
+        "chunkId": "af02b8",
+        "hash": "face64f3",
+        "encoded": "docker%20push%20$%7BECR_REGISTRY%7D/$%7BECR_REPOSITORY%7D:latest",
+        "prevChunkIds": []
+      },
+      "115": {
+        "chunkId": "af02b8",
+        "hash": "0f3783d7",
+        "encoded": "'''",
+        "prevChunkIds": []
+      },
+      "116": {
+        "chunkId": "af02b8",
+        "hash": "2de22ffd",
+        "encoded": "%7D",
+        "prevChunkIds": []
+      },
+      "117": {
+        "chunkId": "af02b8",
+        "hash": "056477bc",
+        "encoded": "%7D",
+        "prevChunkIds": []
+      },
+      "118": {
+        "chunkId": "af02b8",
+        "hash": "715028b0",
+        "encoded": "%7D",
+        "prevChunkIds": []
+      },
+      "119": {
+        "chunkId": "af02b8",
+        "hash": "beea77ea",
+        "encoded": "%7D",
+        "prevChunkIds": []
+      },
+      "121": {
+        "chunkId": "af02b8",
+        "hash": "c3809fba",
+        "encoded": "stage('Update%20Kubeconfig')%20%7B",
+        "prevChunkIds": []
+      },
+      "122": {
+        "chunkId": "af02b8",
+        "hash": "83d076e4",
+        "encoded": "steps%20%7B",
+        "prevChunkIds": []
+      },
+      "123": {
+        "chunkId": "af02b8",
+        "hash": "145f960a",
+        "encoded": "withCredentials(%5B%5B",
+        "prevChunkIds": []
+      },
+      "124": {
+        "chunkId": "af02b8",
+        "hash": "19f39e08",
+        "encoded": "$class:%20'AmazonWebServicesCredentialsBinding',",
+        "prevChunkIds": []
+      },
+      "125": {
+        "chunkId": "af02b8",
+        "hash": "cf69e44a",
+        "encoded": "credentialsId:%20'jenkins-user',",
+        "prevChunkIds": []
+      },
+      "126": {
+        "chunkId": "af02b8",
+        "hash": "8ad64061",
+        "encoded": "accessKeyVariable:%20'AWS_ACCESS_KEY_ID',",
+        "prevChunkIds": []
+      },
+      "127": {
+        "chunkId": "af02b8",
+        "hash": "d4d48dd5",
+        "encoded": "secretKeyVariable:%20'AWS_SECRET_ACCESS_KEY'",
+        "prevChunkIds": []
+      },
+      "128": {
+        "chunkId": "af02b8",
+        "hash": "d088e7ea",
+        "encoded": "%5D%5D)%20%7B",
+        "prevChunkIds": []
+      },
+      "129": {
+        "chunkId": "af02b8",
+        "hash": "99486b16",
+        "encoded": "sh%20'''",
+        "prevChunkIds": []
+      },
+      "130": {
+        "chunkId": "af02b8",
+        "hash": "b406437e",
+        "encoded": "aws%20eks%20update-kubeconfig%20%5C",
+        "prevChunkIds": []
+      },
+      "131": {
+        "chunkId": "af02b8",
+        "hash": "7eb49a27",
+        "encoded": "--name%20$%7BCLUSTER_NAME%7D%20%5C",
+        "prevChunkIds": []
+      },
+      "132": {
+        "chunkId": "af02b8",
+        "hash": "22852815",
+        "encoded": "--region%20$%7BAWS_REGION%7D",
+        "prevChunkIds": []
+      },
+      "133": {
+        "chunkId": "af02b8",
+        "hash": "f16844c6",
+        "encoded": "'''",
+        "prevChunkIds": []
+      },
+      "134": {
+        "chunkId": "af02b8",
+        "hash": "59c23335",
+        "encoded": "%7D",
+        "prevChunkIds": []
+      },
+      "135": {
+        "chunkId": "af02b8",
+        "hash": "a1243e02",
+        "encoded": "%7D",
+        "prevChunkIds": []
+      },
+      "136": {
+        "chunkId": "af02b8",
+        "hash": "dc65d51e",
+        "encoded": "%7D",
+        "prevChunkIds": []
+      },
+      "138": {
+        "chunkId": "af02b8",
+        "hash": "b60693ec",
+        "encoded": "stage('Deploy%20to%20EKS')%20%7B",
+        "prevChunkIds": []
+      },
+      "139": {
+        "chunkId": "af02b8",
+        "hash": "db7a730b",
+        "encoded": "steps%20%7B",
+        "prevChunkIds": []
+      },
+      "140": {
+        "chunkId": "af02b8",
+        "hash": "24dbeb6e",
+        "encoded": "withCredentials(%5B%5B",
+        "prevChunkIds": []
+      },
+      "141": {
+        "chunkId": "af02b8",
+        "hash": "f8be3e31",
+        "encoded": "$class:%20'AmazonWebServicesCredentialsBinding',",
+        "prevChunkIds": []
+      },
+      "142": {
+        "chunkId": "af02b8",
+        "hash": "4efb35b1",
+        "encoded": "credentialsId:%20'jenkins-user',",
+        "prevChunkIds": []
+      },
+      "143": {
+        "chunkId": "af02b8",
+        "hash": "ce64c9f5",
+        "encoded": "accessKeyVariable:%20'AWS_ACCESS_KEY_ID',",
+        "prevChunkIds": []
+      },
+      "144": {
+        "chunkId": "af02b8",
+        "hash": "daab9c1b",
+        "encoded": "secretKeyVariable:%20'AWS_SECRET_ACCESS_KEY'",
+        "prevChunkIds": []
+      },
+      "145": {
+        "chunkId": "af02b8",
+        "hash": "a4d738c1",
+        "encoded": "%5D%5D)%20%7B",
+        "prevChunkIds": []
+      },
+      "146": {
+        "chunkId": "af02b8",
+        "hash": "9df4bcb4",
+        "encoded": "script%20%7B",
+        "prevChunkIds": []
+      },
+      "147": {
+        "chunkId": "af02b8",
+        "hash": "3dcba26a",
+        "encoded": "sh%20'''",
+        "prevChunkIds": []
+      },
+      "148": {
+        "chunkId": "af02b8",
+        "hash": "f2bfff78",
+        "encoded": "#%20Substitute%20environment%20variables%20in%20manifests",
+        "prevChunkIds": []
+      },
+      "149": {
+        "chunkId": "af02b8",
+        "hash": "bf10c685",
+        "encoded": "export%20ECR_REGISTRY=$%7BECR_REGISTRY%7D",
+        "prevChunkIds": []
+      },
+      "150": {
+        "chunkId": "af02b8",
+        "hash": "d46a58e1",
+        "encoded": "export%20IMAGE_TAG=$%7BIMAGE_TAG%7D",
+        "prevChunkIds": []
+      },
+      "152": {
+        "chunkId": "af02b8",
+        "hash": "4e322e2a",
+        "encoded": "#%20Apply%20Kubernetes%20manifests",
+        "prevChunkIds": []
+      },
+      "153": {
+        "chunkId": "af02b8",
+        "hash": "06cd6002",
+        "encoded": "envsubst%20%3C%20k8s-manifests/order-service/deployment.yaml%20%7C%20kubectl%20apply%20-f%20-",
+        "prevChunkIds": []
+      },
+      "155": {
+        "chunkId": "af02b8",
+        "hash": "54b0bbe9",
+        "encoded": "#%20Wait%20for%20rollout%20to%20complete",
+        "prevChunkIds": []
+      },
+      "156": {
+        "chunkId": "af02b8",
+        "hash": "046b37b5",
+        "encoded": "kubectl%20rollout%20status%20deployment/order-service%20-n%20$%7BNAMESPACE%7D%20--timeout=5m",
+        "prevChunkIds": []
+      },
+      "157": {
+        "chunkId": "af02b8",
+        "hash": "77597e3e",
+        "encoded": "'''",
+        "prevChunkIds": []
+      },
+      "158": {
+        "chunkId": "af02b8",
+        "hash": "b7a756fe",
+        "encoded": "%7D",
+        "prevChunkIds": []
+      },
+      "159": {
+        "chunkId": "af02b8",
+        "hash": "53cff946",
+        "encoded": "%7D",
+        "prevChunkIds": []
+      },
+      "160": {
+        "chunkId": "af02b8",
+        "hash": "10c4a851",
+        "encoded": "%7D",
+        "prevChunkIds": []
+      },
+      "161": {
+        "chunkId": "af02b8",
+        "hash": "e9785117",
+        "encoded": "%7D",
+        "prevChunkIds": []
+      },
+      "163": {
+        "chunkId": "af02b8",
+        "hash": "43b24b7d",
+        "encoded": "stage('Verify%20Deployment')%20%7B",
+        "prevChunkIds": []
+      },
+      "164": {
+        "chunkId": "af02b8",
+        "hash": "d0b50156",
+        "encoded": "steps%20%7B",
+        "prevChunkIds": []
+      },
+      "165": {
+        "chunkId": "af02b8",
+        "hash": "0a490276",
+        "encoded": "withCredentials(%5B%5B",
+        "prevChunkIds": []
+      },
+      "166": {
+        "chunkId": "af02b8",
+        "hash": "366af8b1",
+        "encoded": "$class:%20'AmazonWebServicesCredentialsBinding',",
+        "prevChunkIds": []
+      },
+      "167": {
+        "chunkId": "af02b8",
+        "hash": "89fdf529",
+        "encoded": "credentialsId:%20'jenkins-user',",
+        "prevChunkIds": []
+      },
+      "168": {
+        "chunkId": "af02b8",
+        "hash": "8a37a2a1",
+        "encoded": "accessKeyVariable:%20'AWS_ACCESS_KEY_ID',",
+        "prevChunkIds": []
+      },
+      "169": {
+        "chunkId": "af02b8",
+        "hash": "0d7eb09e",
+        "encoded": "secretKeyVariable:%20'AWS_SECRET_ACCESS_KEY'",
+        "prevChunkIds": []
+      },
+      "170": {
+        "chunkId": "af02b8",
+        "hash": "9eff15d1",
+        "encoded": "%5D%5D)%20%7B",
+        "prevChunkIds": []
+      },
+      "171": {
+        "chunkId": "af02b8",
+        "hash": "bd35503d",
+        "encoded": "script%20%7B",
+        "prevChunkIds": []
+      },
+      "172": {
+        "chunkId": "af02b8",
+        "hash": "a62fc615",
+        "encoded": "sh%20'''",
+        "prevChunkIds": []
+      },
+      "173": {
+        "chunkId": "af02b8",
+        "hash": "d54fecb1",
+        "encoded": "echo%20%22===%20Pods%20===%22",
+        "prevChunkIds": []
+      },
+      "174": {
+        "chunkId": "af02b8",
+        "hash": "d91b278c",
+        "encoded": "kubectl%20get%20pods%20-n%20$%7BNAMESPACE%7D%20-l%20app=$%7BSERVICE_NAME%7D",
+        "prevChunkIds": []
+      },
+      "176": {
+        "chunkId": "af02b8",
+        "hash": "69c8e2f1",
+        "encoded": "echo%20%22%5Cn===%20Services%20===%22",
+        "prevChunkIds": []
+      },
+      "177": {
+        "chunkId": "af02b8",
+        "hash": "42d10aab",
+        "encoded": "kubectl%20get%20svc%20-n%20$%7BNAMESPACE%7D",
+        "prevChunkIds": []
+      },
+      "179": {
+        "chunkId": "af02b8",
+        "hash": "13a32c4b",
+        "encoded": "echo%20%22%5Cn===%20Deployment%20Status%20===%22",
+        "prevChunkIds": []
+      },
+      "180": {
+        "chunkId": "af02b8",
+        "hash": "af0f8589",
+        "encoded": "kubectl%20get%20deployment%20$%7BSERVICE_NAME%7D%20-n%20$%7BNAMESPACE%7D",
+        "prevChunkIds": []
+      },
+      "182": {
+        "chunkId": "af02b8",
+        "hash": "198a3e8b",
+        "encoded": "#%20Check%20pod%20health",
+        "prevChunkIds": []
+      },
+      "183": {
+        "chunkId": "af02b8",
+        "hash": "4857fbe3",
+        "encoded": "kubectl%20wait%20--for=condition=ready%20pod%20%5C",
+        "prevChunkIds": []
+      },
+      "184": {
+        "chunkId": "af02b8",
+        "hash": "d7ab288a",
+        "encoded": "-l%20app=$%7BSERVICE_NAME%7D%20%5C",
+        "prevChunkIds": []
+      },
+      "185": {
+        "chunkId": "af02b8",
+        "hash": "3b67d0c7",
+        "encoded": "-n%20$%7BNAMESPACE%7D%20%5C",
+        "prevChunkIds": []
+      },
+      "186": {
+        "chunkId": "af02b8",
+        "hash": "40d3bf9c",
+        "encoded": "--timeout=300s",
+        "prevChunkIds": []
+      },
+      "187": {
+        "chunkId": "af02b8",
+        "hash": "88f67f22",
+        "encoded": "'''",
+        "prevChunkIds": []
+      },
+      "188": {
+        "chunkId": "af02b8",
+        "hash": "acd7fbb9",
+        "encoded": "%7D",
+        "prevChunkIds": []
+      },
+      "189": {
+        "chunkId": "af02b8",
+        "hash": "00c06a24",
+        "encoded": "%7D",
+        "prevChunkIds": []
+      },
+      "190": {
+        "chunkId": "af02b8",
+        "hash": "6e59ae01",
+        "encoded": "%7D",
+        "prevChunkIds": []
+      },
+      "191": {
+        "chunkId": "af02b8",
+        "hash": "0e2a48cb",
+        "encoded": "%7D",
+        "prevChunkIds": []
+      },
+      "193": {
+        "chunkId": "af02b8",
+        "hash": "19654e5d",
+        "encoded": "stage('Smoke%20Test')%20%7B",
+        "prevChunkIds": []
+      },
+      "194": {
+        "chunkId": "af02b8",
+        "hash": "041b96a8",
+        "encoded": "steps%20%7B",
+        "prevChunkIds": []
+      },
+      "195": {
+        "chunkId": "af02b8",
+        "hash": "771c6d25",
+        "encoded": "script%20%7B",
+        "prevChunkIds": []
+      },
+      "196": {
+        "chunkId": "af02b8",
+        "hash": "46a7fcfe",
+        "encoded": "echo%20%22Running%20smoke%20tests...%22",
+        "prevChunkIds": []
+      },
+      "197": {
+        "chunkId": "af02b8",
+        "hash": "a028ed87",
+        "encoded": "sh%20'''",
+        "prevChunkIds": []
+      },
+      "198": {
+        "chunkId": "af02b8",
+        "hash": "c1291303",
+        "encoded": "#%20Get%20service%20endpoint",
+        "prevChunkIds": []
+      },
+      "199": {
+        "chunkId": "af02b8",
+        "hash": "fdc24e17",
+        "encoded": "SERVICE_IP=$(kubectl%20get%20svc%20$%7BSERVICE_NAME%7D%20-n%20$%7BNAMESPACE%7D%20-o%20jsonpath='%7B.spec.clusterIP%7D')",
+        "prevChunkIds": []
+      },
+      "201": {
+        "chunkId": "af02b8",
+        "hash": "faeea268",
+        "encoded": "#%20Run%20health%20check",
+        "prevChunkIds": []
+      },
+      "202": {
+        "chunkId": "af02b8",
+        "hash": "a3edd4d9",
+        "encoded": "kubectl%20run%20curl-test%20--image=curlimages/curl:latest%20--rm%20-it%20--restart=Never%20--%20%5C",
+        "prevChunkIds": []
+      },
+      "203": {
+        "chunkId": "af02b8",
+        "hash": "f5adef55",
+        "encoded": "curl%20-f%20http://$%7BSERVICE_IP%7D:8080/actuator/health%20%7C%7C%20exit%201",
+        "prevChunkIds": []
+      },
+      "204": {
+        "chunkId": "af02b8",
+        "hash": "97834d67",
+        "encoded": "'''",
+        "prevChunkIds": []
+      },
+      "205": {
+        "chunkId": "af02b8",
+        "hash": "699b62c2",
+        "encoded": "%7D",
+        "prevChunkIds": []
+      },
+      "206": {
+        "chunkId": "af02b8",
+        "hash": "b70b04fa",
+        "encoded": "%7D",
+        "prevChunkIds": []
+      },
+      "207": {
+        "chunkId": "af02b8",
+        "hash": "d5064ca8",
+        "encoded": "%7D",
+        "prevChunkIds": []
+      },
+      "208": {
+        "chunkId": "af02b8",
+        "hash": "5b361ecf",
+        "encoded": "%7D",
+        "prevChunkIds": []
+      },
+      "210": {
+        "chunkId": "af02b8",
+        "hash": "dd7a6086",
+        "encoded": "post%20%7B",
+        "prevChunkIds": []
+      },
+      "211": {
+        "chunkId": "af02b8",
+        "hash": "bd625e23",
+        "encoded": "success%20%7B",
+        "prevChunkIds": []
+      },
+      "212": {
+        "chunkId": "af02b8",
+        "hash": "6524d1ce",
+        "encoded": "echo%20%22$%7BSERVICE_NAME%7D%20deployed%20successfully!%22",
+        "prevChunkIds": []
+      },
+      "213": {
+        "chunkId": "af02b8",
+        "hash": "de9f3eaf",
+        "encoded": "//%20Notify%20team%20(Slack,%20email,%20etc.)",
+        "prevChunkIds": []
+      },
+      "214": {
+        "chunkId": "af02b8",
+        "hash": "b9f9adb8",
+        "encoded": "%7D",
+        "prevChunkIds": []
+      },
+      "215": {
+        "chunkId": "af02b8",
+        "hash": "492fffa7",
+        "encoded": "failure%20%7B",
+        "prevChunkIds": []
+      },
+      "216": {
+        "chunkId": "af02b8",
+        "hash": "68bafbba",
+        "encoded": "echo%20%22$%7BSERVICE_NAME%7D%20deployment%20failed!%22",
+        "prevChunkIds": []
+      },
+      "217": {
+        "chunkId": "af02b8",
+        "hash": "ab26cc9a",
+        "encoded": "//%20Rollback%20if%20needed",
+        "prevChunkIds": []
+      },
+      "218": {
+        "chunkId": "af02b8",
+        "hash": "bf5c984d",
+        "encoded": "sh%20'''",
+        "prevChunkIds": []
+      },
+      "219": {
+        "chunkId": "af02b8",
+        "hash": "ccb3377a",
+        "encoded": "kubectl%20rollout%20undo%20deployment/$%7BSERVICE_NAME%7D%20-n%20$%7BNAMESPACE%7D",
+        "prevChunkIds": []
+      },
+      "220": {
+        "chunkId": "af02b8",
+        "hash": "9c8ad583",
+        "encoded": "'''",
+        "prevChunkIds": []
+      },
+      "221": {
+        "chunkId": "af02b8",
+        "hash": "e44f08de",
+        "encoded": "%7D",
+        "prevChunkIds": []
+      },
+      "222": {
+        "chunkId": "af02b8",
+        "hash": "fea1f524",
+        "encoded": "always%20%7B",
+        "prevChunkIds": []
+      },
+      "223": {
+        "chunkId": "af02b8",
+        "hash": "87200914",
+        "encoded": "//%20Cleanup",
+        "prevChunkIds": []
+      },
+      "224": {
+        "chunkId": "af02b8",
+        "hash": "13f0365d",
+        "encoded": "sh%20'docker%20system%20prune%20-f'",
+        "prevChunkIds": []
+      },
+      "225": {
+        "chunkId": "af02b8",
+        "hash": "ed507790",
+        "encoded": "%7D",
+        "prevChunkIds": []
+      },
+      "226": {
+        "chunkId": "af02b8",
+        "hash": "e196358d",
+        "encoded": "%7D",
+        "prevChunkIds": []
+      },
+      "227": {
+        "chunkId": "af02b8",
+        "hash": "30e86338",
+        "encoded": "%7D",
+        "prevChunkIds": []
+      }
+    }
+  }
+}
