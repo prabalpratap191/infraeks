@@ -74,7 +74,7 @@ pipeline {
                     accessKeyVariable: 'AWS_ACCESS_KEY_ID',
                     secretKeyVariable: 'AWS_SECRET_ACCESS_KEY'
                 ]]) {
-                    sh 0-=M 9'''
+                    sh '''
                     chmod +x scripts/verify-eks-prerequisites.sh
                     ./scripts/verify-eks-prerequisites.sh meracommerce-dev us-east-1
                      chmod +x scripts/cleanup-aws-resources.sh
