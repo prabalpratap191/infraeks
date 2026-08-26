@@ -1,106 +1,63 @@
 #!/bin/bash
 
-###############################################################################
+################################################################################
 # Terraform Cleanup Script
-# Purpose: Safely remove .terraform directory and lock files with proper
-#          permission handling for both Linux and Git-tracked files
-###############################################################################
+# Purpose: Clean Terraform cache and lock files before deployment
+# Usage: ./cleanup-terraform.sh [terraform_directory]
+################################################################################
 
-set -e  # Exit on error
+set -e
 
-# Color codes for output
+TERRAFORM_DIR="${1:-.}"
+
 RED='\033[0;31m'
 GREEN='\033[0;32m'
 YELLOW='\033[1;33m'
-NC='\033[0m' # No Color
+NC='\033[0m'
 
-echo -e "${YELLOW}========================================${NC}"
-echo -e "${YELLOW}  Terraform Cleanup Script${NC}"
-echo -e "${YELLOW}========================================${NC}"
+echo "========================================"
+echo "Terraform Cleanup Script"
+echo "========================================"
+echo "Target directory: $TERRAFORM_DIR"
 echo ""
-
-# Function to print status messages
-print_status() {
-    echo -e "${GREEN}✓${NC} $1"
-}
-
-print_warning() {
-    echo -e "${YELLOW}⚠${NC} $1"
-}
-
-print_error() {
-    echo -e "${RED}✗${NC} $1"
-}
-
-# Get the directory to clean (default to current directory)
-TERRAFORM_DIR="${1:-.}"
-
-if [ ! -d "$TERRAFORM_DIR" ]; then
-    print_error "Directory not found: $TERRAFORM_DIR"
-    exit 1
-fi
 
 cd "$TERRAFORM_DIR"
-echo "Working directory: $(pwd)"
-echo ""
 
-# Step 1: Remove .terraform directory
+echo -e "${YELLOW}[1/4] Removing Terraform cache...${NC}"
 if [ -d ".terraform" ]; then
-    echo "[1/3] Removing .terraform directory..."
-    
-    # Reset permissions on all files and directories
-    # This handles Git hook files and other protected files
-    find .terraform -type f -exec chmod 644 {} \; 2>/dev/null || true
-    find .terraform -type d -exec chmod 755 {} \; 2>/dev/null || true
-    
-    # Remove the directory
     rm -rf .terraform
-    
-    if [ ! -d ".terraform" ]; then
-        print_status ".terraform directory removed successfully"
-    else
-        print_error "Failed to remove .terraform directory"
-        exit 1
-    fi
+    echo -e "${GREEN}✓ Removed .terraform directory${NC}"
 else
-    print_warning ".terraform directory not found (already clean)"
+    echo "  No .terraform directory found"
 fi
 
 echo ""
-
-# Step 2: Remove .terraform.lock.hcl file
+echo -e "${YELLOW}[2/4] Removing lock file...${NC}"
 if [ -f ".terraform.lock.hcl" ]; then
-    echo "[2/3] Removing .terraform.lock.hcl file..."
     rm -f .terraform.lock.hcl
-    
-    if [ ! -f ".terraform.lock.hcl" ]; then
-        print_status ".terraform.lock.hcl removed successfully"
-    else
-        print_error "Failed to remove .terraform.lock.hcl"
-        exit 1
-    fi
+    echo -e "${GREEN}✓ Removed .terraform.lock.hcl${NC}"
 else
-    print_warning ".terraform.lock.hcl not found (already clean)"
+    echo "  No lock file found"
 fi
 
 echo ""
-
-# Step 3: Verify cleanup
-echo "[3/3] Verifying cleanup..."
-if [ ! -d ".terraform" ] && [ ! -f ".terraform.lock.hcl" ]; then
-    print_status "Cleanup verification passed"
+echo -e "${YELLOW}[3/4] Cleaning backup files...${NC}"
+if [ -f "terraform.tfstate.backup" ]; then
+    rm -f terraform.tfstate.backup
+    echo -e "${GREEN}✓ Removed terraform.tfstate.backup${NC}"
 else
-    print_error "Cleanup verification failed"
-    exit 1
+    echo "  No backup file found"
 fi
 
 echo ""
-echo -e "${YELLOW}========================================${NC}"
-echo -e "${GREEN}✓ Cleanup completed successfully!${NC}"
-echo -e "${YELLOW}========================================${NC}"
-echo ""
-echo "You can now run:"
-echo "  terraform init"
-echo ""
+echo -e "${YELLOW}[4/4] Removing plan files...${NC}"
+rm -f *.tfplan 2>/dev/null || true
+rm -f .terraform.tfstate.lock.info 2>/dev/null || true
+echo -e "${GREEN}✓ Cleaned plan files${NC}"
 
-exit 0
+echo ""
+echo -e "${GREEN}========================================${NC}"
+echo -e "${GREEN}✓ Terraform cleanup complete!${NC}"
+echo -e "${GREEN}========================================${NC}"
+echo ""
+echo "Ready for: terraform init"
