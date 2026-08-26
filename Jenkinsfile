@@ -53,7 +53,7 @@ pipeline {
                 // Then add credentials with ID jenkins-user'
                 withCredentials([[
                     $class: 'AmazonWebServicesCredentialsBinding',
-                    credentialsId: 'jenkins-user',
+                    credentialsId: 'aws-prod-cred',
                     accessKeyVariable: 'AWS_ACCESS_KEY_ID',
                     secretKeyVariable: 'AWS_SECRET_ACCESS_KEY'
                 ]]) {
@@ -70,24 +70,24 @@ pipeline {
             steps {
                 withCredentials([[
                     $class: 'AmazonWebServicesCredentialsBinding',
-                    credentialsId: 'jenkins-user',
+                    credentialsId: 'aws-prod-cred',
                     accessKeyVariable: 'AWS_ACCESS_KEY_ID',
                     secretKeyVariable: 'AWS_SECRET_ACCESS_KEY'
                 ]]) {
                     sh '''
                     # Make scripts executable (ignore errors if already executable)
-                    chmod +x scripts/verify-eks-prerequisites.sh || true
-                    chmod +x scripts/cleanup-aws-resources.sh || true
-                    chmod +x scripts/cleanup-terraform.sh || true
+                    sudo chmod +x scripts/verify-eks-prerequisites.sh || true
+                    sudo chmod +x scripts/cleanup-aws-resources.sh || true
+                    sudo chmod +x scripts/cleanup-terraform.sh || true
                     
                     # Run prerequisite verification (optional - can be skipped if failing)
-                    # ./scripts/verify-eks-prerequisites.sh meracommerce-dev us-east-1 || echo "Verification skipped"
+                    sudo ./scripts/verify-eks-prerequisites.sh meracommerce-dev us-east-1 || echo "Verification skipped"
                     
                     # Clean up AWS resources from previous failed deployments
-                    ./scripts/cleanup-aws-resources.sh || echo "AWS cleanup completed with warnings"
+                    sudo ./scripts/cleanup-aws-resources.sh || echo "AWS cleanup completed with warnings"
                     
                     # Clean Terraform cache and lock files
-                    ./scripts/cleanup-terraform.sh terraform || echo "Terraform cleanup completed"
+                    sudo ./scripts/cleanup-terraform.sh terraform || echo "Terraform cleanup completed"
                     
                     # Initialize Terraform
                     cd terraform
@@ -103,7 +103,7 @@ pipeline {
             steps {
                 withCredentials([[
                     $class: 'AmazonWebServicesCredentialsBinding',
-                    credentialsId: 'jenkins-user',
+                    credentialsId: 'aws-prod-cred',
                     accessKeyVariable: 'AWS_ACCESS_KEY_ID',
                     secretKeyVariable: 'AWS_SECRET_ACCESS_KEY'
                 ]]) {
@@ -121,7 +121,7 @@ pipeline {
             steps {
                 withCredentials([[
                     $class: 'AmazonWebServicesCredentialsBinding',
-                    credentialsId: 'jenkins-user',
+                    credentialsId: 'aws-prod-cred',
                     accessKeyVariable: 'AWS_ACCESS_KEY_ID',
                     secretKeyVariable: 'AWS_SECRET_ACCESS_KEY'
                 ]]) {
@@ -145,7 +145,7 @@ pipeline {
             steps {
                 withCredentials([[
                     $class: 'AmazonWebServicesCredentialsBinding',
-                    credentialsId: 'jenkins-user',
+                    credentialsId: 'aws-prod-cred',
                     accessKeyVariable: 'AWS_ACCESS_KEY_ID',
                     secretKeyVariable: 'AWS_SECRET_ACCESS_KEY'
                 ]]) {
