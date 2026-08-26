@@ -31,13 +31,13 @@ variable "service_account" {
 variable "node_instance_type" {
   description = "EC2 instance type for EKS nodes"
   type        = string
-  default     = "t3.medium"
+  default     = "t2.medium"
 }
 
 variable "node_desired" {
   description = "Desired number of worker nodes"
   type        = number
-  default     = 2
+  default     = 1
 }
 
 variable "node_min" {
@@ -49,7 +49,7 @@ variable "node_min" {
 variable "node_max" {
   description = "Maximum number of worker nodes"
   type        = number
-  default     = 3
+  default     = 2
 }
 
 variable "cluster_version" {

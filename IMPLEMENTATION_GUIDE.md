@@ -492,10 +492,10 @@ kubectl delete networkpolicy <policy-name> -n <namespace>
 ## Next Steps & Enhancements
 
 ### Security
-- [ ] Enable SSL/TLS (add ACM certificate to ingress)
-- [ ] Implement External Secrets Operator for secret management
-- [ ] Add WAF rules to ALB
-- [ ] Enable Pod Security Standards
+- [x] Enable SSL/TLS (add ACM certificate to ingress)
+- [x] Implement External Secrets Operator for secret management
+- [x] Add WAF rules to ALB
+- [x] Enable Pod Security Standards
 
 ### Monitoring
 - [ ] Install Prometheus & Grafana
