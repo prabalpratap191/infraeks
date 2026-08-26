@@ -11,7 +11,7 @@ pipeline {
 
         string(
             name: 'NAMESPACE',
-            defaultValue: 'customer-ns'
+            defaultValue: 'customer-service-ns'
         )
 
         string(
