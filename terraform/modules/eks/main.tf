@@ -95,8 +95,7 @@ module "eks" {
       use_name_prefix = false
       
       # Shorten IAM role name to avoid 38 character limit
-#      iam_role_name          = "${var.cluster_name}-node-role"
-      iam_role_name          = default
+      iam_role_name          = "${var.cluster_name}-node-role"
       iam_role_use_name_prefix = false
 
       desired_size = var.node_desired
