@@ -77,10 +77,11 @@ pipeline {
                     sh '''
                     chmod +x scripts/verify-eks-prerequisites.sh
                     ./scripts/verify-eks-prerequisites.sh meracommerce-dev us-east-1
-                     chmod +x scripts/cleanup-aws-resources.sh
+                    chmod +x scripts/cleanup-aws-resources.sh
                     ./scripts/cleanup-aws-resources.sh
+                    chmod +x scripts/cleanup-terraform.sh
+                    ./scripts/cleanup-terraform.sh terraform
                     cd terraform
-                    rm -rf .terraform .terraform.lock.hcl
                     terraform init
                     '''
                 }
