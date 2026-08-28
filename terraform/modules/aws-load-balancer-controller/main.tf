@@ -302,10 +302,6 @@ resource "kubernetes_service_account" "aws_load_balancer_controller" {
       "app.kubernetes.io/managed-by" = "terraform"
     }
   }
-  
-  timeouts {
-    create = "5m"
-  }
 }
 
 # Install AWS Load Balancer Controller using Helm
