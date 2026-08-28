@@ -76,18 +76,18 @@ pipeline {
                 ]]) {
                     sh '''
                     # Make scripts executable (ignore errors if already executable)
-                    sudo chmod +x scripts/verify-eks-prerequisites.sh || true
-                    sudo chmod +x scripts/cleanup-aws-resources.sh || true
-                    sudo chmod +x scripts/cleanup-terraform.sh || true
+                     chmod +x scripts/verify-eks-prerequisites.sh || true
+                     chmod +x scripts/cleanup-aws-resources.sh || true
+                     chmod +x scripts/cleanup-terraform.sh || true
                     
                     # Run prerequisite verification (optional - can be skipped if failing)
-                    sudo ./scripts/verify-eks-prerequisites.sh meracommerce-dev-cluster us-east-1 || echo "Verification skipped"
+                     ./scripts/verify-eks-prerequisites.sh meracommerce-dev-cluster us-east-1 || echo "Verification skipped"
                     
                     # Clean up AWS resources from previous failed deployments
-                    sudo ./scripts/cleanup-aws-resources.sh || echo "AWS cleanup completed with warnings"
+                     ./scripts/cleanup-aws-resources.sh || echo "AWS cleanup completed with warnings"
                     
                     # Clean Terraform cache and lock files
-                    sudo ./scripts/cleanup-terraform.sh terraform || echo "Terraform cleanup completed"
+                     ./scripts/cleanup-terraform.sh terraform || echo "Terraform cleanup completed"
                     
                     # Initialize Terraform
                     cd terraform
