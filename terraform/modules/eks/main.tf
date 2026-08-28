@@ -60,6 +60,15 @@ module "eks" {
       type                       = "ingress"
       source_node_security_group = true
     }
+    # Allow EC2 instances in VPC to access cluster API (for Terraform execution from Jenkins/EC2)
+    ingress_vpc_https = {
+      description = "VPC HTTPS access to cluster API"
+      protocol    = "tcp"
+      from_port   = 443
+      to_port     = 443
+      type        = "ingress"
+      cidr_blocks = [data.aws_vpc.default.cidr_block]
+    }
   }
 
   # Configure node security group rules
@@ -127,7 +136,7 @@ module "eks" {
         xvda = {
           device_name = "/dev/xvda"
           ebs = {
-            volume_size           = 20
+            volume_size           = 25
             volume_type           = "gp3"
             iops                  = 3000
             throughput            = 125

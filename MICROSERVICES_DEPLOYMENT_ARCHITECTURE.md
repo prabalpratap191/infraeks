@@ -35,7 +35,7 @@ This document outlines the architecture and changes required to deploy multiple 
 │  ┌───────────────────────────────────────────────────────────┐  │
 │  │                    VPC (Default)                           │  │
 │  │  ┌─────────────────────────────────────────────────────┐  │  │
-│  │  │          EKS Cluster (meracommerce-dev)            │  │  │
+│  │  │          EKS Cluster (meracommerce-dev-cluster)     │  │  │
 │  │  │                                                     │  │  │
 │  │  │  ┌──────────────────────────────────────────────┐  │  │  │
 │  │  │  │  Namespace: order-service-ns                │  │  │  │

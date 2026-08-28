@@ -1,0 +1,218 @@
+# Slingshot AI Agent directories (EXCLUDE FROM GIT)
+.slingshot/
+.agent/
+.agents/
+target/
+enc_file_*/
+
+# Terraform
+.terraform/
+.terraform.lock.hcl
+*.tfstate
+*.tfstate.*
+*.tfvars.backup
+terraform.tfstate.d/
+crash.log
+crash.*.log
+*.tfplan
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+
+# Terraform variables (sensitive)
+# Comment out if you want to commit tfvars
+# *.tfvars
+# *.tfvars.json
+
+# IDE - IntelliJ
+.idea/
+*.iml
+*.iws
+*.ipr
+.idea_modules/
+
+# IDE - VSCode
+.vscode/
+*.code-workspace
+.history/
+
+# IDE - Eclipse
+.project
+.classpath
+.settings/
+
+# Vim
+*.swp
+*.swo
+*~
+.*.sw[a-p]
+
+# OS - macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon
+._*
+.Spotlight-V100
+.Trashes
+
+# OS - Windows
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+ehthumbs_vista.db
+*.stackdump
+Desktop.ini
+$RECYCLE.BIN/
+
+# OS - Linux
+.directory
+.Trash-*
+.nfs*
+
+# Logs
+*.log
+logs/
+*.log.*
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+.envrc
+
+# Secrets and Credentials (CRITICAL - NEVER COMMIT!)
+*secret*
+*Secret*
+*SECRET*
+*password*
+*Password*
+*PASSWORD*
+*credentials*
+*Credentials*
+*.pem
+*.key
+*.p12
+*.pfx
+*.jks
+*.keystore
+aws-credentials
+.aws/credentials
+
+# Kubernetes
+*.kubeconfig
+kubeconfig
+.kube/config
+
+# Build artifacts - Java
+target/
+build/
+*.jar
+*.war
+*.ear
+*.class
+*.jar.original
+
+# Build artifacts - Node.js
+node_modules/
+npm-debug.log
+.npm/
+dist/
+build/
+
+# Build artifacts - Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Test coverage
+coverage/
+.coverage
+.coverage.*
+htmlcov/
+.pytest_cache/
+.tox/
+.nox/
+
+# CI/CD
+.jenkins/
+.github/workflows/*.log
+.gitlab-ci-local/
+
+# Temporary files
+*.tmp
+*.temp
+*.bak
+*.backup
+*.orig
+*.rej
+*.swp
+
+# Archives
+*.zip
+*.tar.gz
+*.tar.bz2
+*.rar
+*.7z
+
+# Docker
+.dockerignore
+*.tar
+
+# Helm
+*.tgz
+.helm/
+
+# Cert files (usually generated)
+*.crt
+*.cert
+*.cer
+
+# Database
+*.db
+*.sqlite
+*.sqlite3
+
+# Cache
+.cache/
+*.cache
+
+# Lock files (optional - uncomment if you want to exclude)
+# package-lock.json
+# yarn.lock
+# Gemfile.lock
+
+# Generated files
+auto-generated/
+generated/
+
+# Local configuration overrides
+local.tfvars
+local-*.tfvars
+*.local.tfvars
+
+# Agent and temporary directories
+.agent/
+.tmp/
+temp/

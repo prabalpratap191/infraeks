@@ -10,6 +10,11 @@ resource "kubernetes_namespace" "microservice" {
       service     = var.service_name
     }
   }
+  
+  timeouts {
+    create = "5m"
+    delete = "5m"
+  }
 }
 
 # Service Account with IRSA annotation
@@ -24,6 +29,10 @@ resource "kubernetes_service_account" "microservice" {
       "app.kubernetes.io/name"       = var.service_name
       "app.kubernetes.io/managed-by" = "terraform"
     }
+  }
+  
+  timeouts {
+    create = "5m"
   }
 }
 

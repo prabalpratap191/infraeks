@@ -302,6 +302,10 @@ resource "kubernetes_service_account" "aws_load_balancer_controller" {
       "app.kubernetes.io/managed-by" = "terraform"
     }
   }
+  
+  timeouts {
+    create = "5m"
+  }
 }
 
 # Install AWS Load Balancer Controller using Helm
@@ -311,6 +315,10 @@ resource "helm_release" "aws_load_balancer_controller" {
   chart      = "aws-load-balancer-controller"
   namespace  = "kube-system"
   version    = var.helm_chart_version
+  
+  timeout = 600  # 10 minutes timeout for helm installation
+  wait    = true
+  wait_for_jobs = true
 
   set {
     name  = "clusterName"
