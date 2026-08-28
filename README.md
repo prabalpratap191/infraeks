@@ -67,7 +67,7 @@ InfraEKS is a production-ready Infrastructure-as-Code (IaC) solution for deployi
 
 | Component | Configuration |
 |-----------|---------------|
-| **Cluster Name** | meracommerce-dev |
+| **Cluster Name** | meracommerce-dev-cluster |
 | **Region** | us-east-1 |
 | **Kubernetes Version** | 1.31 |
 | **Node Type** | t3.medium |
@@ -144,7 +144,7 @@ infraeKS-master/
 │   ├── variables.tf                        # Input variables
 │   ├── outputs.tf                          # Output values
 │   ├── provider.tf                         # Provider configuration
-│   ├── meracommerce-dev.tfvars            # Development environment vars
+│   ├── meracommerce-dev-cluster.tfvars            # Development environment vars
 │   └── backend/
 │       └── backend.tf                      # Remote state configuration
 ├── k8s-manifests/                          # Kubernetes manifests
@@ -235,10 +235,10 @@ terraform init
 terraform validate
 
 # Review execution plan
-terraform plan -var-file=meracommerce-dev.tfvars
+terraform plan -var-file=meracommerce-dev-cluster.tfvars
 
 # Apply infrastructure
-terraform apply -var-file=meracommerce-dev.tfvars -auto-approve
+terraform apply -var-file=meracommerce-dev-cluster.tfvars -auto-approve
 ```
 
 **Expected deployment time: 15-20 minutes**
@@ -247,7 +247,7 @@ terraform apply -var-file=meracommerce-dev.tfvars -auto-approve
 
 ```bash
 # Update kubeconfig to access the cluster
-aws eks update-kubeconfig --name meracommerce-dev --region us-east-1
+aws eks update-kubeconfig --name meracommerce-dev-cluster --region us-east-1
 
 # Verify cluster access
 kubectl cluster-info
@@ -362,11 +362,11 @@ For comprehensive guides and detailed information, refer to:
 
 ### Environment Variables (tfvars)
 
-Edit `terraform/meracommerce-dev.tfvars` to customize your deployment:
+Edit `terraform/meracommerce-dev-cluster.tfvars` to customize your deployment:
 
 ```hcl
 # Cluster Configuration
-cluster_name        = "meracommerce-dev"
+cluster_name        = "meracommerce-dev-cluster"
 region              = "us-east-1"
 availability_zones  = ["us-east-1a", "us-east-1b", "us-east-1c"]
 cluster_version     = "1.31"
@@ -435,7 +435,7 @@ cd terraform
 terraform apply \
   -var node_desired=3 \
   -var node_max=5 \
-  -var-file=meracommerce-dev.tfvars
+  -var-file=meracommerce-dev-cluster.tfvars
 ```
 
 #### Scale Microservice Pods
@@ -452,7 +452,7 @@ kubectl get pods -n order-service-ns
 
 ```bash
 cd terraform
-terraform apply -var cluster_version="1.32" -var-file=meracommerce-dev.tfvars
+terraform apply -var cluster_version="1.32" -var-file=meracommerce-dev-cluster.tfvars
 ```
 
 ### Add New Microservice
@@ -499,7 +499,7 @@ module "payment_service" {
 4. **Apply changes**:
 
 ```bash
-terraform apply -var-file=meracommerce-dev.tfvars
+terraform apply -var-file=meracommerce-dev-cluster.tfvars
 ```
 
 ---
@@ -664,7 +664,7 @@ ab -n 1000 -c 10 http://$ALB_DNS/api/catalog/actuator/health
 
 ```bash
 # Install CloudWatch agent
-curl https://raw.githubusercontent.com/aws-samples/amazon-cloudwatch-container-insights/latest/k8s-deployment-manifest-templates/deployment-mode/daemonset/container-insights-monitoring/quickstart/cwagent-fluentd-quickstart.yaml | sed "s/{{cluster_name}}/meracommerce-dev/;s/{{region_name}}/us-east-1/" | kubectl apply -f -
+curl https://raw.githubusercontent.com/aws-samples/amazon-cloudwatch-container-insights/latest/k8s-deployment-manifest-templates/deployment-mode/daemonset/container-insights-monitoring/quickstart/cwagent-fluentd-quickstart.yaml | sed "s/{{cluster_name}}/meracommerce-dev-cluster/;s/{{region_name}}/us-east-1/" | kubectl apply -f -
 
 # Verify installation
 kubectl get pods -n amazon-cloudwatch
@@ -703,7 +703,7 @@ environment {
     AWS_REGION = 'us-east-1'
     ECR_REGISTRY = '<account-id>.dkr.ecr.us-east-1.amazonaws.com'
     IMAGE_NAME = 'order-service'
-    CLUSTER_NAME = 'meracommerce-dev'
+    CLUSTER_NAME = 'meracommerce-dev-cluster'
     NAMESPACE = 'order-service-ns'
 }
 ```

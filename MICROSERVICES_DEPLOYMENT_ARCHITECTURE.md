@@ -7,7 +7,7 @@ This document outlines the architecture and changes required to deploy multiple 
 ## Current State Analysis
 
 ### ✅ What's Already Provisioned
-- **EKS Cluster**: `meracommerce-dev` with Kubernetes 1.31
+- **EKS Cluster**: `meracommerce-dev-cluster` with Kubernetes 1.31
 - **Node Group**: 2 t3.medium instances (min: 1, max: 3)
 - **Networking**: Default VPC with filtered subnets (us-east-1a, us-east-1b, us-east-1c)
 - **IAM**: IRSA enabled for service account authentication

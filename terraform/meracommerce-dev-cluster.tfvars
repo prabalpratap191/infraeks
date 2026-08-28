@@ -1,10 +1,10 @@
 # Environment: Development
-cluster_name        = "meracommerce-dev"
+cluster_name        = "meracommerce-dev-cluster"
 region              = "us-east-1"
 availability_zones = ["us-east-1a", "us-east-1b", "us-east-1c"]  
 namespace           = "customer-service-ns"
 service_account     = "customer-sa"
-cluster_version     = "1.31"  # Using stable Kubernetes version
+cluster_version     = "1.35"  # Using stable Kubernetes version
 node_instance_type  = "t3.medium"
 node_desired        = 2
 node_min            = 1

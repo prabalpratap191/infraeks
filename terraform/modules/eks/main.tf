@@ -43,6 +43,8 @@ module "eks" {
   # Enable IRSA (IAM Roles for Service Accounts)
   enable_irsa = true
 
+  enable_cluster_creator_admin_permissions = true
+  
   vpc_id     = data.aws_vpc.default.id
   
   # Use dynamic subnets with proper filtering for us-east-1a, us-east-1b, us-east-1c only
@@ -129,7 +131,7 @@ module "eks" {
             volume_type           = "gp3"
             iops                  = 3000
             throughput            = 125
-            encrypted             = true
+            encrypted             = false
             delete_on_termination = true
           }
         }

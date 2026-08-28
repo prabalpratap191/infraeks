@@ -6,7 +6,7 @@ pipeline {
 
         string(
             name: 'CLUSTER_NAME',
-            defaultValue: 'meracommerce-dev'
+            defaultValue: 'meracommerce-dev-cluster'
         )
 
         string(
@@ -81,7 +81,7 @@ pipeline {
                     sudo chmod +x scripts/cleanup-terraform.sh || true
                     
                     # Run prerequisite verification (optional - can be skipped if failing)
-                    sudo ./scripts/verify-eks-prerequisites.sh meracommerce-dev us-east-1 || echo "Verification skipped"
+                    sudo ./scripts/verify-eks-prerequisites.sh meracommerce-dev-cluster us-east-1 || echo "Verification skipped"
                     
                     # Clean up AWS resources from previous failed deployments
                     sudo ./scripts/cleanup-aws-resources.sh || echo "AWS cleanup completed with warnings"
@@ -132,7 +132,7 @@ pipeline {
                         -var cluster_name=${CLUSTER_NAME} \
                         -var namespace=${NAMESPACE} \
                         -var service_account=${SERVICE_ACCOUNT} \
-                        -var-file=meracommerce-dev.tfvars
+                        -var-file=meracommerce-dev-cluster.tfvars
                     """
                 }
             }
@@ -156,7 +156,7 @@ pipeline {
                         -var cluster_name=${CLUSTER_NAME} \
                         -var namespace=${NAMESPACE} \
                         -var service_account=${SERVICE_ACCOUNT} \
-                        -var-file=meracommerce-dev.tfvars
+                        -var-file=meracommerce-dev-cluster.tfvars
                     """
                 }
             }
